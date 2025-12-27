@@ -1,0 +1,138 @@
+site_name: Over-the-Air Update
+
+nav:
+  - Home: index.md
+
+  - Fundamentals:
+        - Over-the-Air: 01_introduction/01_what-is-ota.md
+        - Definition: 01_introduction/02_definition.md
+        - Importance: 01_introduction/03_importance.md
+        - SOTA vs. FOTA: 01_introduction/04_sota-fota.md
+        - Challenges: 01_introduction/05_challenges.md
+        - OTA Services: 01_introduction/06_ota-services.md
+        - How OTA Works: 01_introduction/08_how-ota-works.md
+
+  - Architecture:
+      - Core Architecture:
+            - Vehicle State: 02_core_architecture/01_vehicle-state.md
+            - Architecture: 02_core_architecture/02_architecture.md
+      - Backend:
+            - OEM Backend: 03_ota-backend/01_oem-backend.md
+            - Cloud Providers: 03_ota-backend/02_cloud-providers.md
+            - Campaign Management: 03_ota-backend/03_campaign-management.md
+      - User Experience:
+            - HMI: 04_user-experience/01_hmi.md
+            - OEM App: 04_user-experience/02_oem-app.md
+
+  - Vehicle And TCU:
+      - Connectivity:
+            - MQTT: 05_oem-backend-tcu/01_mqtt.md
+            - Connectivity: 05_oem-backend-tcu/02_mqtt-connectivity.md
+            - HTTPS: 05_oem-backend-tcu/03_https.md
+      - TCU:
+            - OTA Manager: 06_tcu/01_ota-manager.md
+            - UDS Tester: 06_tcu/02_uds-tester.md
+
+  - Target Device:
+      - Protocols:
+            - UDS Protocol: 07_target-device/01_uds-protocol.md
+            - UDS on CAN: 07_target-device/02_uds-on-can.md
+            - UDS on DoIP: 07_target-device/03_uds-on-doip.md
+      - Platform:
+            - AUTOSAR: 07_target-device/04_autosar.md
+            - Memory & Safeguards: 07_target-device/05_memory-and-safeguards.md
+
+  - Testing & Use Cases:
+      - Testing:
+            - Strategy: 08_ota-testing/01_testing-strategy.md
+            - Tools: 08_ota-testing/02_tools-and-equipment.md
+            - Compliance: 08_ota-testing/03_compliance-and-security.md
+      - Use Cases:
+            - Smart Maintenance: 09_usecase/01_smart-maintenance.md
+            - Feature on Demand: 09_usecase/02_feature-on-demand.md
+
+  - Security & Advanced:
+      - Security:
+            - Threats: 10_security/01_threats.md
+            - Defense: 10_security/02_defense-layer.md
+      - Advanced Topics:
+            - SDV Architecture: 11_advanced-topics/01_sdv-architecture.md
+            - Regulations: 11_advanced-topics/02_regulatory-landscape.md
+            - FAQ: 11_advanced-topics/03_faq.md
+  - Glossary: 
+      - Glossary: glossary.md
+
+theme:
+  name: material
+  highlightjs: false   # use Pygments via pymdownx.highlight
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.prune
+    - navigation.sections
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - header.autohide
+    - toc.follow
+    - palette.toggle
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+
+  - pymdownx.inlinehilite
+
+  # Diagrams (Mermaid + others) in fenced code blocks
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: conform
+          class: conform
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # Optional: better admonitions, tabs, etc. (Material-friendly)
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+
+extra_javascript:
+  # Mermaid runtime (Material supports this pattern)
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - js/mermaid-init.js
+
+extra:
+  copyright: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/CagriCatik/OTA
+
+extra_css:
+  - styles/extra.css
+
+plugins:
+  - search

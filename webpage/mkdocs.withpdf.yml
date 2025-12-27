@@ -1,0 +1,131 @@
+site_name: OTA
+
+nav:
+  - Home: index.md
+  - Introduction:
+      - Intro: 01_introduction/01_intro.md
+      - Definition: 01_introduction/02_definition.md
+      - Importance: 01_introduction/03_importance.md
+      - SOTA vs FOTA: 01_introduction/04_sota-fota.md
+      - Challenges: 01_introduction/05_challenges.md
+      - OTA Services: 01_introduction/06_ota_services.md
+      - Market Analysis: 01_introduction/07_market-analysis.md
+      - How OTA Works: 01_introduction/08_how-ota.md
+  - Core Architecture:
+      - Vehicle State: 02_core_architecture/01_vehicle_state.md
+      - Architecture: 02_core_architecture/02_architecture.md
+      - Vehicle Architecture: 02_core_architecture/03_vehicle_architecture.md
+  - OTA Backend:
+      - OEM Backend: 03_ota-backend.md/01_oem-backend.md
+      - Cloud Providers: 03_ota-backend.md/02_cloud-providers.md
+      - Campaign Management: 03_ota-backend.md/03_campaing-management.md
+  - User Experience:
+      - HMI: 04_user-experience/01_hmi.md
+      - OEM App: 04_user-experience/02_oem-app.md
+  - OEM Backend & TCU:
+      - MQTT: 05_oem-backend-tcu/01_mqtt.md
+      - MQTT Connectivity: 05_oem-backend-tcu/02_mqtt-connectivity.md
+      - HTTPS: 05_oem-backend-tcu/03_https.md
+  - TCU:
+      - OTA Manager: 06_tcu/01_ota-manager.md
+      - UDS Tester: 06_tcu/02_uds-tester.md
+  - Target Device:
+      - UDS on CAN/ETH: 07_target-device/01_uds-can-eth.md
+      - AUTOSAR: 07_target-device/02_autosar.md
+      - UDS on CAN: 07_target-device/03_uds-can.md
+      - DoIP: 07_target-device/04_doip.md
+      - DoIP External: 07_target-device/05_doip-external.md
+      - Bootloader: 07_target-device/06_bootloader.md
+      - Memory: 07_target-device/07_target-device-memory.md
+      - Fail-Safe Strategy: 07_target-device/08_fail-safe-strategy.md
+  - OTA Testing:
+      - Intro: 08_ota-testing/01_intro.md
+      - Methods: 08_ota-testing/02_methods.md
+      - Tool Chain: 08_ota-testing/03_tool-chain.md
+  - Use Cases:
+      - Intro: 09_usecase/01_intro.md
+      - Remote Diagnostics: 09_usecase/02_remote-diagnostics.md
+  - Possible Attacks:
+      - Intro: 11_possible-attacks-ota/01_intro.md
+      - Eavesdropping: 11_possible-attacks-ota/02_eavesdrop.md
+      - Denial of Service: 11_possible-attacks-ota/03_denial.md
+      - Rollback: 11_possible-attacks-ota/04_rollback.md
+      - Injection: 11_possible-attacks-ota/05_injection.md
+  - Possible Measures:
+      - Protection Eavesdropping: 12_possible-measures/01_protection-eavesdrop.md
+      - Protection DoS: 12_possible-measures/02_protection-dos.md
+      - Protection Rollback: 12_possible-measures/03_protection-rollback.md
+  - SDV:
+      - Intro: 13_sdv/01_intro.md
+      - High Level Arch: 13_sdv/02_high-level-architecture.md
+      - Market Players: 13_sdv/03_market-players.md
+      - Level 1: 13_sdv/04_level1.md
+      - Level 2: 13_sdv/06_level2.md
+      - Level 3: 13_sdv/07_level3.md
+      - Level 4: 13_sdv/08_level4.md
+      - Level 5: 13_sdv/09_level5.md
+  - UNECE R156:
+      - SUMS: 14_unece-r156/01_sums.md
+      - Rollback: 14_unece-r156/02_rollback.md
+  - Questions:
+      - Intro: 15_questions/01_intro.md
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.sections
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - header.autohide
+    - toc.follow
+    - palette.toggle
+    - content.image.zoom
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra:
+  copyright: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/CagriCatik/OTA
+
+extra_css:
+  - styles/extra.css
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+  - with-pdf

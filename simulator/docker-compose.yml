@@ -1,0 +1,39 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      - VEHICLE_URL=http://gateway:8080
+      - VEHICLE_ID=VIN_SIM_0001
+      - OTA_SECRET_KEY=CctIOT758amWJpb0sha1qNHE/HAhhVE7JXzcmWJz9Us=
+    depends_on: [ gateway ]
+
+  x-ecu-common: &ecu_common
+    build: ./ecu
+    environment:
+      - VEHICLE_ID=VIN_SIM_0001
+      - OTA_PUBLIC_KEY=BI/ezKPNG+EgSFCMkOnowq8sX8ZSnGZyN06cKtUxiss=
+
+  ecu_engine:
+    <<: *ecu_common
+    environment:
+      - VEHICLE_ID=VIN_SIM_0001
+      - ECU_ID=engine
+      - OTA_PUBLIC_KEY=BI/ezKPNG+EgSFCMkOnowq8sX8ZSnGZyN06cKtUxiss=
+    ports: [ "8101:8080" ]
+
+  ecu_adas:
+    <<: *ecu_common
+    environment:
+      - VEHICLE_ID=VIN_SIM_0001
+      - ECU_ID=adas
+      - OTA_PUBLIC_KEY=BI/ezKPNG+EgSFCMkOnowq8sX8ZSnGZyN06cKtUxiss=
+    ports: [ "8102:8080" ]
+
+  gateway:
+    build: ./gateway
+    ports: [ "8080:8080" ]
+    environment:
+      - VEHICLE_ID=VIN_SIM_0001
+      - ECU_ENGINE_URL=http://ecu_engine:8080
+      - ECU_ADAS_URL=http://ecu_adas:8080
+    depends_on: [ ecu_engine, ecu_adas ]
