@@ -14,21 +14,20 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
+          set -e
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocs-material mkdocs-with-pdf
+          pip install -r webpage/requirements-docs.txt
 
       - name: Debug versions
         run: |
           set -e
+          python -V
           mkdocs --version
-          python -c "import sys; print('python', sys.version)"
-          python -c "import mkdocs; print('mkdocs', mkdocs.__version__)"
-          python -c "import material; print('mkdocs-material', material.__version__)" || true
-          python -c "import mkdocs_with_pdf; print('mkdocs-with-pdf', mkdocs_with_pdf.__version__)"
+          python -m pip show mkdocs mkdocs-material mkdocs-with-pdf pymdown-extensions
 
       - name: Build site and generate PDF
         run: |
