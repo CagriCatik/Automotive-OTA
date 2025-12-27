@@ -17,16 +17,17 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
-      - name: Install MkDocs and Material theme
+      - name: Install docs dependencies
         run: |
-          pip install mkdocs mkdocs-material
+          python -m pip install --upgrade pip
+          pip install -r webpage/requirements-docs.txt
 
       - name: Deploy to GitHub Pages
         env:
           DEPLOY_TOKEN: ${{ secrets.MKDOCS_DEPLOY_TOKEN }}
-        run: mkdocs gh-deploy --force
+        run: mkdocs gh-deploy --force --config-file webpage/mkdocs.yml
 
   cleanup:
     needs: deploy
