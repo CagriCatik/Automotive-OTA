@@ -21,12 +21,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install mkdocs mkdocs-material mkdocs-with-pdf
 
+      - name: Debug versions
+        run: |
+          set -e
+          mkdocs --version
+          python -c "import sys; print('python', sys.version)"
+          python -c "import mkdocs; print('mkdocs', mkdocs.__version__)"
+          python -c "import material; print('mkdocs-material', material.__version__)" || true
+          python -c "import mkdocs_with_pdf; print('mkdocs-with-pdf', mkdocs_with_pdf.__version__)"
+
       - name: Build site and generate PDF
         run: |
+          set -e
           mkdocs build --clean --config-file webpage/mkdocs.withpdf.yml
+
+      - name: Verify Mermaid JS is referenced in built site
+        run: |
+          set -e
+          grep -R "mermaid.min.js" -n webpage/site || (echo "ERROR: Mermaid JS not referenced in built site. Check extra_javascript in mkdocs.withpdf.yml" && exit 1)
+          grep -R "js/mermaid-init.js" -n webpage/site || (echo "ERROR: mermaid-init.js not referenced in built site. Ensure file is at webpage/docs/js/mermaid-init.js and extra_javascript uses js/mermaid-init.js" && exit 1)
 
       - name: Verify PDF exists
         run: |
+          set -e
           test -f webpage/site/pdf/document.pdf
 
       - name: Upload PDF as artifact

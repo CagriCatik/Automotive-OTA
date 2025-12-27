@@ -72,6 +72,7 @@ nav:
 
 theme:
   name: material
+  highlightjs: false
   features:
     - navigation.instant
     - navigation.tracking
@@ -113,6 +114,12 @@ extra:
 extra_css:
   - styles/extra.css
 
+# Mermaid runtime + init.
+# Assumes the init file is at: webpage/docs/js/mermaid-init.js
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - js/mermaid-init.js
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -125,7 +132,15 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
 
 plugins:
   - search
-  - with-pdf
+  - with-pdf:
+      # These options are version-dependent; unsupported keys are ignored.
+      # They help when the PDF renderer captures pages before Mermaid finishes.
+      render_js: true
+      delay: 3000
