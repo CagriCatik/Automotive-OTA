@@ -28,7 +28,7 @@ The Asia-Pacific region has emerged as the fastest-growing OTA market globally, 
 Other regions, including Latin America and various emerging markets, are demonstrating increasing demand for OTA capabilities. These regions, while currently representing smaller market shares, contribute to the overall global market growth through their adoption of connected vehicle technologies and OTA-enabled services.
 
 ```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+graph LR
     A["Global OTA Market 2022"] --> B["North America<br>37% Revenue Share"]
     A --> C["Europe<br>Substantial Share"]
     A --> D["Asia-Pacific<br>Fastest Growing"]

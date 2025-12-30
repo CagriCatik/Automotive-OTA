@@ -23,8 +23,8 @@ graph TD
 
 The current industry standard has shifted toward domain-based architecture, which represents a more organized approach to vehicle electronics. In this architectural model, ECUs are grouped according to functional domains rather than being distributed arbitrarily. Typical domains include chassis systems, powertrain management, body control functions, and infotainment systems. Each domain is overseen by a domain controller that serves as the central coordination point for all ECUs within that functional area. These domain controllers are responsible for managing updates, coordinating functional transitions, handling diagnostics, and executing control logic for their respective domains. The domain-based approach offers several advantages including improved modularity that simplifies system design, simplified integration processes that reduce development time, and more efficient OTA updates that can be performed at the domain level rather than individual ECU level.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     subgraph "Domain-Based Architecture"
         DC1["Domain Controller<br/>Chassis"] --> ECU1["ABS ECU"]
         DC1 --> ECU2["Suspension ECU"]
@@ -55,8 +55,8 @@ graph TD
 
 The next evolutionary step in vehicle architecture is the adoption of zonal architecture, which represents a paradigm shift from functional organization to physical organization. In zonal architecture, the vehicle is divided into physical zones rather than functional domains. These zones are typically defined by vehicle geography, such as front, rear, left, and right areas. All sensors, actuators, and ECUs located within a specific physical zone are connected to a zonal gateway that serves as the local aggregation point. Each zonal gateway collects and processes signals from its designated zone before communicating with centralized compute units. These gateways are typically connected to one or more High Performance Computers (HPCs) that serve as the vehicle's primary computing resources. This architectural approach significantly reduces wiring complexity, improves scalability, and enables more efficient resource utilization.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     subgraph "Zonal Architecture"
         subgraph "Front Zone"
             ZG1["Zonal Gateway Front"] --> S1["Front Sensors"]
@@ -112,7 +112,7 @@ The evolution toward domain-based and zonal architectures has profound implicati
 
 The technical challenges for OTA systems are substantial. Protocols such as MQTT and HTTPS, which are adequate for traditional TCU-based updates, may become bottlenecks when updating large software packages or HPC-based systems. The sheer volume of data that needs to be transferred during updates, combined with the need for maintaining vehicle functionality during the update process, requires more sophisticated approaches. OTA backends must support higher throughput, faster feedback mechanisms, and more sophisticated orchestration capabilities to manage updates across multiple domains and zones simultaneously.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 sequenceDiagram
     participant OB as OTA Backend
     participant TCU as TCU/Gateway

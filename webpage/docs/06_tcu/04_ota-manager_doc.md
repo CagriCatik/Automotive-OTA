@@ -4,8 +4,8 @@
 
 The OTA Manager serves as the central coordinator for all Over-The-Air update activities within the vehicle architecture. In the discussed implementation, the OTA Manager resides on the gateway ECU, specifically the Telematics Control Unit (TCU). This strategic placement enables the TCU to manage all OTA operations while serving as the communication hub between various vehicle ECUs and the OEM backend. The OTA Manager interfaces with multiple systems including the infotainment or HMI system for user notifications, the backend infrastructure via MQTT and HTTPS protocols, and downstream ECUs through Unified Diagnostic Services (UDS) communication.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     Backend["OEM Backend"] -- "MQTT Notifications" --> TCU["Telematics Control Unit<br>(OTA Manager)"]
     Backend -- "HTTPS Downloads" --> TCU
     TCU -- "User Notifications" --> HMI["Infotainment/HMI"]
@@ -61,7 +61,7 @@ In the gateway-based architecture, the TCU functions as a UDS Tester to communic
 
 The OTA Manager implements comprehensive error handling strategies to address various failure scenarios. If interruptions occur during the update process, such as power loss, communication failure, or violation of preconditions, the OTA Manager executes predefined failure handling procedures. These procedures may include attempting to resume the interrupted process, rolling back to a previous software version if the ECU supports this capability, or safely aborting the update to maintain system stability. The specific response strategy depends on the nature and timing of the failure, the capabilities of the target ECU, and the current state of the update process.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=800px display-align=center}
 stateDiagram-v2
     [*] --> Idle
     Idle --> Evaluating: "Update Notification"

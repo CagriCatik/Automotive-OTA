@@ -7,8 +7,14 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+        <meta name="author" content="Cagri Catik">
       
       
+      
+        <link rel="prev" href="../02_tcu-hardware_doc/">
+      
+      
+        <link rel="next" href="../04_ota-manager_doc/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +22,7 @@
     
     
       
-        <title>Telematics Control Unit Software Architecture - Over-the-Air Update</title>
+        <title>Software - Over-the-Air Update</title>
       
     
     
@@ -106,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Telematics Control Unit Software Architecture
+              Software
             
           </span>
         </div>
@@ -240,21 +246,36 @@
   
     
     
+      
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-tabs__link">
           
   
     
   
-  OTA Architecture
+  Architecture
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
@@ -266,15 +287,86 @@
   
     
   
-  OTA Backend
+  Backend & Communication
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01_tcu-architecture_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Vehicle Systems
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10_possible-attacks/01_intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
   
   
   
@@ -286,208 +378,43 @@
   
     
   
-  User Experience
+  Operations & UX
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
     
     
       <li class="md-tabs__item">
-        <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-tabs__link">
+        <a href="../../13_questions/01_intro/" class="md-tabs__link">
           
   
     
   
-  OEM Backend & TCU
+  Reference
 
         </a>
       </li>
     
   
 
-      
-        
-  
-  
-  
     
-    
-      <li class="md-tabs__item">
-        <a href="../01_tcu-architecture_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  TCU
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../07_target-device/01_uds-over-can-vs-eth_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  Target Device
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../08_ota-testing/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  OTA Testing
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../09_usecase/01_intro/" class="md-tabs__link">
-          
-  
-    
-  
-  Use Cases
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../11_possible-attacks/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Attacks
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Measures
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../13_sdv/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  SDV
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../14_questions/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Questions
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../glossary/" class="md-tabs__link">
-        
-  
-    
-  
-  Glossary
-
-      </a>
-    </li>
   
 
       
@@ -625,8 +552,6 @@
       
         
       
-        
-      
     
     
       
@@ -643,13 +568,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+    
   
   
     <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    OTA Architecture
+    Architecture
   </span>
   
 
@@ -657,6 +585,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -672,8 +602,6 @@
   
     
     
-      
-        
       
         
       
@@ -695,13 +623,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+    
   
   
     <a href="../../03_ota-backend/01_oem-backend_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    OTA Backend
+    Backend & Communication
   </span>
   
 
@@ -709,6 +640,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -720,109 +653,60 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
   
   <span class="md-ellipsis">
-    User Experience
+    Vehicle Systems
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-      
-        
-      
-        
-      
-        
-      
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Vehicle Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
     
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OEM Backend & TCU
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
   
   
   
@@ -846,40 +730,314 @@
       
       
         
-      
-    
-    
-      
-        
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../01_tcu-architecture_doc/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     TCU
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            TCU
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_tcu-architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_tcu-hardware_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#software-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-layer-and-connectivity-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Driver Layer and Connectivity Stacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-system-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Layer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Management Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Framework
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-apis-and-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform APIs and Middleware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-layer-functional-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Layer Functional Stacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modem-and-sim-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modem and SIM Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-indication-and-system-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status Indication and System Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standards-and-regulatory-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standards and Regulatory Compliance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ota-update-process-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTA Update Process Flow
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
 
-    
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_ota-manager_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OTA Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_uds-tester_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS Tester
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_tcu-standards_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
-      
+    </li>
+  
+
+              
+            
+              
+                
   
   
   
@@ -908,384 +1066,385 @@
       
       
         
-      
-    
-    
-      
-        
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../../07_target-device/01_uds-over-can-vs-eth_doc/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     Target Device
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../08_ota-testing/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OTA Testing
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../09_usecase/01_intro/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Use Cases
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../11_possible-attacks/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Possible Attacks
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Possible Measures
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../13_sdv/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    SDV
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../14_questions/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Questions
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Target Device
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../glossary/" class="md-nav__link">
+      <a href="../../07_target-device/01_uds-over-can-vs-eth_doc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Glossary
+    UDS over CAN vs ETH
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/02_autosar_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AUTOSAR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/03_uds-over-can_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over CAN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/04_uds-over-eth_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over ETH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/05_doip_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/06_bootloader_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bootloader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/07_target-device_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Target Device
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/08_fail-safe-strategy_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fail Safe Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../10_possible-attacks/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations & UX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../13_questions/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
     </li>
   
 
@@ -1434,60 +1593,7 @@
 <p>The Telematics Control Unit represents a sophisticated computing platform within the automotive ecosystem, functioning as an embedded internet-connected device that continuously interacts with external systems such as cloud servers. This continuous connectivity requirement distinguishes the TCU from many other Electronic Control Units, which typically operate within more isolated vehicle networks. The TCU's software architecture follows a layered approach that incorporates additional capabilities beyond standard ECU functionality to support its unique role as the vehicle's primary communication gateway.</p>
 <h2 id="software-architecture-overview">Software Architecture Overview</h2>
 <p>The TCU software stack is organized into distinct layers that collectively enable comprehensive telematics functionality. At the foundation, basic drivers interface directly with hardware components, while upper layers provide increasingly abstracted services and application logic. This architectural approach enables the TCU to support multiple vehicle variants and configurations while maintaining modularity and scalability.</p>
-<pre class="mermaid"><code>graph LR
-    A["Hardware Layer"] --&gt; B["Driver Layer"]
-    B --&gt; C["Operating System"]
-    C --&gt; D["Platform APIs &amp; Middleware"]
-    D --&gt; E["Application Layer"]
-
-    subgraph "Hardware Components"
-        A1["CAN Controller"]
-        A2["Ethernet PHY"]
-        A3["Bluetooth Module"]
-        A4["Wi-Fi Module"]
-        A5["Cellular Modem"]
-        A6["GNSS Receiver"]
-        A7["HSM/Secure Element"]
-    end
-
-    subgraph "Driver Layer"
-        B1["CAN Driver"]
-        B2["Ethernet Driver"]
-        B3["Bluetooth Stack"]
-        B4["Wi-Fi Stack"]
-        B5["Cellular Stack"]
-        B6["GNSS Driver"]
-        B7["Security Drivers"]
-    end
-
-    subgraph "Operating System"
-        C1["Embedded Linux / AUTOSAR Adaptive"]
-        C2["Process Scheduling"]
-        C3["Memory Management"]
-        C4["Inter-Process Communication"]
-        C5["Hardware Abstraction"]
-    end
-
-    subgraph "Platform APIs &amp; Middleware"
-        D1["Vehicle Network APIs"]
-        D2["Connectivity Service APIs"]
-        D3["Cloud Communication APIs"]
-        D4["Security Framework APIs"]
-    end
-
-    subgraph "Application Layer"
-        E1["OTA Manager &amp; Diagnostic Services"]
-        E2["Location &amp; Emergency Services"]
-        E3["Modem &amp; SIM Management"]
-        E4["Power Management Controller"]
-        E5["Status Indication Controller"]
-    end
-
-    A --&gt; A1 &amp; A2 &amp; A3 &amp; A4 &amp; A5 &amp; A6 &amp; A7
-    B --&gt; B1 &amp; B2 &amp; B3 &amp; B4 &amp; B5 &amp; B6 &amp; B7
-    C --&gt; C1 &amp; C2 &amp; C3 &amp; C4 &amp; C5
-    D --&gt; D1 &amp; D2 &amp; D3 &amp; D4
-    E --&gt; E1 &amp; E2 &amp; E3 &amp; E4 &amp; E5</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp9lMtu2zAQRff5CkKL7IwgiR3vCujBNAb8gpW2KIQuaGlqC6FIg6Ls-u87w8gKHan1ggvfoxkevnZGHPZsvrlh-Auz4EWY4iQMsLk4gwl-sdHoC4uyIDHlEczlX0dHLouzYHUAI2ypdiw91xaqNo9dnmTBWgr7W5uKhetZzW7ZoiwKCdSlJRNH8iwIDwdZ5lhLq66VI-pmu3Mz_ZhgrKuDVqBsHTjECdxnQRwuMVPWaCm7ubrwIQu43YNRYNn65acfPWZBJBuwWts9W-iikeDH4yz4UY6ey4Fogh1BykYKQ2ln78KnLPi6TFO2gRxo_fxsioudLu5SyBu04RIqdGkBUMVn76sN6KpErfB76pWPfNl-euWbWpG_-Wmn20t82154se23Q1fnWdpzm9b_Nu0dp65OjLa82kJRQMHmpWr-sDsWfntdpeGGhYU4WCzt9Y1xEdZG51DXLM33gHuHZX0A12EBlTZnthBK7Pw9cDmuxExZMKNLGTx1VaPaM-qTE-_uhNvaGpF7yIDmf25FVzVB4e-wL3MJbAn2pM2bw73GCTricVeA7Y60vimYY5lDj0PVWOqmuFboYWNvq56NqOBz0wGV_rXt6nE0WL2G7fIa9ExKsVO6tmV-marfn6POXLe1bhmvwOxA5edBlnaPrhyC6WwxvIUchdb6hK0_4uH3geMW4pm2Tc1mqrj49NDOP3SvVniP3cMHGh5pGNMwoeGJhqn3VEaERoRGhEaERoRGhEZT79WMCY0JjQmNCY0n3mOZEJAQkBCQjF3G3x9SyjhlnDJOH_PJzV_u5Zl-?" style="width: 900px; display: block; margin-left: auto; margin-right: auto" /></p>
 <h2 id="driver-layer-and-connectivity-stacks">Driver Layer and Connectivity Stacks</h2>
 <p>The driver layer forms the foundation of TCU software, providing direct interface to hardware components and enabling communication with both in-vehicle networks and external wireless interfaces. This layer includes dedicated drivers and communication stacks for multiple connectivity technologies. The CAN and Ethernet drivers facilitate communication with vehicle networks, while Bluetooth, Wi-Fi, and cellular modem stacks enable wireless connectivity to external devices and networks. Each driver abstracts the hardware-specific details, providing standardized interfaces to upper software layers while managing the complexities of protocol implementation and hardware control.</p>
 <h2 id="operating-system-layer">Operating System Layer</h2>
@@ -1509,31 +1615,7 @@
 <p>The TCU software must comply with an extensive range of standards and regulatory requirements spanning multiple domains. Data handling regulations govern the collection, storage, and transmission of vehicle and user data, ensuring privacy and security compliance. Network operator certification requirements mandate adherence to carrier specifications and interoperability standards. Logging and traceability requirements demand comprehensive recording of system events, errors, and operational parameters to support audit trails and forensic analysis. Security communication requirements specify implementation of particular encryption standards and protocols for different types of data and control communications.</p>
 <h2 id="ota-update-process-flow">OTA Update Process Flow</h2>
 <p>The OTA update process demonstrates the TCU's role as the central coordinator for vehicle software updates. The process begins when the TCU receives an update notification from backend servers, initiating a sequence of verification, download, and installation steps.</p>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Backend
-    participant TCU
-    participant Target_ECU
-
-    Backend --&gt;&gt; TCU: "Update Notification"
-    TCU -&gt;&gt; TCU: "Verify Update Authenticity"
-    TCU --&gt;&gt; Backend: "Update Acknowledgment"
-    Backend --&gt;&gt; TCU: "Transfer Update Package"
-    TCU -&gt;&gt; TCU: "Validate Package Integrity"
-    TCU -&gt;&gt; TCU: "Schedule Update Installation"
-
-    Note over TCU: Check Installation Conditions
-
-    alt Installation Conditions Met
-        TCU --&gt;&gt; Target_ECU: "Initiate Update Session"
-        Target_ECU --&gt;&gt; TCU: "Session Confirmation"
-        TCU --&gt;&gt; Target_ECU: "Transfer Update Data"
-        Target_ECU -&gt;&gt; Target_ECU: "Install Update"
-        Target_ECU --&gt;&gt; TCU: "Installation Status"
-        TCU --&gt;&gt; Backend: "Update Completion Report"
-    else Conditions Not Met
-        TCU -&gt;&gt; TCU: "Defer Installation"
-        TCU --&gt;&gt; Backend: "Installation Deferred"
-    end</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNqFk89OhDAQxu8-RcN9X8DDJit44KAxsuvVTMoADaXFdtDs29vWLn8ElFPT_r5-38wUix8DKo6ZgNpAd8fc14MhwUUPitgD8BZVudo_p5f1Hpga6f3RHYWzqGWHw_HoBfcsufQlELJnTaISHEholQTWHbMJe0MjqiuL9GmgBpW3oeuM9ni0mG4-8VbpL4ll3TlJspfjbEDZCs3N4sUhUONmFpBizrBcEdZmmWWkC95gOUi8XZwrSyBlrDQIXPHI9KczD5K0Qd4uOJZqVQq_sj8KkLQHsCekwCzaMk3CRcqVQ32WGKlAa8e-B9lIz1sUMe9VCdPNZrVv9butGRBs-6xDhvKi8L9si2YUBDTYjWirx5HqrpcYRK_YaxPfB0qL85a6Aa3bOnpn6AtczvUP60XUoDVYRl_3X30D3eYOjg==?" style="width: 700px; display: block; margin-left: auto; margin-right: auto" /></p>
 <p>The TCU software architecture integrates operating systems, connectivity stacks, security frameworks, application logic, and compliance mechanisms to enable safe, secure, and scalable telematics and OTA functionality. This comprehensive software stack supports the TCU's role as the vehicle's primary communication gateway, enabling remote services, software updates, and connected vehicle features while maintaining the security and reliability standards required for automotive applications. The layered architecture ensures modularity, maintainability, and the ability to evolve capabilities to meet emerging automotive connectivity requirements.</p>
 
 

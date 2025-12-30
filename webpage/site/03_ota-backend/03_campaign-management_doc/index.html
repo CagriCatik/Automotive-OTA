@@ -7,12 +7,14 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+        <meta name="author" content="Cagri Catik">
+      
       
       
         <link rel="prev" href="../02_cloud-providers_doc/">
       
       
-        <link rel="next" href="../../04_user-experience/01_hmi_doc/">
+        <link rel="next" href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -244,21 +246,38 @@
   
     
     
+      
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-tabs__link">
           
   
     
   
-  OTA Architecture
+  Architecture
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+    
+  
+  
+    
+    
+      
   
   
     
@@ -272,10 +291,13 @@
   
     
   
-  OTA Backend
+  Backend & Communication
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -286,41 +308,7 @@
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../04_user-experience/01_hmi_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  User Experience
-
-        </a>
-      </li>
-    
-  
-
       
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  OEM Backend & TCU
-
-        </a>
-      </li>
-    
-  
-
-      
-        
   
   
   
@@ -332,168 +320,101 @@
   
     
   
-  TCU
+  Vehicle Systems
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
     
     
       <li class="md-tabs__item">
-        <a href="../../07_target-device/01_uds-over-can-vs-eth_doc/" class="md-tabs__link">
+        <a href="../../10_possible-attacks/01_intro/" class="md-tabs__link">
           
   
     
   
-  Target Device
+  Security
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
     
     
       <li class="md-tabs__item">
-        <a href="../../08_ota-testing/01_intro.md" class="md-tabs__link">
+        <a href="../../04_user-experience/01_hmi_doc/" class="md-tabs__link">
           
   
     
   
-  OTA Testing
+  Operations & UX
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
     
     
       <li class="md-tabs__item">
-        <a href="../../09_usecase/01_intro/" class="md-tabs__link">
+        <a href="../../13_questions/01_intro/" class="md-tabs__link">
           
   
     
   
-  Use Cases
+  Reference
 
         </a>
       </li>
     
   
 
-      
-        
-  
-  
-  
     
-    
-      <li class="md-tabs__item">
-        <a href="../../11_possible-attacks/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Attacks
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Measures
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../13_sdv/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  SDV
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../14_questions/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Questions
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../glossary/" class="md-tabs__link">
-        
-  
-    
-  
-  Glossary
-
-      </a>
-    </li>
   
 
       
@@ -631,8 +552,6 @@
       
         
       
-        
-      
     
     
       
@@ -651,11 +570,14 @@
         
   
   
+    
+  
+  
     <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    OTA Architecture
+    Architecture
   </span>
   
 
@@ -663,6 +585,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -680,8 +604,6 @@
   
     
     
-      
-        
       
         
       
@@ -711,7 +633,7 @@
             
   
   <span class="md-ellipsis">
-    OTA Backend
+    Backend & Communication
   </span>
   
 
@@ -720,6 +642,61 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Backend & Communication
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    OTA Backend
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             OTA Backend
           </label>
@@ -933,9 +910,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -947,38 +925,142 @@
       
         
       
-    
-    
-      
+        
       
         
       
     
     
       
+      
         
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
-    User Experience
+    Protocols
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Protocols
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT General Concepts
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_oem-backend-tcu/02_mqtt-connectivity_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Connectivity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_oem-backend-tcu/03_https_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_oem-backend-tcu/04_c2c-communication_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C2C Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -997,10 +1079,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -1019,69 +1097,14 @@
         
   
   
-    <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OEM Backend & TCU
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
     
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
     <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    TCU
+    Vehicle Systems
   </span>
   
 
@@ -1089,6 +1112,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -1104,18 +1129,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1139,11 +1152,14 @@
         
   
   
-    <a href="../../07_target-device/01_uds-over-can-vs-eth_doc/" class="md-nav__link">
+    
+  
+  
+    <a href="../../10_possible-attacks/01_intro/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Target Device
+    Security
   </span>
   
 
@@ -1153,172 +1169,6 @@
     </a>
   
 
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../08_ota-testing/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OTA Testing
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../09_usecase/01_intro/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Use Cases
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../11_possible-attacks/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Possible Attacks
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
   
 
       
@@ -1359,11 +1209,14 @@
         
   
   
-    <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-nav__link">
+    
+  
+  
+    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Possible Measures
+    Operations & UX
   </span>
   
 
@@ -1371,6 +1224,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -1386,18 +1241,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1421,11 +1264,14 @@
         
   
   
-    <a href="../../13_sdv/01_intro.md" class="md-nav__link">
+    
+  
+  
+    <a href="../../13_questions/01_intro/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    SDV
+    Reference
   </span>
   
 
@@ -1435,75 +1281,9 @@
     </a>
   
 
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../14_questions/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Questions
-  </span>
   
 
       
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../glossary/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Glossary
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1653,14 +1433,7 @@
 <p>The OTA Backend system serves as the central infrastructure for managing over-the-air software updates in automotive environments. This system integrates manufacturing data, update packages, device targeting, and campaign orchestration into a cohesive platform that enables controlled and traceable software deployments throughout the vehicle lifecycle. The architecture consists of three primary management interfaces: Update Management, Device Management, and Campaign Management, all built upon a comprehensive database foundation that maintains complete vehicle and ECU historical records.</p>
 <h2 id="system-architecture">System Architecture</h2>
 <p>The OTA Backend architecture establishes a clear separation of concerns between data ingestion, package management, device targeting, and campaign orchestration. The system begins with data export from the manufacturing End of Line process, where vehicle and ECU information flows into enterprise database systems. This foundational data supports three distinct management layers that work in concert to deliver updates to target vehicles.</p>
-<pre class="mermaid"><code>graph TD
-    Manufacturing["Manufacturing End of Line"] -- "Electronic Stamp Data" --&gt; BackendDB["Backend Database System"]
-    BackendDB -- "Vehicle &amp; ECU Data" --&gt; UpdateMgmt["Update Management"]
-    UpdateMgmt -- "Software Packages" --&gt; DeviceMgmt["Device Management"]
-    DeviceMgmt -- "Target Mapping" --&gt; CampaignMgmt["Campaign Management"]
-    CampaignMgmt -- "Deployment Control" --&gt; Vehicles["Target Vehicles"]
-    Vehicles -- "Status Reports" --&gt; CampaignMgmt
-    CampaignMgmt -- "Execution Data" --&gt; BackendDB</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNptkT1uwzAMhfecgtDQLVfoEMtbAxR10sXIwMq0ItSWBIlum9tXkewmhaOJPw_fIykd0J_hIDeQ3h7t1KPiKRirW_Evhdp24Hp4MZbECbZbEPVAioOzRkHDOHqQyChS6xl2qD7JdnLXijnMzQ-MBM0lMo3ilC3_hJn4TmejBoInqKvjHe7oO2Ta65FbUeLrrKhpJMsz6abJqMb1_I2B4DU5JGUsJElfRs2kEq9JN00mHTBo4iTzPt2hYKq0LhptC2jJ1qh7XYZJ8oO7XBVQOZuuNxTgvHlsF7ulMIOWtOzGyFOEN_IucFxP9Ni6_iE1sXH20T9tfgEIp6ch?" style="width: 300px; display: block; margin-left: auto; margin-right: auto" /></p>
 <h2 id="manufacturing-data-integration">Manufacturing Data Integration</h2>
 <p>The data journey begins at the manufacturing End of Line process, where vehicle manufacturers export comprehensive vehicle data to backend systems. This export includes both mechanical and electronic information, with the electronic stamp serving as a critical component for traceability. The electronic stamp contains essential identifiers including the Vehicle Identification Number (VIN), engine number, chassis number, and production timestamps. These identifiers are intrinsically linked to the vehicle order and establish the foundation for all subsequent update operations.</p>
 <p>From an electronics perspective, the database captures detailed ECU-related information including hardware part numbers, software version numbers, and calibration identifiers. It is important to note that calibration data applies selectively to certain ECUs rather than all hardware components. For instance, systems such as ABS, body control modules, and other ECUs have their hardware numbers, software numbers, and calibration versions recorded along with the vehicle production timestamp. The database maintains a complete historical record of this information, which is critical for compliance, diagnostics, and update targeting accuracy.</p>
@@ -1675,21 +1448,7 @@
 <p>The campaign configuration process references the relevant Update Management entry and Device Management configuration, ensuring that only properly vetted software reaches appropriately targeted vehicles. Campaigns can be geographically constrained to specific regions such as Europe, and configured with defined rollout durations to control deployment pace. The cloud backend continuously updates campaign status, tracking progress through states including completed, in progress, or failed. Campaign failures may occur due to various factors including unmet vehicle preconditions, user deferrals, connectivity issues, or power constraints.</p>
 <h2 id="campaign-workflow-process">Campaign Workflow Process</h2>
 <p>The campaign management workflow demonstrates the systematic approach to update deployment, from initial configuration through final status reporting. This process ensures proper validation, targeting, and monitoring throughout the update lifecycle.</p>
-<pre class="mermaid"><code>graph TD
-    Campaign_Start["Campaign Creation"] -- "Select Update Package" --&gt; Config1["Configure Update Reference"]
-    Config1 -- "Select Device Targets" --&gt; Config2["Configure Device Mapping"]
-    Config2 -- "Set Deployment Parameters" --&gt; Config3["Configure Schedule &amp; Region"]
-    Config3 -- "Validate Configuration" --&gt; Validation{"Configuration Valid?"}
-    Validation -- "Yes" --&gt; Deploy["Deploy Campaign"]
-    Validation -- "No" --&gt; Config3
-    Deploy -- "Send Update Notifications" --&gt; TargetVehicles["Target Vehicles"]
-    TargetVehicles -- "Check Preconditions" --&gt; Precheck{"Preconditions Met?"}
-    Precheck -- "Yes" --&gt; Install["Install Update"]
-    Precheck -- "No" --&gt; Fail["Mark as Failed"]
-    Install -- "Report Status" --&gt; Status["Update Campaign Status"]
-    Fail -- "Report Status" --&gt; Status
-    Status -- "Monitor Progress" --&gt; Monitor["Campaign Dashboard"]
-    Monitor -- "Track Completion" --&gt; Process_End["Campaign Completion"]</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp9kz1vwjAQhnd-heWhG0NhbwdopQ5BCChSFSF0dY7EwrEjx1SqUP97HfsMTodmic_33uP3_FFb6Bq2W06Y_xbQdiBrfdw6sK7kKWYLi-Ck0fzAplPGt6hQOPbeVeCQrUGcoUbuU09sYfRJ1o--NgwuFpNsgye0qAXyQ1wsKnPgEr-kQLYDW6Prc-AsB5KsgK6Tuh7hZoQbWJ0y3y1q5w1aaNGhHSHnOXIrGqwuCtmD91mHTjPqPFD3oGToJJXFLQlIyvn4ykfpmHnmPwF3lwXiB5KjaLbk8X87BzLxp2plRm0ECRXG5nWV9nxlnDxJEWppqbi5e2ykUNiXPMYsTdCSY1XgLhoUZ7a2KIyuZEYcpobclY-SrECX-k6ScddvunegVMlpQK7Jwqgm9fwK0usLsGcGfYiwIn2CDPINdsY65q-xu9BicVxy2pnb1SZNZAzA_wFBFodBWBgtnbHerakt9qSl2ewFLaFvPg3Y5DbVDYyd9S_IH2fbKbxfKU8UHnh80VX-Eu-qw-QX4_4x0A==?" style="width: 300px; display: block; margin-left: auto; margin-right: auto" /></p>
 <h2 id="status-monitoring-and-user-interaction">Status Monitoring and User Interaction</h2>
 <p>Campaign Management provides comprehensive visibility into update deployment progress through a centralized dashboard. The dashboard displays real-time information about the number of vehicles targeted, successfully updated, and encountering issues. This visibility enables operations teams to monitor campaign health and respond to problems as they arise.</p>
 <p>The system also offers granular control over user notifications and interactions. OEMs can define the frequency of update alerts sent to vehicle owners and determine whether to request feedback when users postpone or decline updates. This flexibility allows manufacturers to balance update urgency with customer experience considerations. The notification system can be configured differently for various campaign types, with security updates potentially requiring more persistent communication than feature enhancements.</p>

@@ -8,8 +8,8 @@ In traditional product development cycles, test cases are systematically derived
 
 The architecture-centric approach demands a holistic view of the OTA ecosystem. Every component, from the cloud infrastructure to the vehicle's update manager, must be evaluated not only for its individual functionality but also for its role in the overall update delivery chain. This includes examining how components interact during normal operations, how they behave under failure conditions, and how they recover from unexpected events. The testing strategy must therefore encompass the entire OTA infrastructure, treating it as a single, integrated system rather than a collection of independent components.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=800px display-align=center}
+graph LR
     A["OTA Testing Architecture"] -- "Backend Services" --> B["Backend Services"]
     A -- "Communication Layer" --> C["Communication Layer"]
     A -- "Vehicle Components" --> D["Vehicle Components"]
@@ -39,7 +39,7 @@ OTA testing methodologies can be broadly categorized into direct and indirect te
 
 Indirect testing targets system-level characteristics that emerge from the interaction of multiple components rather than individual features. Performance testing evaluates critical metrics such as response times, throughput, and resource utilization under various load conditions. Load testing examines system behavior when subjected to large-scale concurrent update requests, simulating real-world deployment scenarios where thousands or millions of vehicles may simultaneously seek updates. Reliability testing validates system stability over extended durations and through numerous update cycles, identifying memory leaks, resource exhaustion, and cumulative error conditions. Exploratory testing complements these structured approaches by employing boundary value analysis, error guessing, fault injection, and abnormal scenario simulation to uncover issues that may not be explicitly documented in requirements but can emerge in complex real-world deployments.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph TD
     _1_Start["OTA Testing Start"] -- "Testing Type?" --> Decision{"Testing Type?"}
     
@@ -75,7 +75,7 @@ From an end-to-end perspective, OTA testing must comprehensively validate all ba
 
 Campaign compliance represents a critical aspect of OTA validation that requires meticulous attention to detail. The system must guarantee that the correct software version is delivered to the correct vehicle variants under all conditions. Real-world incidents have demonstrated how incorrect version comparisons can result in unintended updates being flashed to vehicles, leading to large-scale rollback operations that are both costly and operationally complex. OTA testing must therefore verify all interlocks and validation logic that prevent incorrect targeting, including version number parsing, variant matching, dependency resolution, and rollback prevention mechanisms. These validations must be performed not only under normal conditions but also during edge cases such as version number format changes, database inconsistencies, and network partitions.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=400px display-align=center}
 graph TD
     _1_Campaign["Campaign Creation"] -- "Validate" --> Validation["Version & Variant Validation"]
     Validation -- "Target" --> Targeting["Vehicle Targeting Logic"]

@@ -33,7 +33,7 @@ The protocol version field occupies one byte and indicates the specific version 
 
 The payload type field spans two bytes and defines how the subsequent payload should be interpreted by the receiving entity. This field is crucial as it determines the semantic meaning and processing requirements for the message content. Following this, the payload length field occupies four bytes and specifies the exact length of the payload in bytes, excluding the generic header itself. This length information enables proper payload extraction and boundary detection, preventing parsing errors and ensuring message integrity.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=700px display-align=center}
 graph LR
     A["Generic DoIP Header"] --> B["Protocol Version (1 byte)"]
     A --> C["Inverse Protocol Version (1 byte)"]

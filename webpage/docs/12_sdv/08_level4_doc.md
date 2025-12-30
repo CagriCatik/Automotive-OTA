@@ -1,4 +1,4 @@
-# Self Driving Vehicles and Levels: Technical Documentation
+## Software Defined Vehicle Level 4
 
 ## Introduction to Software-Defined Vehicle Levels
 
@@ -12,7 +12,7 @@ The architectural foundation of Level 4 vehicles is designed with future capabil
 
 ### System Architecture Overview
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     A["Cloud Services"] -- "OTA Updates" --> B["Central Compute Platform"]
     B -- "Control Commands" --> C["Gateway Module"]
@@ -37,7 +37,7 @@ The evolution of ADAS capabilities is exemplified by the progression from basic 
 
 ### ADAS Feature Enhancement Flow
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph LR
     A["Sensor Input"] --> B["Perception Processing"]
     B --> C["Decision Engine"]
@@ -60,7 +60,7 @@ The update process incorporates sophisticated validation mechanisms to ensure so
 
 ### OTA Update Process Flow
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 sequenceDiagram
     participant Cloud as Cloud Services
     participant CCP as Central Compute Platform
@@ -95,7 +95,7 @@ The security architecture incorporates end-to-end access control systems that au
 
 ### Security Architecture Layers
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TB
     A["Cloud Security Layer"] --> B["Vehicle Firewall"]
     B --> C["Gateway Security Module"]

@@ -16,8 +16,8 @@ The regulatory timeline shows progressive enforcement beginning around 2021 in r
 
 The regulation groups requirements into three major areas that collectively define the compliance framework. The first area addresses manufacturer requirements, focusing on organizational processes for secure software update management. The second area covers vehicle requirements, specifying technical capabilities that vehicle electronics and ECUs must possess to support secure OTA updates. The third area encompasses software identification requirements, standardizing how software versions and identifiers are defined, recorded, and verified throughout the vehicle lifecycle.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     A["UN Regulation No. 156"] --> B["Manufacturer Requirements"]
     A --> C["Vehicle Requirements"]
     A --> D["Software Identification Requirements"]
@@ -41,8 +41,8 @@ The OTA update ecosystem consists of multiple interconnected components working 
 
 Within the vehicle, multiple ECUs form the target destinations for software updates. These ECUs vary in complexity and criticality, ranging from non-safety-critical infotainment systems to safety-critical controllers for braking, steering, and powertrain operations. The OTA architecture must accommodate this diversity while maintaining security and reliability across all update operations.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     Backend["OEM Backend/Cloud Platform"] -- "Secure Update Package" --> Telematics["Telematics Control Unit"]
     Telematics -- "Distribute to ECUs" --> ECU1["Safety-Critical ECU<br>(ABS, EPS, etc.)"]
     Telematics -- "Distribute to ECUs" --> ECU2["Powertrain ECU"]

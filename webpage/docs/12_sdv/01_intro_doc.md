@@ -1,4 +1,4 @@
-# Technical Documentation: Software Defined Vehicles and Autonomous Driving Capabilities
+# Software Defined Vehicles and Autonomous Driving Capabilities
 
 ## Introduction
 

@@ -10,8 +10,8 @@ Before the advent of OTA technology, vehicle software updates relied exclusively
 
 The transition to OTA systems fundamentally transformed this paradigm by enabling remote update delivery. However, this transformation introduced new complexities that extend far beyond the convenience of remote installation. Automotive OTA systems must contend with unique constraints related to vehicle safety, network reliability, and security requirements that distinguish them from other domains.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     A["Traditional Dealer-Based Updates"] --> B["Operational Challenges"]
     B --> C["Customer Inconvenience"]
     B --> D["Administrative Overhead"]
@@ -44,8 +44,8 @@ Security represents the most critical aspect of automotive OTA systems, as vulne
 
 The communication channel between the OEM backend and the vehicle represents a primary target for attackers. Even when both endpoints are secured, the transmission medium remains vulnerable to various attack vectors. These include interception attacks where malicious actors capture update packages during transmission, tampering attacks that modify software content, and data sniffing attacks that extract sensitive information from update communications.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     A["OEM Backend"] -- "Update Transmission" --> B["Communication Channel"]
     B -- "Delivery" --> C["Vehicle OTA Module"]
     
@@ -73,10 +73,7 @@ To address the security challenges inherent in automotive OTA systems, regulator
 
 UN Regulation No. 156 structures its requirements across multiple domains to ensure comprehensive coverage of the OTA update process. The regulation addresses generic vehicle requirements that establish baseline safety and security standards for all vehicles capable of receiving OTA updates. Software identification requirements ensure that each software component can be accurately tracked and verified throughout its lifecycle. The software update management system requirements define the processes, procedures, and technical controls necessary for secure update deployment.
 
-
-
 The regulation emphasizes the importance of timely security patch deployment. As vulnerabilities are discovered in vehicle software, updates must be delivered efficiently to minimize exposure periods. This requirement reflects the critical nature of automotive cybersecurity, where delayed patches could leave vehicles vulnerable to exploitation for extended periods.
-
 
 UN Regulation No. 156 works in conjunction with other automotive cybersecurity standards to create a comprehensive regulatory environment. UN Regulation No. 155 and ISO/SAE 21434 provide additional frameworks for risk identification, threat analysis, and secure system design. Together, these standards enable Original Equipment Manufacturers (OEMs) to design, assess, and deploy OTA systems that meet both security and safety requirements.
 
@@ -98,7 +95,7 @@ Upon receipt, the vehicle's OTA module performs comprehensive verification proce
 
 The installation phase follows strict precondition checks to ensure vehicle safety. The system verifies that the vehicle is stationary, that sufficient power is available for all ECUs being updated, and that internal communication channels remain stable. These preconditions prevent update failures that could result in corrupted firmware or system instability.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 sequenceDiagram
     participant Backend as OEM Backend
     participant Channel as Communication Channel

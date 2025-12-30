@@ -10,7 +10,7 @@ The CAN-TP operates as a transport layer protocol situated between the applicati
 
 The target device implements both sender and receiver roles depending on the OTA operation phase. During firmware upload, the target device acts as a receiver, acknowledging incoming segments and managing flow control to prevent buffer overflow. Conversely, during status reporting or log retrieval, the target device becomes the sender, transmitting diagnostic data back to the central OTA management system.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=400px display-align=center}
 graph TD
     A["UDS Application Layer"] --> B["CAN Transport Protocol"]
     B --> C["CAN Data Link Layer"]
@@ -44,7 +44,7 @@ Upon receiving the First Frame, the target device analyzes the total length para
 
 The sender then begins transmitting Consecutive Frames, each carrying up to seven bytes of application data. The sequence number in each frame allows the receiver to track the order of segments and detect any missing frames. The separation time parameter specified in the Flow Control frame governs the minimum interval between consecutive frame transmissions, preventing the sender from overwhelming the receiver's processing capabilities.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=400px display-align=center}
 sequenceDiagram
     participant S as OTA Server
     participant T as Target Device

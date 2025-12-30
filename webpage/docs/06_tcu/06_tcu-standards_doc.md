@@ -9,7 +9,7 @@ Telematics Control Units (TCUs) operate within a complex regulatory framework th
 The global TCU regulatory environment is characterized by diverse regional standards, each addressing specific local requirements for vehicle safety, emergency response, and operational monitoring. These standards mandate different levels of functionality, from basic emergency call capabilities to comprehensive fleet management systems.
 
 ```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+graph LR
     Global_Standards["Global ISO Standards"] --> Region_Standards
     
     subgraph "European Region"
@@ -73,7 +73,7 @@ The Gulf region lacks a unified telematics standard across all countries, instea
 
 Across all regulatory regions, telematics standards specify mandatory hardware and software components that must be integrated into TCU designs. These requirements ensure consistent functionality and reliability across different implementations while maintaining the capability to support region-specific features.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph TD
     subgraph "TCU Hardware Architecture"
         GNSS_Module["GNSS Module"]
@@ -122,7 +122,7 @@ Software requirements for TCUs encompass several key functional areas. Emergency
 
 TCUs must undergo comprehensive certification by authorized agencies in each region before they can be legally deployed in vehicles. This certification process evaluates multiple aspects of the telematics system to ensure compliance with all applicable regulatory requirements.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph TD
     subgraph "TCU Certification Process"
         Start_Node["TCU Development Complete"] --> Design_Review["Hardware Design Evaluation"]

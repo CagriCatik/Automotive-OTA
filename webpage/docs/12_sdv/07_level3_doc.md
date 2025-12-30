@@ -1,4 +1,4 @@
-# Software Defined Vehicle Level 3: Technical Documentation
+# Software Defined Vehicle Level 3
 
 ## Introduction to Software Defined Vehicle Evolution
 
@@ -10,7 +10,7 @@ The transition to Level 3 introduces profound changes in vehicle architecture, b
 
 The architectural foundation of SDV Level 3 centers on a standardized automotive operating system deployed across a significant portion of the vehicle's ECU landscape. This abstraction layer provides consistent software deployment mechanisms, version management, and lifecycle control across diverse vehicle domains. The architecture enables manufacturers to pre-install hardware capabilities during production while keeping them dormant until software activation occurs.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     OEM_Cloud["OEM Cloud Platform"] -- "Secure OTA Channel" --> Gateway["Vehicle Gateway"]
     Gateway -- "Domain Bus Communication" --> ADAS["ADAS Domain ECU"]
@@ -33,7 +33,7 @@ Level 3 OTA capabilities extend far beyond the infotainment and telematics limit
 
 The delivery process employs encrypted channels with mutual authentication between the vehicle and OEM infrastructure. Upon receipt, the vehicle gateway validates package integrity and authenticity before distributing updates to target ECUs. Each ECU maintains version history and rollback capabilities, enabling recovery from failed updates or discovered vulnerabilities. The system supports differential updates to minimize bandwidth usage and installation time while maintaining cryptographic integrity throughout the process.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     _1_Start["Update Initiation"] -- "Package Preparation" --> _2_Validation["Cryptographic Validation"]
     _2_Validation -- "Secure Transfer" --> _3_Gateway["Vehicle Gateway"]
@@ -60,7 +60,7 @@ Security requirements escalate significantly at Level 3 due to the expanded atta
 
 The intrusion detection system provides real-time monitoring of in-vehicle networks, detecting anomalies, unauthorized access attempts, and abnormal software behavior. The IDS employs rule-based detection for known attack patterns and machine learning algorithms for zero-day threat identification. Security telemetry continuously streams to OEM security operations centers for analysis and response coordination.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     Vehicle_Network["In-Vehicle Network"] -- "Traffic Analysis" --> IDS["Intrusion Detection System"]
     IDS -- "Anomaly Detection" --> Threat_Analysis["Threat Analysis Engine"]

@@ -41,7 +41,7 @@ Once the user provides authorization through the HMI, the update process commenc
 
 This real-time feedback mechanism is crucial for maintaining user trust and transparency during the update process. The HMI reflects the current update status as reported by the TCU, ensuring that users remain informed about the progress and any potential issues that may arise during the update execution. The status information presented through the HMI helps users understand the timeline and current state of the update process.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=300px display-align=center}
 graph TD
     Update_Authorized["Update Authorized"] --> Download["Download Phase"]
     Download -- "Progress Updates" --> HMI_Display["HMI Status Display"]

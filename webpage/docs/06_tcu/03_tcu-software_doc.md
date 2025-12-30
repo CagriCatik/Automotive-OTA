@@ -6,7 +6,7 @@ The Telematics Control Unit represents a sophisticated computing platform within
 
 The TCU software stack is organized into distinct layers that collectively enable comprehensive telematics functionality. At the foundation, basic drivers interface directly with hardware components, while upper layers provide increasingly abstracted services and application logic. This architectural approach enables the TCU to support multiple vehicle variants and configurations while maintaining modularity and scalability.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph LR
     A["Hardware Layer"] --> B["Driver Layer"]
     B --> C["Operating System"]
@@ -105,7 +105,7 @@ The TCU software must comply with an extensive range of standards and regulatory
 
 The OTA update process demonstrates the TCU's role as the central coordinator for vehicle software updates. The process begins when the TCU receives an update notification from backend servers, initiating a sequence of verification, download, and installation steps.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=700px display-align=center}
 sequenceDiagram
     participant Backend
     participant TCU

@@ -1,4 +1,4 @@
-# Software Defined Vehicle Level 5: Technical Architecture and Implementation
+# Software Defined Vehicle Level 5
 
 ## Introduction and Concept Overview
 
@@ -8,7 +8,7 @@ Software Defined Vehicle Level 5 represents the pinnacle of vehicle software mat
 
 The architectural foundation of Software Defined Vehicle Level 5 is built upon a centralized high-performance computing platform that serves as the vehicle's digital brain. This platform runs a mature automotive operating system specifically engineered for safety-critical applications and real-time performance requirements. The operating system manages system resources through a sophisticated hypervisor layer that provides strong isolation between different functional domains. The hypervisor enables concurrent execution of safety-critical autonomous driving functions, OEM-controlled services, and third-party applications within separate, secure execution environments.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     A["Centralized Computing Platform"] --> B["Automotive Operating System"]
     B --> C["Hypervisor Layer"]
@@ -31,7 +31,7 @@ The autonomous driving stack represents the most safety-critical component of th
 
 A defining characteristic of Software Defined Vehicle Level 5 is the establishment of an open application ecosystem that transforms the vehicle into a programmable platform. Unlike traditional vehicles where functionality is determined solely by the OEM, Level 5 vehicles enable third-party developers to create, deploy, and operate applications directly within the vehicle environment. This ecosystem spans multiple domains including mobility services, insurance applications, fleet optimization tools, infotainment systems, productivity applications, and data-driven services that leverage the vehicle's unique capabilities and data streams.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph LR
     A["Third-Party Developers"] --> B["Application Development"]
     B --> C["OEM Validation & Certification"]
@@ -51,13 +51,13 @@ The OEM provides the foundational platform elements including the core operating
 
 The OTA mechanism at Level 5 serves as the backbone of continuous vehicle evolution and must be engineered as a security-critical system. The update infrastructure manages the entire lifecycle of software components, from initial development through deployment, installation, verification, and rollback if necessary. The system supports differential updates to minimize bandwidth usage and enables atomic updates that ensure either complete success or no change to maintain system integrity. The OTA process incorporates sophisticated version management, dependency resolution, and compatibility checking to prevent conflicts between different software components.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 sequenceDiagram
     participant Dev as OEM Development
     participant Cloud as OEM Cloud
     participant Vehicle as Vehicle Platform
     participant App as Application Runtime
-    
+  
     Dev->>Cloud: Upload Update Package
     Cloud->>Cloud: Validate & Sign Package
     Vehicle->>Cloud: Request Available Updates
@@ -76,7 +76,7 @@ The OTA system maintains strict performance guarantees to ensure that updates, i
 
 Security requirements at Software Defined Vehicle Level 5 are significantly more stringent than in previous levels due to the increased attack surface introduced by the open application ecosystem and the safety-critical nature of autonomous operations. The security framework implements defense-in-depth principles with multiple layers of protection. End-to-end cryptographic protection ensures the integrity and authenticity of all software components and communications. Secure boot mechanisms verify the integrity of the entire software stack from the hardware root of trust through the operating system and applications.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     A["Hardware Root of Trust"] --> B["Secure Boot"]
     B --> C["Verified Bootloader"]

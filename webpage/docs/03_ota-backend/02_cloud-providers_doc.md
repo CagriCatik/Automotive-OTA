@@ -13,7 +13,7 @@ The OEM backend architecture on cloud platforms typically consists of three core
 This triad of core services operates within a broader cloud infrastructure that provides supporting capabilities such as data storage, processing pipelines, security frameworks, and integration interfaces. The architecture must support both real-time operations, such as immediate vehicle status updates, and batch operations, such as large-scale data analytics and report generation.
 
 ```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+graph LR
     subgraph "Cloud Platform Infrastructure"
         Update_Mgmt["Update Management Service"]
         Device_Mgmt["Device Management Service"]

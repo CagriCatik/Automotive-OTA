@@ -36,9 +36,9 @@ OTA updates are commonly applied to two major vehicle system categories: driver 
 
 Driver control systems represent the safety-critical domain where OTA updates deliver feature enhancements and security patches for Advanced Driver-Assistance Systems (ADAS) and other safety-related functions. These updates directly influence vehicle behavior and safety performance, requiring rigorous validation and deployment processes. The ability to remotely update these systems enables manufacturers to quickly address safety concerns and introduce new capabilities without requiring service center visits.
 
-Infotainment systems constitute the second major category, with updates typically including map updates, application enhancements, and system improvements. Although infotainment systems do not directly control driving operations, they handle sensitive personal data and must be maintained in a secure and current state. OTA updates ensure that infotainment systems remain functional, secure, and equipped with the latest features and content.
 
-```kroki-mermaid {display-width=600px display-align=center}
+
+```kroki-mermaid {display-width=900px display-align=center}
 graph TD
     A["Traditional Update Methods"] --> B["Physical Media Updates"]
     A --> C["Service Center Required"]
@@ -58,6 +58,8 @@ graph TD
     J --> H
     K --> H
 ```
+
+Infotainment systems constitute the second major category, with updates typically including map updates, application enhancements, and system improvements. Although infotainment systems do not directly control driving operations, they handle sensitive personal data and must be maintained in a secure and current state. OTA updates ensure that infotainment systems remain functional, secure, and equipped with the latest features and content.
 
 ```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram

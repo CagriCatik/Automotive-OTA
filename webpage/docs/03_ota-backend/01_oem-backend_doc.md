@@ -59,7 +59,7 @@ The MQTT-based communication system ensures reliable and efficient message deliv
 
 The complete OTA update process follows a structured workflow that leverages all three backend components in sequence. The process begins when development teams complete software validation and upload the package through update management. The system then registers the software, catalogs all associated files and metadata, and makes it available for deployment.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=300px display-align=center}
 graph TD
     _1_Start["Software Development Complete"] --> _2_Validation
     _2_Validation["Software Validation"] --> _3_Upload

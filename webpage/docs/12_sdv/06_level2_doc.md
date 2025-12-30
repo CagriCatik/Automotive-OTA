@@ -1,4 +1,4 @@
-# Software-Defined Vehicle Level 2: Technical Documentation
+# Software-Defined Vehicle Level 2
 
 ## Introduction
 
@@ -14,7 +14,7 @@ The scope of OTA updates at Level 2 is specifically limited to static or non-saf
 
 The SDV Level 2 architecture requires a fully functional OEM cloud backend that serves as the central hub for all OTA operations. This backend infrastructure encompasses multiple critical responsibilities including software file storage and versioning, access control and authentication, OTA campaign management, and comprehensive update scheduling, monitoring, and reporting capabilities. The cloud infrastructure establishes the OEM as the central trust anchor for software distribution, ensuring end-to-end control over the update process.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     OEM_Cloud["OEM Cloud Backend"] -- "Encrypted Software Package" --> Telematics_Unit["Telematics Control Unit"]
     Telematics_Unit -- "Update Distribution" --> Infotainment_System["Infotainment System"]
@@ -31,7 +31,7 @@ All OTA operations are strictly controlled by the OEM, with third-party systems 
 
 The OTA update process at SDV Level 2 follows a structured workflow designed to ensure security, reliability, and proper validation. The process begins when the OEM initiates an update campaign through the cloud backend, targeting specific vehicles or vehicle populations based on various criteria such as current software version, hardware configuration, or geographic location.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     _1_Start["Update Campaign Initiated"] -- "Target Selection" --> _2_Validation["Vehicle Eligibility Check"]
     _2_Validation -- "Authorized Vehicle" --> _3_Download["Secure Package Download"]

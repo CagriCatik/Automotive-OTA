@@ -1,4 +1,4 @@
-# Software Defined Vehicle Level 1: Technical Documentation
+# Software Defined Vehicle Level 1
 
 ## Introduction to SDV Level Classification
 
@@ -14,7 +14,7 @@ The remote capabilities typically include climate control activation, remote eng
 
 The architecture of SDV Level 1 consists of three primary components working in concert to enable basic connectivity and remote control features. The first component is a smartphone application that serves as the user interface, allowing customers to send commands and receive vehicle status information. The second component is a cloud backend that acts as a mediator, handling authentication, command routing, and data processing between the user's device and the vehicle. The third component consists of one or more vehicle ECUs, typically the infotainment system or telematics unit, which receive and execute the limited set of commands from the cloud backend.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 graph TD
     Smartphone_App["Smartphone Application"] -- "Encrypted Commands" --> Cloud_Backend["Cloud Backend"]
     Cloud_Backend -- "Authenticated Commands" --> Vehicle_ECU["Vehicle ECU/Telematics"]
@@ -41,7 +41,7 @@ Although the attack surface in SDV Level 1 is smaller compared to higher levels,
 
 The interaction between system components follows a well-defined sequence that ensures reliable and secure operation. When a user initiates a remote command through the smartphone application, the request is first authenticated and encrypted before transmission to the cloud backend. The cloud backend validates the user's credentials, checks the vehicle's current state, and forwards the command to the appropriate vehicle ECU. The vehicle ECU executes the command if conditions permit and returns a status confirmation through the same path.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid
 sequenceDiagram
     participant User
     participant Smartphone_App as "Smartphone App"

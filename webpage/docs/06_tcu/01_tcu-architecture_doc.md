@@ -1,4 +1,4 @@
-# Telematics Control Unit (TCU) Architecture and Functionality
+# Telematics Control Unit Architecture and Functionality
 
 ## Introduction to the Telematics Control Unit
 
@@ -28,8 +28,8 @@ The TCU continuously collects and manages various types of vehicle data to suppo
 
 The TCU plays a central role in managing Over-The-Air updates for the vehicle's electronic systems. When an OTA update is initiated, the update package or metadata is first delivered to the TCU from the cloud backend. The TCU performs critical verification steps to ensure the authenticity and integrity of the software before allowing the update process to proceed. This verification process typically involves cryptographic signature validation and integrity checks to prevent unauthorized or corrupted updates from being installed. Once the update package is successfully validated, the TCU coordinates the update process for the target ECUs within the vehicle, managing the distribution and installation of software updates across the vehicle's electronic architecture.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=500px display-align=center}
+graph 
     Cloud_Initiate["Cloud Initiates OTA Update"] -- "Update Package/Metadata" --> TCU_Receive["TCU Receives Update"]
     TCU_Receive -- "Verification Process" --> TCU_Verify["TCU Verifies Authenticity & Integrity"]
     TCU_Verify -- "Validation Success?" --> Decision{"Validation Successful?"}
@@ -52,7 +52,7 @@ Through its continuous data collection and communication capabilities, the TCU e
 
 The TCU establishes and maintains bidirectional communication patterns that support both continuous telemetry and event-driven command processing. From the vehicle perspective, the TCU continuously collects CAN bus data, GPS information, and vehicle health metrics, uploading this data to the cloud through its cellular connection. This upstream data flow provides the cloud backend with real-time insights into vehicle status and operation. From the cloud perspective, the TCU receives commands, configuration updates, and OTA instructions that are delivered to the vehicle as needed. This downstream communication enables remote control functionality and system updates. The dual-direction data flow ensures that the vehicle remains connected and responsive while maintaining accurate status reporting to cloud services.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph LR
     subgraph VehicleSystem["Vehicle System"]
         TCU_V["TCU"]

@@ -7,8 +7,14 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+        <meta name="author" content="Cagri Catik">
       
       
+      
+        <link rel="prev" href="../06_bootloader_doc/">
+      
+      
+        <link rel="next" href="../08_fail-safe-strategy_doc/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +22,7 @@
     
     
       
-        <title>Target Device Architecture in OTA Updates - Over-the-Air Update</title>
+        <title>Target Device - Over-the-Air Update</title>
       
     
     
@@ -106,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Target Device Architecture in OTA Updates
+              Target Device
             
           </span>
         </div>
@@ -240,21 +246,36 @@
   
     
     
+      
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-tabs__link">
           
   
     
   
-  OTA Architecture
+  Architecture
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
@@ -266,15 +287,86 @@
   
     
   
-  OTA Backend
+  Backend & Communication
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Vehicle Systems
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10_possible-attacks/01_intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
   
   
   
@@ -286,208 +378,43 @@
   
     
   
-  User Experience
+  Operations & UX
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
     
     
       <li class="md-tabs__item">
-        <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-tabs__link">
+        <a href="../../13_questions/01_intro/" class="md-tabs__link">
           
   
     
   
-  OEM Backend & TCU
+  Reference
 
         </a>
       </li>
     
   
 
-      
-        
-  
-  
-  
     
-    
-      <li class="md-tabs__item">
-        <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  TCU
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../01_uds-over-can-vs-eth_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  Target Device
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../08_ota-testing/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  OTA Testing
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../09_usecase/01_intro/" class="md-tabs__link">
-          
-  
-    
-  
-  Use Cases
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../11_possible-attacks/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Attacks
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Measures
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../13_sdv/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  SDV
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../14_questions/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Questions
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../glossary/" class="md-tabs__link">
-        
-  
-    
-  
-  Glossary
-
-      </a>
-    </li>
   
 
       
@@ -625,8 +552,6 @@
       
         
       
-        
-      
     
     
       
@@ -643,13 +568,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+    
   
   
     <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    OTA Architecture
+    Architecture
   </span>
   
 
@@ -657,6 +585,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -672,8 +602,6 @@
   
     
     
-      
-        
       
         
       
@@ -695,13 +623,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+    
   
   
     <a href="../../03_ota-backend/01_oem-backend_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    OTA Backend
+    Backend & Communication
   </span>
   
 
@@ -709,6 +640,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -720,108 +653,57 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
   
   <span class="md-ellipsis">
-    User Experience
+    Vehicle Systems
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OEM Backend & TCU
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Vehicle Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -846,44 +728,181 @@
       
       
         
-      
-    
-    
-      
-        
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     TCU
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            TCU
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/02_tcu-hardware_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/03_tcu-software_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/04_ota-manager_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OTA Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/05_uds-tester_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS Tester
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/06_tcu-standards_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
 
+              
+            
+              
+                
+  
+  
     
-      
-      
   
   
   
-  
     
     
       
@@ -908,384 +927,470 @@
       
       
         
-      
-    
-    
-      
-        
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../01_uds-over-can-vs-eth_doc/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     Target Device
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../08_ota-testing/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OTA Testing
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../09_usecase/01_intro/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Use Cases
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../11_possible-attacks/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Possible Attacks
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Possible Measures
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../13_sdv/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    SDV
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../14_questions/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Questions
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Target Device
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../glossary/" class="md-nav__link">
+      <a href="../01_uds-over-can-vs-eth_doc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Glossary
+    UDS over CAN vs ETH
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_autosar_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AUTOSAR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_uds-over-can_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over CAN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_uds-over-eth_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over ETH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_doip_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_bootloader_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bootloader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Target Device
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Target Device
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-target-devices-in-ota-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Target Devices in OTA Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-bank-ecu-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-Bank ECU Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dual-bank-ecu-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual-Bank ECU Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparative-analysis-and-trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparative Analysis and Trade-offs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oem-selection-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      OEM Selection Criteria
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_fail-safe-strategy_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fail Safe Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../10_possible-attacks/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations & UX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../13_questions/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
     </li>
   
 
@@ -1383,41 +1488,13 @@
 <p>In a single-bank ECU architecture, both the bootloader and application software coexist within a single contiguous flash memory region. This design represents a cost-effective approach to ECU design but imposes significant constraints on the update process. When a Telematics Control Unit (TCU) initiates an OTA update to a single-bank ECU, the system must first satisfy stringent preconditions before proceeding with the flashing operation. These preconditions are particularly critical for ECUs managing safety-critical functions such as engine management, brake systems, or powertrain control. For such ECUs, the vehicle must be in a non-running, non-driving state to ensure safe update execution.</p>
 <p>The update process for single-bank ECUs follows a sequential pattern that begins with precondition verification. If the ECU is actively operating when an update command is received, the TCU will immediately abort the process regardless of user approval. The update can only proceed after all safety and operational preconditions are met, which may include vehicle ignition state, battery charge level, and other system status checks. Once these conditions are satisfied, the ECU typically creates a backup of the existing application software, often storing it in external flash memory through communication interfaces such as Serial Peripheral Interface (SPI) or Inter-Integrated Circuit (I2C). This backup serves as a recovery mechanism in case the update process encounters failures.</p>
 <p>Following the backup operation, the ECU erases the existing application from its flash memory and proceeds to program the new software into the same memory region. This sequential erase-and-program operation contributes to extended update times, as the ECU cannot execute any application code during the flashing process. After the programming operation completes successfully, the ECU undergoes a reset sequence and begins executing the newly installed software. The update status, including success or failure indicators, is then communicated back to the TCU and subsequently to the OEM backend systems for record-keeping and further processing.</p>
-<pre class="mermaid"><code>graph TD
-    subgraph "Single-Bank ECU Update Flow"
-        Precondition_Check["Precondition Verification"] -- "Preconditions Met" --&gt; Backup_Operation["Backup Existing Software&lt;br/&gt;to External Flash"]
-        Precondition_Check -- "Preconditions Not Met" --&gt; Abort_Update["Abort Update Process"]
-        Backup_Operation --&gt; Erase_Flash["Erase Application Flash"]
-        Erase_Flash --&gt; Program_New["Program New Software"]
-        Program_New -- "Success" --&gt; Reset_ECU["Reset ECU"]
-        Program_New -- "Failure" --&gt; Recovery_Mode["Enter Recovery Mode"]
-        Reset_ECU --&gt; Execute_New["Execute New Software"]
-        Execute_New --&gt; Report_Status["Report Update Status to TCU"]
-        Recovery_Mode --&gt; Report_Status
-    end</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp9UctuwjAQvPMVK99Rf6BCAhpuPNRALxGyjLOARWpbtlPo39fepGlSWnzyjNezM7snJ-wZti8jiMfXhxNhlit9qnA8E_oC2XwHO1uKgLCozJVRaTobh9LoUgVlNJ-fUV4K1ufgDZ06KikSYHsYj2Hw7mGJgUV6AjMhL7Xla4uOqgvWMJDdlA_RDOTmGK7C4fPBPU2CiQ8BnRZV9CT8me0fuPqj8cqEn-bTg3GBNxELRug78MYZid735H87JYXMCY-cnBSMAEytrdrodxZ75fQ9dolzf-crvKYJEoAIutCDeF0t5cprSQ5J6BU9Bh4XVjC6pt09-LsQqqqjevtXmg90n3xpyjiGTMf5diQksqfUNWri31DWARv_LfjPf6-2bWvT9PMgQu2Tbdsbf8NCXPd2EGTg9V6G6lCXoy_RFetP?" style="width: 600px; display: block; margin-left: auto; margin-right: auto" /></p>
 <p>The single-bank architecture, while economically advantageous due to its minimal flash memory requirements, presents several operational challenges. The sequential nature of the update process results in extended vehicle downtime, which may be unacceptable for certain use cases. The requirement for the vehicle to remain in a safe, non-operational state throughout the update process limits flexibility in update scheduling. Furthermore, the risk of ECU unavailability during a failed update event necessitates robust recovery mechanisms and may result in temporary loss of vehicle functionality until recovery procedures can be completed.</p>
 <h2 id="dual-bank-ecu-architecture">Dual-Bank ECU Architecture</h2>
 <p>Dual-bank ECU architecture addresses many limitations inherent in single-bank designs by implementing a divided flash memory structure. In this configuration, the total flash memory is partitioned into two independent regions, commonly designated as Bank A and Bank B. One bank contains the currently executing application software, while the second bank remains reserved for receiving and validating update packages. This architectural approach enables simultaneous execution of the current application while preparing the new software version in the background.</p>
 <p>The OTA update process for dual-bank ECUs leverages this parallel capability to significantly improve update flexibility and reduce vehicle downtime. When an update is triggered, the new software image is downloaded and programmed into the inactive bank while the active bank continues to execute the existing application. This concurrent operation allows certain updates to proceed even while the vehicle remains operational, though the actual feasibility depends on the ECU's criticality level and the OEM's specific update policies. The ability to perform background programming without interrupting vehicle functionality represents a substantial improvement over single-bank systems.</p>
 <p>Once the new software is completely programmed into the inactive bank, the ECU performs verification procedures to ensure the integrity and authenticity of the update package. These verification steps typically include checksum validation, digital signature verification, and other integrity checks to confirm that the new software is complete and uncorrupted. After successful verification, the TCU sends a command to the ECU to switch the execution pointer from the active bank to the newly updated bank. The timing of this switch operation varies according to OEM-defined conditions and may occur immediately upon verification completion, during the next ignition cycle, or based on other predetermined criteria.</p>
-<pre class="mermaid"><code>graph TD
-    subgraph "Dual-Bank ECU Architecture"
-        Bank_A["Bank A&lt;br/&gt;(Active Application)"]
-        Bank_B["Bank B&lt;br/&gt;(Inactive/Update Bank)"]
-        Flash_Memory["ECU Flash Memory"]
-        Flash_Memory --&gt; Bank_A
-        Flash_Memory --&gt; Bank_B
-    end
-
-    subgraph "Dual-Bank Update Flow"
-        Download_Update["Download Update to Inactive Bank"] --&gt; Program_Inactive["Program Inactive Bank&lt;br/&gt;(Background Operation)"]
-        Program_Inactive --&gt; Verify_Update["Verify Update Package"]
-        Verify_Update -- "Success" --&gt; Switch_Execution["Switch Execution Pointer&lt;br/&gt;to Updated Bank"]
-        Verify_Update -- "Failure" --&gt; Maintain_Active["Continue Running&lt;br/&gt;Active Bank"]
-        Switch_Execution --&gt; Execute_New["Execute New Software"]
-        Execute_New --&gt; Report_Status["Report Update Status"]
-        Maintain_Active --&gt; Report_Status
-    end</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNqFUstuwjAQvPMVlk_tAfEDFVLCQ-qBFpHSS4Qs4yyJRbAjx27K39dZJzSAaCPlsLOzM7Mr54ZXBfmYj4j_arfPsaZzx8txzNWRLGZbEhlRSAvCOgMUme3XtlmUUqRFL3szmT5FwsovIFFVlVJwK7V6prvribibiMPEq-I4M9lWGbeAnOHMsuR1wVZw0uac0jYNIiQgD4hkPJ52-f7px9gHlY0eXqALtix187v8XDeq1DxjoZvSHujpVpN-NXSiOzRdG-0NTqzvpbRDrtnhNjEXx9xopzLyXoG5u-etGDp8gpGH8yVXKPtUa6_IcxhoXNG9AKGJEwLqmqJa0kgrCrb4BuFa-5QGhFwQstZSWTAY2W8dlLJu6T98llyW7YNCnxX3Iv5nUXeWmVZWKgdk45SSKkf5aHjPi_RtRhQMFbA3aPyzCQXxBUn0wTbcDG8w4OLsBiptLEsst65OaSj7EwZ0MH0T_V7h8sR-AOBJFYQ=?" style="width: 600px; display: block; margin-left: auto; margin-right: auto" /></p>
 <p>Following the execution switch, the previously active bank transitions to an inactive state. The disposition of this bank depends entirely on OEM design decisions and system requirements. Some implementations may immediately erase the old bank to prepare for future updates, while others might retain the previous version as a fallback option for potential rollback scenarios. This retention capability provides an additional safety net, allowing the system to revert to the previous software version if critical issues are discovered in the new implementation. The flexibility in managing bank states after updates enables OEMs to implement various recovery and maintenance strategies according to their specific requirements.</p>
 <h2 id="comparative-analysis-and-trade-offs">Comparative Analysis and Trade-offs</h2>
 <p>The selection between single-bank and dual-bank ECU architectures involves careful consideration of multiple factors, with each approach presenting distinct advantages and limitations. Single-bank ECUs offer significant cost advantages due to their reduced flash memory requirements and simpler hardware design. The minimal memory footprint translates to lower component costs and reduced board space requirements, making this approach attractive for cost-sensitive applications and non-critical vehicle systems. However, these economic benefits come at the expense of operational flexibility and increased update-related risks.</p>

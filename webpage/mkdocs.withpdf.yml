@@ -1,4 +1,6 @@
 site_name: OTA
+site_author: Cagri Catik
+copyright: Copyright &copy; 2025 OTA Project
 
 nav:
   - Home: index.md
@@ -158,5 +160,6 @@ markdown_extensions:
 plugins:
   - search
   - kroki
-  - with-pdf
+  - with-pdf:
+      cover_subtitle: "Automotive OTA Documentation"
 

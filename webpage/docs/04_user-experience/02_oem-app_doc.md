@@ -10,7 +10,7 @@ The strategic importance of these applications lies in their ability to enhance 
 
 The architectural foundation of OEM mobile applications is built upon tight integration with OEM backend cloud platforms. These applications function as sophisticated client interfaces that consume cloud services and present them to customers through user-friendly interfaces. The cloud platform serves as the authoritative source for determining feature availability, while the mobile application acts as the access point for customers to interact with these services.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=700px display-align=center}
 graph TD
     A["Mobile Application<br/>(Android/iOS)"] -- "HTTPS/API Calls" --> B["OEM Cloud Backend"]
     B -- "Service Requests" --> C["Vehicle Telematics Unit"]
@@ -41,7 +41,7 @@ The mobile application plays a pivotal role in the OTA update ecosystem, serving
 
 The update approval process incorporates sophisticated authentication mechanisms to ensure security and user consent. In some implementations, users authenticate updates by scanning a QR code displayed on the vehicle infotainment screen. This two-factor authentication approach leverages both the vehicle HMI and the mobile application, creating a secure authorization workflow that prevents unauthorized updates while maintaining user convenience.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=700px display-align=center}
 sequenceDiagram
     participant User
     participant MobileApp as Mobile Application

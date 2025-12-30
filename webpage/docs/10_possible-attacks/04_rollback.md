@@ -1,5 +1,3 @@
-Here is a **clear, sourced explanation of the rollback attack** in OTA updates, based on your transcript and verified external material:
-
 # OTA Security Attack: Rollback (Downgrade) Attack
 
 The **rollback attack** in OTA update systems is a form of *downgrade manipulation* where an attacker attempts to make a device install an *older, insecure version of firmware* instead of the current secure one. Unlike a simple Denial of Service (which blocks the update), a rollback attack actively replaces or replays outdated software to re-introduce known vulnerabilities. This type of attack targets the **integrity of version progression** in the update process. ([turn0search1][turn0search5])

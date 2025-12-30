@@ -22,8 +22,8 @@ The distinction between SOTA and FOTA primarily lies in their update scope and s
 
 From a delivery perspective, FOTA updates may involve downloading either a complete firmware image or a differential patch. A full firmware image generally requires more time to download and more time to flash into the target ECU memory compared to differential updates. However, conceptually, the OTA process for updating a full firmware image and applying a firmware patch remains similar. The primary differences relate to update size, duration, and risk management rather than the OTA mechanism itself. Both firmware and software can be updated over the air, depending on system design and safety constraints, with the choice between SOTA and FOTA determined by the nature of the update and its impact on system operation.
 
-```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+```kroki-mermaid {display-width=900px display-align=center}
+graph LR
     A["OTA Update Types"] --> B["SOTA - Software Over-The-Air"]
     A --> C["FOTA - Firmware Over-The-Air"]
   
@@ -55,7 +55,7 @@ The implementation of SOTA and FOTA requires distinct architectural consideratio
 
 FOTA implementations require more robust and secure storage mechanisms, as firmware corruption can render an ECU inoperable. These systems typically implement dual-bank or redundant storage architectures to ensure update reliability and rollback capabilities. The firmware update process must carefully manage power states and ensure update integrity, as interrupted firmware updates can cause system failure. The bootloader plays a critical role in FOTA systems, managing the update process and ensuring system recoverability.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 sequenceDiagram
     participant Server as OTA Server
     participant Vehicle as Vehicle Gateway

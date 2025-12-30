@@ -6,7 +6,7 @@ Over-the-Air (OTA) platforms provide a comprehensive suite of connected vehicle 
 
 The fundamental architecture of OTA services centers around the collection and analysis of vehicle data through embedded telematics systems. This data flows through cloud-based platforms where it undergoes processing, analysis, and action generation. The results are then delivered back to vehicles or presented to stakeholders through various interfaces, creating a continuous feedback loop that enables proactive vehicle management and service delivery.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph TD
     A["Vehicle Telematics System"] --> B["OTA Cloud Platform"]
     B --> C["Data Analytics Engine"]
@@ -39,7 +39,7 @@ The predictive maintenance workflow begins with data collection from various veh
 
 When the predictive maintenance system identifies potential issues or approaching service intervals, it can automatically trigger OTA updates to address software-related problems or calibrate systems for improved performance. This capability extends component life by optimizing operating parameters and reduces unexpected failures through early intervention. The integration with remote diagnostics provides a comprehensive view of vehicle health, enabling maintenance scheduling that minimizes vehicle downtime and maximizes operational availability. For electric vehicles, predictive maintenance includes specialized analysis of battery health, charging patterns, and energy consumption to optimize battery longevity and performance.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph TD
     A["Vehicle Data Collection"] --> B["Telematics Transmission"]
     B --> C["OTA Platform Analytics"]

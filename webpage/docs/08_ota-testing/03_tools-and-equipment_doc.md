@@ -9,7 +9,7 @@ Over-the-Air (OTA) testing requires a sophisticated and enduring toolchain desig
 Test management tools constitute the foundational layer of the OTA testing ecosystem. These systems must accommodate extensive test suites that can scale to tens of thousands of test cases while maintaining robust linkage to requirements, logs, artifacts, and release versions. The architecture must support both automated and manual test cases, requiring compatibility with multiple programming languages and execution environments. Prioritization capabilities are essential, enabling critical and high-risk test cases to execute first during release validation. This approach allows for early detection of major issues, potentially halting the release process to conserve time and resources. Commercial solutions like TestRail provide integration capabilities with requirement management systems, traceability platforms, and nightly build pipelines, though tool selection must align with specific OEM requirements and strategic objectives.
 
 ```kroki-mermaid {display-width=600px display-align=center}
-graph TD
+graph LR
     A["Test Management System"] --> B["Test Case Repository"]
     A --> C["Requirements Traceability"]
     A --> D["Execution Engine"]
@@ -31,7 +31,7 @@ Repository management tools serve as the custodians of OTA architecture document
 
 OEM-provided mobile and in-vehicle applications function as critical gateways to the OTA backend, necessitating thorough validation before field deployment. Although these applications may undergo independent update cycles, their direct interaction with OTA infrastructure makes them potential attack vectors that require comprehensive security assessment. The testing framework must simulate authentication flows, data handling protocols, and backend communication patterns from mobile applications. The validation focus centers on application-backend interactions rather than vehicle control functions, ensuring that the application layer does not introduce security weaknesses or unintended data exposure. Testing environments typically employ tools such as Appium, Testdroid, and Android Studio to create simulated mobile environments where application behavior can be validated against the OTA system. This setup enables comprehensive scenario testing where OTA workflows can be triggered, data flows observed, and security postures evaluated in a controlled environment before production deployment.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=900px display-align=center}
 graph TD
     A["Mobile Application"] --> B["Authentication Module"]
     A --> C["Data Handler"]
@@ -56,7 +56,7 @@ graph TD
 
 Continuous Integration, Continuous Delivery, and Continuous Testing (CI/CD/CT) pipelines represent the automation backbone of modern OTA testing environments. These toolchains enable automated builds, testing, and reporting whenever system changes are introduced, eliminating manual intervention and ensuring consistent validation processes. The pipeline architecture supports multiple testing levels, including unit testing, Software-in-the-Loop testing, Hardware-in-the-Loop testing, and integration testing. When code changes or merges occur, the toolchain automatically builds the software, executes relevant test suites, and generates comprehensive reports without requiring manual engineer intervention. This automation standardizes test execution across all changes, ensuring that validation occurs consistently and predictably. Virtual machines or cloud-based environments typically execute automated OTA test suites during overnight runs or scheduled intervals, providing continuous validation of the OTA architecture as it evolves. Orchestration tools such as Jenkins commonly manage these workflows, coordinating the various stages of build, test, and deployment processes.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=800px display-align=center}
 graph TD
     A["Code Change/Merge"] --> B["CI Pipeline Trigger"]
     B --> C["Automated Build"]

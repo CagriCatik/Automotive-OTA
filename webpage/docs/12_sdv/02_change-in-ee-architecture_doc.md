@@ -1,4 +1,4 @@
-# Technical Documentation: Evolution of Vehicle E/E Architecture
+# Evolution of Vehicle E/E Architecture
 
 ## Introduction
 

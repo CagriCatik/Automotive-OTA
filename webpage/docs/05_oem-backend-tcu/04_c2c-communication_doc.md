@@ -12,7 +12,7 @@ The telemetry streaming pattern implements an edge-computing approach to manage 
 
 The protocol implementation for telemetry streaming typically utilizes MQTT with Quality of Service (QoS) levels 0 or 1, balancing reliability with performance requirements. QoS 0 (at most once delivery) is suitable for non-critical telemetry where occasional message loss is acceptable, while QoS 1 (at least once delivery) ensures that important events reach the backend even if temporary connectivity interruptions occur.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=200px display-align=center}
 graph TD
     Sensors["Vehicle Sensors"] --> EdgeProcessor["TCU Edge Processor"]
     EdgeProcessor -- "Filtered Events" --> MQTTPub["MQTT Publisher"]
@@ -27,7 +27,7 @@ The request-response pattern implements a Remote Procedure Call (RPC) mechanism 
 
 Message correlation is maintained through request-response pairing using unique request identifiers. The MQTT correlated messages feature enables the backend to match responses with their corresponding requests, even in scenarios with multiple pending operations or when messages traverse different network paths. This pattern is essential for applications requiring immediate vehicle state information, such as roadside assistance coordination or real-time fleet tracking.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=700px display-align=center}
 sequenceDiagram
     participant Backend as OEM Backend
     participant Broker as MQTT Broker
@@ -74,7 +74,7 @@ The Digital Twin concept provides a cloud-side replica of each vehicle's state, 
 
 The Digital Twin maintains both current and desired state representations. The vehicle periodically updates its current state by publishing to the `shadow/state` topic, while the cloud backend updates the desired state when commands are issued. When the vehicle comes online, it synchronizes with the desired state, executing any pending commands and updating its actual state accordingly. This asynchronous communication pattern ensures reliable command delivery even when vehicles are offline for extended periods.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=700px display-align=center}
 graph TD
     Vehicle["Vehicle TCU"] -- "1. State Update" --> DigitalTwin["Cloud Digital Twin"]
     MobileApp["Mobile Application"] -- "2. Read State" --> DigitalTwin

@@ -7,8 +7,14 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+        <meta name="author" content="Cagri Catik">
       
       
+      
+        <link rel="prev" href="../07_target-device_doc/">
+      
+      
+        <link rel="next" href="../../10_possible-attacks/01_intro/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +22,7 @@
     
     
       
-        <title>OTA Fail-Safe Strategy and Rollback Mechanisms - Over-the-Air Update</title>
+        <title>Fail Safe Strategy - Over-the-Air Update</title>
       
     
     
@@ -106,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OTA Fail-Safe Strategy and Rollback Mechanisms
+              Fail Safe Strategy
             
           </span>
         </div>
@@ -240,21 +246,36 @@
   
     
     
+      
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-tabs__link">
           
   
     
   
-  OTA Architecture
+  Architecture
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
@@ -266,15 +287,86 @@
   
     
   
-  OTA Backend
+  Backend & Communication
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Vehicle Systems
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10_possible-attacks/01_intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
   
   
   
@@ -286,208 +378,43 @@
   
     
   
-  User Experience
+  Operations & UX
 
         </a>
       </li>
     
   
 
+    
+  
+
       
         
+  
+  
+  
+    
+    
+      
   
   
   
     
     
       <li class="md-tabs__item">
-        <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-tabs__link">
+        <a href="../../13_questions/01_intro/" class="md-tabs__link">
           
   
     
   
-  OEM Backend & TCU
+  Reference
 
         </a>
       </li>
     
   
 
-      
-        
-  
-  
-  
     
-    
-      <li class="md-tabs__item">
-        <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  TCU
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../01_uds-over-can-vs-eth_doc/" class="md-tabs__link">
-          
-  
-    
-  
-  Target Device
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../08_ota-testing/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  OTA Testing
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../09_usecase/01_intro/" class="md-tabs__link">
-          
-  
-    
-  
-  Use Cases
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../11_possible-attacks/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Attacks
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-tabs__link">
-          
-  
-    
-  
-  Possible Measures
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../13_sdv/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  SDV
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../14_questions/01_intro.md" class="md-tabs__link">
-          
-  
-    
-  
-  Questions
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../glossary/" class="md-tabs__link">
-        
-  
-    
-  
-  Glossary
-
-      </a>
-    </li>
   
 
       
@@ -625,8 +552,6 @@
       
         
       
-        
-      
     
     
       
@@ -643,13 +568,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+    
   
   
     <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    OTA Architecture
+    Architecture
   </span>
   
 
@@ -657,6 +585,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -672,8 +602,6 @@
   
     
     
-      
-        
       
         
       
@@ -695,13 +623,16 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
+  
+  
+    
   
   
     <a href="../../03_ota-backend/01_oem-backend_doc/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    OTA Backend
+    Backend & Communication
   </span>
   
 
@@ -709,6 +640,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -720,108 +653,57 @@
       
   
   
+    
   
   
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
-  
-    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
   
   <span class="md-ellipsis">
-    User Experience
+    Vehicle Systems
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../05_oem-backend-tcu/01_mqtt-general-concepts_doc/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OEM Backend & TCU
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Vehicle Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -846,44 +728,181 @@
       
       
         
-      
-    
-    
-      
-        
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     TCU
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            TCU
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/02_tcu-hardware_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/03_tcu-software_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/04_ota-manager_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OTA Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/05_uds-tester_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS Tester
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_tcu/06_tcu-standards_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
 
+              
+            
+              
+                
+  
+  
     
-      
-      
   
   
   
-  
     
     
       
@@ -908,384 +927,515 @@
       
       
         
-      
-    
-    
-      
-        
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../01_uds-over-can-vs-eth_doc/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     Target Device
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../08_ota-testing/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    OTA Testing
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../09_usecase/01_intro/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Use Cases
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../11_possible-attacks/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Possible Attacks
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../12_possible-measures/01_protection-eavesdrop.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Possible Measures
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../13_sdv/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    SDV
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../14_questions/01_intro.md" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Questions
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Target Device
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../glossary/" class="md-nav__link">
+      <a href="../01_uds-over-can-vs-eth_doc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Glossary
+    UDS over CAN vs ETH
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_autosar_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AUTOSAR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_uds-over-can_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over CAN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_uds-over-eth_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over ETH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_doip_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_bootloader_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bootloader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_target-device_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Target Device
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Fail Safe Strategy
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Fail Safe Strategy
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-fail-safe-requirements-in-ota-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Fail-Safe Requirements in OTA Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture-and-component-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Architecture and Component Responsibilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-sequence-and-dependency-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Sequence and Dependency Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-path-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Path Execution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-detection-and-immediate-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Failure Detection and Immediate Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-procedure-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rollback Procedure Execution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-diagnostics-and-backend-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Failure Diagnostics and Backend Reporting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oem-defined-recovery-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      OEM-Defined Recovery Policies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-consistency-and-safety-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Consistency and Safety Preservation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../10_possible-attacks/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations & UX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../13_questions/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
     </li>
   
 
@@ -1426,22 +1576,7 @@
 <p>Over-the-air updates inherently introduce risk into vehicle systems due to the potential for interruption during critical software modification processes. An OTA update may fail due to various factors including power loss, communication interruption, software corruption, or intentional interference. These failure scenarios necessitate a robust fail-safe and rollback strategy to ensure vehicle safety and system integrity throughout the update process. The fundamental principle of fail-safe design in OTA systems is to prevent the vehicle from entering an inconsistent or unsafe state, particularly when multiple Electronic Control Units (ECUs) with functional dependencies are involved in the update campaign.</p>
 <h2 id="system-architecture-and-component-responsibilities">System Architecture and Component Responsibilities</h2>
 <p>The fail-safe architecture centers around the Telematics Control Unit (TCU) as the primary coordinator for OTA operations. The TCU orchestrates the entire update process, from initial metadata reception through final status reporting. In a typical multi-ECU update scenario, the TCU communicates with various target ECUs such as an Infotainment system and a Battery Management System (BMS), which may have functional dependencies between them. The OEM backend infrastructure, comprising update management and device management systems, provides the necessary update files and metadata while maintaining campaign status and vehicle-level tracking.</p>
-<pre class="mermaid"><code>graph TD
-    Backend["OEM Backend"] -- "MQTT/HTTPS" --&gt; TCU
-    TCU -- "CAN/Ethernet" --&gt; Infotainment
-    TCU -- "CAN/Ethernet" --&gt; BMS
-    Infotainment -- "Battery Health Data" --&gt; BMS
-    BMS -- "Status Information" --&gt; Infotainment
-
-    subgraph "Vehicle Network"
-        TCU
-        Infotainment["Infotainment ECU"]
-        BMS["Battery Management System"]
-    end
-
-    subgraph "Cloud Infrastructure"
-        Backend["Update Management&lt;br/&gt;Device Management&lt;br/&gt;Campaign Management"]
-    end</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNqFkcFOwzAMhu88RZT71BdAk2haaRw6QE25VDt4rWmjtWmVOqC9PcGMkgESuTh2vt_-k3QO5l7o7EaElUJzQtvW8iEvvhJ5EJuNkMWT1slO68dShnwrtKpYEiKfq7t9klOPziJ9Evf2ZSIwdkRL_6BpUTIRSxhNgQjdWewQBupFBgTXihAZLAnIL9zAjUBmsn-YYMXijx3fWT5jb5oBxR7pbXInyccXo-s-blDLK4O5quRhBYOTevVbgIUOmSrPC-F4AcN7_nShhsm3H2McLOR8Q97ht5X1R6q5BcKo8e3RJdsMX03zq6pgnMF0NqpH898BI4GUQQ==?" style="width: 600px; display: block; margin-left: auto; margin-right: auto" /></p>
 <h2 id="update-sequence-and-dependency-management">Update Sequence and Dependency Management</h2>
 <p>The OTA update process begins at the OEM backend where update files are uploaded to update management, associated with correct variants in device management, and grouped into a campaign. When the campaign is triggered, the TCU receives update metadata and binaries via MQTT for control signaling and HTTPS for file download. Upon successful download, the TCU performs version comparison by checking the installed software versions on all target ECUs against the target versions specified in the campaign.</p>
 <p>Before initiating the flashing process, the TCU validates all preconditions including ignition state, battery level, and vehicle operational status. This validation ensures that the update proceeds only under safe and stable conditions. The TCU then coordinates the update sequence across all ECUs, taking into account any functional dependencies between them. In scenarios where ECUs share dependencies, such as battery health information being produced by the BMS and displayed by the infotainment system, the update process must maintain system consistency throughout the operation.</p>
@@ -1449,23 +1584,7 @@
 <p>In an ideal update scenario, all target ECUs complete their update processes successfully. Each ECU undergoes the standard sequence of erasure, programming, verification, and reset operations. Upon completion, each ECU reports its updated software version back to the TCU. The TCU aggregates these status reports and confirms that all ECUs have successfully updated to their target versions. Once this verification is complete, the TCU reports a successful update status to the OEM backend, including the vehicle VIN for tracking purposes. The campaign management system then increments the success count for the campaign, maintaining accurate statistics for deployment monitoring.</p>
 <h2 id="failure-detection-and-immediate-response">Failure Detection and Immediate Response</h2>
 <p>When an update failure occurs, the fail-safe mechanism must activate immediately to prevent system inconsistency. Consider a scenario where the infotainment ECU update completes successfully but the BMS update is interrupted due to a power drop or communication error. The BMS reports a failure status back to the TCU, which triggers the fail-safe response protocol. Because these ECUs are functionally dependent, the system cannot allow a mixed software state where one ECU runs version 1.1 while another remains at version 1.0.</p>
-<pre class="mermaid"><code>graph TD
-    Start_Node["Update Initiated"] --&gt; Validate["Validate Preconditions"]
-    Validate --&gt; Download["Download Update Files"]
-    Download --&gt; Flash_ECU1["Flash Infotainment ECU"]
-    Flash_ECU1 --&gt; Flash_ECU2["Flash BMS ECU"]
-
-    Flash_ECU2 --&gt; Check_Status{"Update Status"}
-    Check_Status -- "Success" --&gt; Verify["Verify All ECUs"]
-    Check_Status -- "Failure" --&gt; Rollback["Initiate Rollback"]
-
-    Verify --&gt; Report_Success["Report Success to Backend"]
-    Rollback --&gt; Restore_ECU1["Restore Infotainment to v1.0"]
-    Restore_ECU1 --&gt; Restore_ECU2["Restore BMS to v1.0"]
-    Restore_ECU2 --&gt; Report_Failure["Report Failure to Backend"]
-
-    Report_Success --&gt; Process_End["Campaign Complete"]
-    Report_Failure --&gt; Process_End</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp1kk1ugzAQhfc5xcj7VA0HqNSQIHXRKipNNyhCLkyCFWMjY1pVVe9eY8YEUiUbZpj3vfkhJ8ObCt42C3C_1HJj8xddYsb2TcktwpMSVrigZAdYLh_gnUvRFzIWItgZLLQqnU6rlh2801jsmY3-UlLzMmMhAnJPhMSAjLUeSSRvq3wb71cZ87Eb5KgtF6pGZcEViLoI51wUuPVzSvK5PvL6uMLinLu9bdf-hJ2HlP16YKpwCLC0KwpsWzacA404frtj-Cc8Stk3Cyv9YxMuZGdwYF-1lB-8OGcsHHl8FaYlW6_GRruPQ90zNuRAOVgNaweiKql3sCK4tdogHZSy-Umdwefq7j7QE-DaIbo49Me9CUbTuWnzcW7K53OTw3RR77Ezuo_zrXL_oZjXDRcnBbGuG4kWx87TRtfc4g8Czu3J?" style="width: 600px; display: block; margin-left: auto; margin-right: auto" /></p>
 <h2 id="rollback-procedure-execution">Rollback Procedure Execution</h2>
 <p>Upon detecting a failure, the TCU immediately initiates a comprehensive rollback procedure to restore system consistency. The rollback process involves reverting all ECUs involved in the update campaign to their previous software versions. In our example, the infotainment ECU, which had successfully updated to version 1.1, is reverted to its previous software version 1.0. Simultaneously, the BMS ECU is also restored to version 1.0, either through fallback logic that maintains the previous version in non-volatile memory or through recovery mechanisms that can restore from backup partitions.</p>
 <p>The rollback procedure ensures that both ECUs return to a consistent and known-safe software state, maintaining the functional integrity of the vehicle system. This approach prioritizes system stability over partial update success, recognizing that an inconsistent software state poses greater risk than maintaining the previous stable version across all dependent components.</p>
@@ -1478,26 +1597,7 @@
 <h2 id="system-consistency-and-safety-preservation">System Consistency and Safety Preservation</h2>
 <p>The fundamental requirement of a robust fail-safe strategy is the preservation of vehicle safety and functionality throughout the OTA update process. This is achieved through several key principles. First, partial updates must never leave the vehicle in an inconsistent state where dependent ECUs run incompatible software versions. Second, dependent ECUs must be reverted together when any component in the dependency chain fails, maintaining functional coherence across the system.</p>
 <p>Third, all failures must be traceable and diagnosable through comprehensive logging and reporting mechanisms. Fourth, the rollback and recovery process must be automated and immediate, minimizing the window of potential system inconsistency. Finally, the entire fail-safe mechanism must operate transparently to the vehicle user while maintaining full visibility for OEM monitoring and analysis.</p>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Backend as OEM Backend
-    participant TCU as Telematics Control Unit
-    participant Info as Infotainment ECU
-    participant BMS as Battery Management System
-
-    Backend-&gt;&gt;TCU: Campaign Trigger
-    TCU-&gt;&gt;TCU: Validate Preconditions
-    TCU-&gt;&gt;Info: Initiate Update to v1.1
-    Info-&gt;&gt;TCU: Update Complete
-    TCU-&gt;&gt;BMS: Initiate Update to v1.1
-    BMS--&gt;&gt;TCU: Update Failed (Power Loss)
-
-    TCU-&gt;&gt;Info: Rollback to v1.0
-    Info-&gt;&gt;TCU: Rollback Complete
-    TCU-&gt;&gt;BMS: Restore to v1.0
-    BMS-&gt;&gt;TCU: Restore Complete
-
-    TCU-&gt;&gt;Backend: Report Failure with Diagnostics
-    Backend-&gt;&gt;Backend: Update Campaign Status</code></pre>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp9ks1OwzAQhO95ij3CoYhee-ihoUhIRFRNwn1JltTC9gZ7Q9W3xw5JFBpBLlY834zHP54-O7IVPShsHJoEwteiE1WpFq3ADqsPsjWgh5d9Nv4usCItI1KQJoNh1kPKVhxrKK2SBf5k3znycRRU1lCY3Kflcvksj9wORchdIEOLDfV0fvFCJukdQ6vVdht6bCBF06JqLBRONQ25ngnKqL-iVjUKwcFRxbZWotj6GRVrbUK5IESsbHtaGL7Wd-uei8QYN8gpm1aT0CwntP8_JgCrq5hHVJpquDnwmRw8s_e3yaLakbV-C5sewu4XnSbgr1ZH8sKOfgXENqN_kCf73P9z2hFq2UnfuAvsWckJ4juy7OMTuLqayTae13hLuaB0PvkGUY3MXg==?" style="width: 600px; display: block; margin-left: auto; margin-right: auto" /></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>The rollback and recovery mechanism described represents a fundamental requirement for safe and reliable OTA deployment in modern vehicles. By ensuring that partial updates do not leave the vehicle in an inconsistent state, that dependent ECUs are reverted together when necessary, that failures are traceable and diagnosable, and that vehicle safety and functionality are preserved at all times, the fail-safe strategy provides the necessary foundation for trustworthy OTA operations. This approach enables OEMs to leverage the benefits of remote updates while maintaining the highest standards of vehicle safety and system reliability.</p>
 
