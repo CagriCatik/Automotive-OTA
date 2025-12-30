@@ -10,7 +10,7 @@ The flashing operation begins with version verification, where the TCU reads the
 
 The UDS flashing sequence follows a meticulously ordered process that ensures secure and reliable software updates. The sequence begins with establishing proper diagnostic communication and progresses through security validation, memory preparation, data transfer, and system restoration. Each step must complete successfully before proceeding to the next, with built-in error handling mechanisms that abort the process if critical conditions are not met.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     _1_Start["Start Flashing"] --> _2_VersionCheck["Read Software Version (0x22)"]
     _2_VersionCheck -- "Update Required?" --> _3_Decision{"Version Check"}
@@ -52,7 +52,7 @@ Memory management during flashing follows a strict sequence to ensure data integ
 
 The Request Download service (0x34) initiates the data transfer phase by specifying critical parameters including the target memory address, total data size, and data format. These parameters must be precisely calculated to prevent memory corruption or overflow. The ECU validates these parameters and responds with acceptance or rejection based on memory availability and format compatibility. Once accepted, the Transfer Data service (0x36) manages the actual data transmission, breaking the software image into manageable blocks according to protocol specifications. The ECU acknowledges each received block, ensuring reliable delivery before the next block is transmitted.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant TCU as TCU (Tester)
     participant ECU as Target ECU

@@ -14,7 +14,7 @@ This project simulates a complete end-to-end OTA architecture, mirroring the com
 
 The system is divided into two primary contexts: the **Cloud Infrastructure** and the **Vehicle Edge**.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "Cloud Infrastructure"
         BE[Backend Orchestrator]
@@ -70,7 +70,7 @@ graph TD
 
 The following sequence diagram illustrates the "Happy Path" of a successful firmware update.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     autonumber
     participant BE as Backend

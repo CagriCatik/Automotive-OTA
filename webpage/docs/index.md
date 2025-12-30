@@ -18,7 +18,7 @@ This project explores the entire OTA ecosystem, traversing the path from the clo
 
 The detailed sections of this guide break down every component of this high-level flow:
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Cloud[OEM Backend / Cloud] <-->|LTE/5G| TCU[Telematics Control Unit]
     TCU <-->|Ethernet/CAN| Gateway[Central Gateway]

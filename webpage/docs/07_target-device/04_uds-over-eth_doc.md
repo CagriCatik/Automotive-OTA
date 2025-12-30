@@ -8,7 +8,7 @@ The fundamental advantage of DoIP over CAN-based diagnostics lies in its signifi
 
 The DoIP protocol implements a layered encapsulation structure that integrates seamlessly with standard Ethernet networking. At the physical and data link layers, DoIP utilizes conventional Ethernet frames, which include the standard Ethernet header for source and destination MAC addressing, followed by an IP header for network layer routing. The transport layer employs either TCP or UDP protocols depending on the specific message type and communication requirements. The actual DoIP payload resides at the application layer, with error detection handled through the standard Ethernet CRC mechanism.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     A["Ethernet Frame"] --> B["Ethernet Header"]
     A --> C["IP Header"]
@@ -33,7 +33,7 @@ The protocol version field occupies one byte and indicates the specific version 
 
 The payload type field spans two bytes and defines how the subsequent payload should be interpreted by the receiving entity. This field is crucial as it determines the semantic meaning and processing requirements for the message content. Following this, the payload length field occupies four bytes and specifies the exact length of the payload in bytes, excluding the generic header itself. This length information enables proper payload extraction and boundary detection, preventing parsing errors and ensuring message integrity.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph LR
     A["Generic DoIP Header"] --> B["Protocol Version (1 byte)"]
     A --> C["Inverse Protocol Version (1 byte)"]
@@ -69,7 +69,7 @@ The exchange of diagnostic messages over DoIP follows a structured process that 
 
 Once a target vehicle is identified, the diagnostic tool initiates routing activation to establish a dedicated communication path with the desired ECU. This process involves exchanging routing activation requests and responses, which may include authentication and authorization steps depending on the vehicle's security configuration. Successful routing activation results in the establishment of a TCP connection between the diagnostic tool and the target ECU, providing a reliable transport layer for subsequent diagnostic message exchange.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant Tool as Diagnostic Tool
     participant Vehicle as Vehicle ECU

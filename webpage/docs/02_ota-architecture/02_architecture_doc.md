@@ -12,7 +12,7 @@ The device management block maintains comprehensive vehicle identity records, EC
 
 Campaign management constitutes the third critical backend component, orchestrating the strategic rollout of software updates across the vehicle fleet. This system enables OEMs to select target vehicles based on various criteria, schedule update deployments during optimal time windows, and monitor progress throughout the update lifecycle. Campaign management provides granular control over update distribution, allowing for phased rollouts, targeted updates for specific vehicle populations, and rapid response to critical software issues.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     OEM_Backend["OEM Backend"] --> Update_Mgmt["Update Management"]
     OEM_Backend --> Device_Mgmt["Device Management"]
@@ -41,7 +41,7 @@ The communication infrastructure between the OEM backend and vehicle employs two
 
 HTTPS provides the secure transport mechanism for larger data payloads, particularly software packages and update files. This protocol ensures encrypted transmission of substantial data volumes from the OEM backend or cloud storage to the TCU. The dual-protocol approach optimizes communication efficiency by using lightweight messaging for control operations while leveraging secure, reliable transport for bulk data transfers. This separation of concerns enables the OTA system to maintain responsive control signaling while ensuring secure delivery of software packages.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant OEM_Backend
     participant TCU

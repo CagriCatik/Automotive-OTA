@@ -6,7 +6,7 @@ The Telematics Control Unit represents a critical electronic control unit that s
 
 A modern TCU integrates multiple specialized components to provide comprehensive connectivity, security, and vehicle monitoring capabilities. The architecture centers around a System on Chip that orchestrates all operations, supported by a sophisticated memory subsystem and multiple communication interfaces. The design balances performance requirements with power efficiency, particularly important for continuous vehicle operation.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     SoC["System on Chip<br>(Cortex-A/M)"] --> DRAM["DRAM<br>(Volatile Memory)"]
     SoC --> eMMC["eMMC Flash<br>(Non-volatile Storage)"]
@@ -53,7 +53,7 @@ Beyond cellular connectivity, the TCU incorporates Wi-Fi and Bluetooth modules t
 
 Power management represents a critical design consideration for TCU architecture, given the requirement for continuous operation across varying vehicle power states. The Power Management Unit regulates the vehicle supply voltage, typically ranging from 6V to 18V depending on vehicle electrical architecture, and distributes conditioned power to all internal components. A key feature of the TCU power system is the inclusion of an internal rechargeable backup battery. This battery maintains power to critical subsystems during vehicle power loss, ensuring continued operation of the real-time clock, secure storage elements, and emergency communication capabilities. In scenarios such as vehicle crashes or emergency call activation, the backup battery enables the TCU to transmit critical information even when main vehicle power is unavailable. The backup battery automatically recharges when vehicle power is restored, typically through a dedicated charging circuit within the Power Management Unit.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     VEHICLE_POWER["Vehicle Supply Voltage<br>(6-18V)"] -- "Regulated Power" --> PMU["Power Management Unit"]
     PMU -- "Primary Power" --> SoC["System on Chip"]
@@ -89,7 +89,7 @@ The TCU provides multiple interfaces for development, manufacturing, and service
 
 The SoC communicates with peripheral components through various serial interfaces optimized for different performance requirements. SPI interfaces provide high-speed data transfer for devices requiring rapid communication such as display controllers and high-speed sensors. I2C interfaces serve lower-speed peripherals including configuration memories, temperature sensors, and control devices. The selection of communication protocols reflects OEM design preferences and the specific requirements of connected peripherals. This flexible interface architecture enables the TCU to support diverse peripheral ecosystems while maintaining efficient resource utilization and optimal PCB layout.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     SoC["System on Chip"] -- "SPI Bus" --> FLASH["Configuration Flash"]
     SoC -- "I2C Bus" --> SENSORS["Environmental Sensors"]

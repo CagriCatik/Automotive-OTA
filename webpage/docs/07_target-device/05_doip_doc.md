@@ -12,7 +12,7 @@ The DoIP implementation fits into the broader AUTOSAR communication stack as a s
 
 This architectural separation allows diagnostic applications to remain protocol-agnostic while the underlying transport handles the medium-specific details. The choice between CAN-TP and DoIP is determined by the communication medium, with DoIP providing the necessary capabilities for high-bandwidth Ethernet diagnostics and flashing operations.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "AUTOSAR Communication Stack"
         DiagnosticApp["Diagnostic Application"]
@@ -74,7 +74,7 @@ DoIP serves purely as a transport mechanism, encapsulating the UDS messages with
 
 After all diagnostic or programming activities are completed, the DoIP entity initiates connection termination. The TCP connection is gracefully closed, releasing network resources and ending the diagnostic session. No further communication can occur until a new discovery and routing activation sequence is initiated, ensuring that each diagnostic session is properly authenticated and authorized.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant Tester
     participant DoIP_Entity

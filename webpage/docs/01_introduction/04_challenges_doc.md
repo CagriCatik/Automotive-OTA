@@ -10,7 +10,7 @@ Before the advent of OTA technology, vehicle software updates relied exclusively
 
 The transition to OTA systems fundamentally transformed this paradigm by enabling remote update delivery. However, this transformation introduced new complexities that extend far beyond the convenience of remote installation. Automotive OTA systems must contend with unique constraints related to vehicle safety, network reliability, and security requirements that distinguish them from other domains.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     A["Traditional Dealer-Based Updates"] --> B["Operational Challenges"]
     B --> C["Customer Inconvenience"]
@@ -44,7 +44,7 @@ Security represents the most critical aspect of automotive OTA systems, as vulne
 
 The communication channel between the OEM backend and the vehicle represents a primary target for attackers. Even when both endpoints are secured, the transmission medium remains vulnerable to various attack vectors. These include interception attacks where malicious actors capture update packages during transmission, tampering attacks that modify software content, and data sniffing attacks that extract sensitive information from update communications.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     A["OEM Backend"] -- "Update Transmission" --> B["Communication Channel"]
     B -- "Delivery" --> C["Vehicle OTA Module"]
@@ -98,7 +98,7 @@ Upon receipt, the vehicle's OTA module performs comprehensive verification proce
 
 The installation phase follows strict precondition checks to ensure vehicle safety. The system verifies that the vehicle is stationary, that sufficient power is available for all ECUs being updated, and that internal communication channels remain stable. These preconditions prevent update failures that could result in corrupted firmware or system instability.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant Backend as OEM Backend
     participant Channel as Communication Channel

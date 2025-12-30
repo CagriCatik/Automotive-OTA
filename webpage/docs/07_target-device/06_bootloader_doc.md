@@ -6,7 +6,7 @@ The Electronic Control Unit programming process involves a clear separation of r
 
 The communication between these entities utilizes standardized protocols, with CAN-TP employed for CAN-based architectures and DoIP (Diagnostics over IP) for Ethernet-based vehicle networks. The TCU contains a UDS tester component that generates diagnostic and programming requests, which are transported over these protocols to reach the target ECU.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     TCU["Telematics Control Unit"] -->|"UDS Requests<br/>(CAN-TP/DoIP)"| ECU["Target ECU"]
     
@@ -53,7 +53,7 @@ When the bootloader needs to erase memory regions or write new data, it calls th
 
 The ECU programming process follows a well-defined sequence of operations that begins with session establishment and concludes with application startup. The workflow is initiated when the TCU sends a Diagnostic Session Control request with sub-function 0x02, signaling the intent to enter programming mode. This request is processed by the boot manager, which transitions control to the bootloader.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant TCU as TCU (Tester)
     participant BM as Boot Manager

@@ -35,11 +35,11 @@ nav:
 
   - TCU:
       - Architecture: 06_tcu/01_tcu-architecture_doc.md
-      - Hardware: 06_tcu/02_tcu-hardware.md
-      - Software: 06_tcu/03_tcu-software.md
-      - OTA Manager: 06_tcu/04_ota-manager.md
-      - UDS Tester: 06_tcu/05_uds-tester.md
-      - Standards: 06_tcu/06_tcu-standards.md
+      - Hardware: 06_tcu/02_tcu-hardware_doc.md
+      - Software: 06_tcu/03_tcu-software_doc.md
+      - OTA Manager: 06_tcu/04_ota-manager_doc.md
+      - UDS Tester: 06_tcu/05_uds-tester_doc.md
+      - Standards: 06_tcu/06_tcu-standards_doc.md
 
   - Target Device:
       - UDS over CAN vs ETH: 07_target-device/01_uds-over-can-vs-eth_doc.md
@@ -47,48 +47,46 @@ nav:
       - UDS over CAN: 07_target-device/03_uds-over-can_doc.md
       - UDS over ETH: 07_target-device/04_uds-over-eth_doc.md
       - DoIP: 07_target-device/05_doip_doc.md
-      - Bootloader: 07_target-device/06_bootloader.md
-      - Target Device: 07_target-device/07_target-device.md
-      - Fail Safe Strategy: 07_target-device/08_fail-safe-strategy.md
+      - Bootloader: 07_target-device/06_bootloader_doc.md
+      - Target Device: 07_target-device/07_target-device_doc.md
+      - Fail Safe Strategy: 07_target-device/08_fail-safe-strategy_doc.md
 
   - OTA Testing:
-      - Intro: 08_ota-testing/01_intro.md
-      - Strategy: 08_ota-testing/01_testing-strategy.md
-      - Methods: 08_ota-testing/02_methods.md
-      - Tools & Equipment: 08_ota-testing/02_tools-and-equipment.md
-      - Compliance & Security: 08_ota-testing/03_compliance-and-security.md
-      - Tool Chain: 08_ota-testing/03_tool-chain.md
+      - Intro: 08_ota-testing/01_intro_doc.md
+      - Strategy: 08_ota-testing/02_testing-strategy_doc.md
+      - Tools & Equipment: 08_ota-testing/03_tools-and-equipment_doc.md
 
   - Use Cases:
       - Intro: 09_usecase/01_intro.md
-      - Smart Maintenance: 09_usecase/01_smart-maintenance.md
-      - Feature on Demand: 09_usecase/02_feature-on-demand.md
-      - Remote Diagnostics: 09_usecase/02_remote-diagnostics.md
+      - Smart Maintenance: 09_usecase/02_smart-maintenance.md
+      - Feature on Demand: 09_usecase/03_feature-on-demand.md
+      - Remote Diagnostics: 09_usecase/04_remote-diagnostics.md
 
   - Possible Attacks:
-      - Intro: 11_possible-attacks/01_intro.md
-      - Eavesdropping: 11_possible-attacks/02_eavesdrop.md
-      - Denial of Service: 11_possible-attacks/03_denial.md
-      - Rollback: 11_possible-attacks/04_rollback.md
-      - Injection: 11_possible-attacks/05_injection.md
+      - Intro: 10_possible-attacks/01_intro.md
+      - Eavesdropping: 10_possible-attacks/02_eavesdrop.md
+      - Denial of Service: 10_possible-attacks/03_denial.md
+      - Rollback: 10_possible-attacks/04_rollback.md
+      - Injection: 10_possible-attacks/05_injection.md
 
   - Possible Measures:
-      - Eavesdrop Protection: 12_possible-measures/01_protection-eavesdrop.md
-      - DoS Protection: 12_possible-measures/02_protection-dos.md
-      - Rollback Protection: 12_possible-measures/03_protection-rollback.md
+      - Eavesdrop Protection: 11_possible-measures/01_protection-eavesdrop.md
+      - DoS Protection: 11_possible-measures/02_protection-dos.md
+      - Rollback Protection: 11_possible-measures/03_protection-rollback.md
 
   - SDV:
-      - Intro: 13_sdv/01_intro.md
-      - High Level Architecture: 13_sdv/02_high-level-architecture.md
-      - Market Players: 13_sdv/03_market-players.md
-      - Level 1: 13_sdv/04_level1.md
-      - Level 2: 13_sdv/06_level2.md
-      - Level 3: 13_sdv/07_level3.md
-      - Level 4: 13_sdv/08_level4.md
-      - Level 5: 13_sdv/09_level5.md
+      - Intro: 12_sdv/01_intro_doc.md
+      - Change in EE: 12_sdv/02_change-in-ee-architecture_doc.md
+      - High Level Architecture: 12_sdv/03_sdv_high_level_architecture_doc.md
+      - Market Players: 12_sdv/04_market-players_doc.md
+      - Level 1: 12_sdv/05_level1_doc.md
+      - Level 2: 12_sdv/06_level2_doc.md
+      - Level 3: 12_sdv/07_level3_doc.md
+      - Level 4: 12_sdv/08_level4_doc.md
+      - Level 5: 12_sdv/09_level5_doc.md
 
   - Questions:
-      - Intro: 14_questions/01_intro.md
+      - Intro: 13_questions/01_intro.md
 
   - Glossary: glossary.md
 
@@ -166,3 +164,4 @@ extra_css:
 
 plugins:
   - search
+  - kroki

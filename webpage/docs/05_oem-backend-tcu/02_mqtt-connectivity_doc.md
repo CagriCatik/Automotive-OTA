@@ -10,7 +10,7 @@ The MQTT-based connectivity architecture establishes a clear separation of respo
 
 The TCU maintains active subscriptions to specific topics relevant to OTA operations, most notably a topic designated for update notifications, typically named 'OTA_Update'. Simultaneously, the TCU publishes vehicle status information to designated topics, with ECU details being sent to a topic such as 'ECU_Details'. This dual role of publishing and subscribing enables the TCU to both report vehicle state and receive update commands from the backend.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Backend_Node["OEM Backend"] --> Broker_Node["MQTT Broker"]
     TCU_Node["Vehicle TCU"] <--> Broker_Node
@@ -48,7 +48,7 @@ The TCU, maintaining its subscription to the 'OTA_Update' topic, receives these 
 
 After processing the update notification, the TCU acknowledges the message back to the broker according to the configured Quality of Service (QoS) level. This acknowledgment mechanism ensures message delivery guarantees as specified by the MQTT protocol, with different QoS levels providing varying degrees of assurance regarding message delivery and retention.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant TCU as Vehicle TCU
     participant Broker as MQTT Broker

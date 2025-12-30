@@ -28,7 +28,7 @@ HTTPS operates in conjunction with MQTT within the OTA ecosystem, creating a dua
 
 The OTA communication pattern follows a structured sequence where HTTPS and MQTT serve distinct phases of the update process. Initially, MQTT facilitates the negotiation and preparation phase, where the vehicle receives update notifications, confirms availability, and establishes the parameters for the upcoming transfer. Once the vehicle is ready to receive the update payload, HTTPS takes over to handle the actual file download. During this phase, the vehicle establishes secure connections to the OEM servers and retrieves the update packages in chunks or as complete files, depending on the implementation strategy. Throughout the download process, MQTT continues to provide status updates and progress reports, enabling the backend to monitor the transfer and respond to any issues that may arise.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     OEM_Backend["OEM Backend"] -- "Control Commands<br>(MQTT)" --> Vehicle_TCU["Vehicle TCU"]
     OEM_Backend -- "Update Payload<br>(HTTPS)" --> Vehicle_TCU
@@ -52,7 +52,7 @@ The hosting infrastructure for HTTPS-based OTA updates typically resides on serv
 
 The TLS implementation within HTTPS provides multiple layers of security protection for OTA communications. The encryption process utilizes industry-standard cryptographic algorithms to protect data confidentiality, while digital certificates authenticate the identity of both the server and, in some implementations, the vehicle. The integrity of transferred data is maintained through cryptographic hash functions that detect any unauthorized modifications during transit. This comprehensive security framework ensures that update packages arrive at the vehicle exactly as intended by the OEM, preventing the introduction of malicious code or corrupted software that could compromise vehicle operation or safety systems.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant Vehicle as Vehicle TCU
     participant OEM as OEM Backend

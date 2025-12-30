@@ -16,7 +16,7 @@ The regulatory timeline shows progressive enforcement beginning around 2021 in r
 
 The regulation groups requirements into three major areas that collectively define the compliance framework. The first area addresses manufacturer requirements, focusing on organizational processes for secure software update management. The second area covers vehicle requirements, specifying technical capabilities that vehicle electronics and ECUs must possess to support secure OTA updates. The third area encompasses software identification requirements, standardizing how software versions and identifiers are defined, recorded, and verified throughout the vehicle lifecycle.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     A["UN Regulation No. 156"] --> B["Manufacturer Requirements"]
     A --> C["Vehicle Requirements"]
@@ -41,7 +41,7 @@ The OTA update ecosystem consists of multiple interconnected components working 
 
 Within the vehicle, multiple ECUs form the target destinations for software updates. These ECUs vary in complexity and criticality, ranging from non-safety-critical infotainment systems to safety-critical controllers for braking, steering, and powertrain operations. The OTA architecture must accommodate this diversity while maintaining security and reliability across all update operations.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Backend["OEM Backend/Cloud Platform"] -- "Secure Update Package" --> Telematics["Telematics Control Unit"]
     Telematics -- "Distribute to ECUs" --> ECU1["Safety-Critical ECU<br>(ABS, EPS, etc.)"]
@@ -64,7 +64,7 @@ Section 7.1 of UN Regulation No. 156 specifically addresses the Software Update 
 
 A critical aspect of SUMS involves compatibility verification prior to update initiation. OEMs must implement systematic processes to ensure that software updates are compatible with target vehicle configurations, preventing widespread failures across vehicle fleets. This compatibility assessment must consider hardware variations, existing software versions, and potential interactions between different vehicle systems. The regulation specifically addresses how type-approved components are handled when software functionality is added or removed, requiring that such modifications be properly documented and managed within the SUMS framework.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Start_Node["Update Campaign Initiation"] --> Compatibility["Compatibility Verification"]
     Compatibility --> Check{"Compatible?"}

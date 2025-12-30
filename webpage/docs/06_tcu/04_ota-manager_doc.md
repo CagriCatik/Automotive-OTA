@@ -4,7 +4,7 @@
 
 The OTA Manager serves as the central coordinator for all Over-The-Air update activities within the vehicle architecture. In the discussed implementation, the OTA Manager resides on the gateway ECU, specifically the Telematics Control Unit (TCU). This strategic placement enables the TCU to manage all OTA operations while serving as the communication hub between various vehicle ECUs and the OEM backend. The OTA Manager interfaces with multiple systems including the infotainment or HMI system for user notifications, the backend infrastructure via MQTT and HTTPS protocols, and downstream ECUs through Unified Diagnostic Services (UDS) communication.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Backend["OEM Backend"] -- "MQTT Notifications" --> TCU["Telematics Control Unit<br>(OTA Manager)"]
     Backend -- "HTTPS Downloads" --> TCU
@@ -23,7 +23,7 @@ The OTA Manager encompasses a comprehensive set of responsibilities that ensure 
 
 The update process follows a meticulously defined sequence that ensures data integrity and system stability. The process begins when the OTA Manager evaluates update availability based on backend notifications. If an update is available and the user provides approval, the system initiates pre-download validation to verify all required preconditions. Upon successful validation, the OTA Manager requests the update package from the backend using HTTPS, downloading both the binary payload and associated metadata including package size, version details, and integrity verification parameters.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Start_Node["Start Update Process"] --> Check["Evaluate Update Availability"]
     Check -- "Update Available" --> Notify["Notify User via HMI"]
@@ -61,7 +61,7 @@ In the gateway-based architecture, the TCU functions as a UDS Tester to communic
 
 The OTA Manager implements comprehensive error handling strategies to address various failure scenarios. If interruptions occur during the update process, such as power loss, communication failure, or violation of preconditions, the OTA Manager executes predefined failure handling procedures. These procedures may include attempting to resume the interrupted process, rolling back to a previous software version if the ECU supports this capability, or safely aborting the update to maintain system stability. The specific response strategy depends on the nature and timing of the failure, the capabilities of the target ECU, and the current state of the update process.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 stateDiagram-v2
     [*] --> Idle
     Idle --> Evaluating: "Update Notification"

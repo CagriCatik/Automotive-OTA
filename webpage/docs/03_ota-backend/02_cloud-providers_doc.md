@@ -12,7 +12,7 @@ The OEM backend architecture on cloud platforms typically consists of three core
 
 This triad of core services operates within a broader cloud infrastructure that provides supporting capabilities such as data storage, processing pipelines, security frameworks, and integration interfaces. The architecture must support both real-time operations, such as immediate vehicle status updates, and batch operations, such as large-scale data analytics and report generation.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "Cloud Platform Infrastructure"
         Update_Mgmt["Update Management Service"]
@@ -70,7 +70,7 @@ Amazon Web Services (AWS) maintains the most widespread adoption across the auto
 
 IBM Cloud and Watson services focus on analytics, AI, and enterprise integration capabilities, with particular strength in data processing and cognitive computing. While IBM's presence in customer-facing ADAS and consumer services is more limited compared to hyperscale providers, its enterprise-grade security and governance features appeal to OEMs with strict compliance requirements. Customers such as Jaguar and Honda have implemented IBM cloud services for specific applications requiring advanced analytics and enterprise system integration.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph LR
     subgraph "Cloud Provider Capabilities"
         Google["Google Cloud<br/>ADAS, Analytics, AI/ML"]

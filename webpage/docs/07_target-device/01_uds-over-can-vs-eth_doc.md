@@ -10,7 +10,7 @@ The fundamental difference between UDS over CAN and UDS over Ethernet lies in th
 
 In contrast, UDS over Ethernet maintains the same UDS application layer but replaces the CAN transport with DoIP as the transport layer, which operates over the Ethernet physical layer. This architectural change preserves the application-layer diagnostic services while fundamentally transforming the data transport capabilities. The DoIP protocol leverages IP-based networking to provide significantly higher bandwidth and more flexible communication patterns compared to the CAN-based approach.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "UDS over CAN Stack"
         A1["UDS Application Layer"] --> B1["CAN Transport Layer"]
@@ -43,7 +43,7 @@ The performance differential between UDS over CAN and UDS over Ethernet becomes 
 
 Scalability represents another critical factor in the transport protocol selection. As vehicle architectures evolve toward domain-based and zonal designs, the number of ECUs per vehicle continues to increase while software complexity grows exponentially. CAN-based diagnostic systems struggle to scale effectively under these conditions due to bandwidth limitations and message priority constraints. DoIP, with its IP-based foundation, provides inherent scalability that can accommodate growing diagnostic demands without requiring fundamental architectural changes.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph LR
     subgraph "Traditional Architecture"
         T1["Distributed ECUs"] --> T2["CAN Network"]

@@ -10,7 +10,7 @@ MQTT operates at the application layer (Layer 7) of the OSI model, running over 
 
 The MQTT architecture follows a publish-and-subscribe communication pattern that fundamentally differs from traditional request-response models. This architecture centers around an MQTT broker that acts as an intermediary between message publishers and subscribers. The broker manages message routing, filtering, and delivery, enabling decoupled communication between system components. This decoupling allows for flexible system design where publishers need not know about subscribers, and vice versa, facilitating dynamic and scalable system architectures.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Publisher["Publisher Client"] -- "Publish Message" --> Broker["MQTT Broker"]
     Broker -- "Route Message" --> Subscriber1["Subscriber Client 1"]
@@ -44,7 +44,7 @@ Topic hierarchies enable sophisticated message filtering and routing capabilitie
 
 MQTT defines three distinct Quality of Service (QoS) levels that provide different guarantees for message delivery, allowing system designers to balance reliability, latency, and overhead according to application requirements. QoS 0, known as "at most once" delivery, implements a fire-and-forget approach where messages are sent without acknowledgment. The publisher receives no confirmation of message delivery, making this the fastest but least reliable option. This level suits applications where occasional message loss is acceptable, such as periodic sensor readings where subsequent messages will replace missed ones.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Publisher["Publisher"] -->|QoS 0: Fire and Forget| Broker["Broker"]
     Publisher -->|QoS 1: At Least Once| Broker
@@ -83,7 +83,7 @@ The topic structure in automotive OTA systems typically follows a hierarchical o
 
 Consider a typical OTA update scenario where the OEM backend initiates a firmware update on a specific vehicle. The backend, acting as an MQTT publisher, sends a command message to a topic specific to the target vehicle's TCU. The message contains update instructions, metadata, and authentication information, encoded in the payload according to the application's data format requirements. The MQTT broker receives this message and routes it to the subscribed TCU, which processes the command and begins the update process.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant OEM_Backend as "OEM Backend"
     participant MQTT_Broker as "MQTT Broker"

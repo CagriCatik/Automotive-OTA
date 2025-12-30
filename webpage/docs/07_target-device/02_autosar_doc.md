@@ -2,7 +2,7 @@
 
 AUTOSAR, which stands for Automotive Open System Architecture, represents a global development partnership established in 2003 by leading automotive OEMs and suppliers including BMW, Volkswagen, Daimler, Bosch, and PSA. The fundamental objective of AUTOSAR is to define a standardized, open software architecture for automotive Electronic Control Units (ECUs). Historically, automotive software development suffered from tight coupling between software applications and specific hardware implementations or Tier-1 suppliers. AUTOSAR addresses this challenge by decoupling application software from underlying hardware, thereby enabling software portability, reuse across different platforms, and supplier independence. This architectural approach allows software components to be reused across various ECUs and hardware platforms with minimal modification requirements.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     A["Application Layer<br>Software Components"] --> B["Runtime Environment (RTE)<br>Virtual Functional Bus"]
     B --> C["Basic Software (BSW)"]
@@ -19,7 +19,7 @@ The Runtime Environment serves as a middleware layer that provides communication
 
 Below the RTE lies the Basic Software, which is structured into three distinct layers: the Service Layer, the ECU Abstraction Layer, and the Microcontroller Abstraction Layer (MCAL). The Service Layer represents the uppermost layer of the Basic Software and provides services to application software that remain independent of both the microcontroller and ECU hardware. These services encompass operating system functionality, diagnostic services including UDS, memory management services, ECU state management, communication services, and watchdog management. While security-related services such as cryptographic services are also part of this layer, they fall outside the current scope of discussion.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph BSW ["Basic Software"]
         SL["Service Layer<br>OS, Diagnostics, Memory<br>Communication, Watchdog"]
@@ -39,7 +39,7 @@ DoIP supports several key capabilities including vehicle identification and anno
 
 The Ethernet Interface module (EthernetIf) resides within the ECU Abstraction Layer and provides a hardware-independent interface to Ethernet controllers and transceivers. EthernetIf does not access hardware directly but instead calls Ethernet driver modules, a design that allows multiple Ethernet controllers or switches to be used within the same ECU without impacting upper layer software. Similarly, for CAN-based communication, the CAN Interface (CanIf) operates in the ECU Abstraction Layer, providing analogous hardware abstraction for CAN communication.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph CANPath ["CAN Diagnostics Path"]
         App["Application Layer"] --> RTE_CAN["RTE"]

@@ -12,7 +12,7 @@ The update process for single-bank ECUs follows a sequential pattern that begins
 
 Following the backup operation, the ECU erases the existing application from its flash memory and proceeds to program the new software into the same memory region. This sequential erase-and-program operation contributes to extended update times, as the ECU cannot execute any application code during the flashing process. After the programming operation completes successfully, the ECU undergoes a reset sequence and begins executing the newly installed software. The update status, including success or failure indicators, is then communicated back to the TCU and subsequently to the OEM backend systems for record-keeping and further processing.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "Single-Bank ECU Update Flow"
         Precondition_Check["Precondition Verification"] -- "Preconditions Met" --> Backup_Operation["Backup Existing Software<br/>to External Flash"]
@@ -37,7 +37,7 @@ The OTA update process for dual-bank ECUs leverages this parallel capability to 
 
 Once the new software is completely programmed into the inactive bank, the ECU performs verification procedures to ensure the integrity and authenticity of the update package. These verification steps typically include checksum validation, digital signature verification, and other integrity checks to confirm that the new software is complete and uncorrupted. After successful verification, the TCU sends a command to the ECU to switch the execution pointer from the active bank to the newly updated bank. The timing of this switch operation varies according to OEM-defined conditions and may occur immediately upon verification completion, during the next ignition cycle, or based on other predetermined criteria.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "Dual-Bank ECU Architecture"
         Bank_A["Bank A<br/>(Active Application)"]

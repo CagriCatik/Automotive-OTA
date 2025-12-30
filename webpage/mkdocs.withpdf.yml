@@ -2,73 +2,91 @@ site_name: OTA
 
 nav:
   - Home: index.md
+
   - Introduction:
-      - Intro: 01_introduction/01_intro.md
-      - Definition: 01_introduction/02_definition.md
-      - Importance: 01_introduction/03_importance.md
-      - SOTA vs FOTA: 01_introduction/04_sota-fota.md
-      - Challenges: 01_introduction/05_challenges.md
-      - OTA Services: 01_introduction/06_ota_services.md
-      - Market Analysis: 01_introduction/07_market-analysis.md
-      - How OTA Works: 01_introduction/08_how-ota.md
-  - Core Architecture:
-      - Vehicle State: 02_core_architecture/01_vehicle_state.md
-      - Architecture: 02_core_architecture/02_architecture.md
-      - Vehicle Architecture: 02_core_architecture/03_vehicle_architecture.md
+      - What Is OTA: 01_introduction/01_what-is-ota_doc.md
+      - Importance: 01_introduction/02_importance_doc.md
+      - SOTA & FOTA: 01_introduction/03_sota-fota_doc.md
+      - Challenges: 01_introduction/04_challenges_doc.md
+      - Need of OTA: 01_introduction/05_need-of-ota_doc.md
+      - Market Analysis: 01_introduction/06_market-analysis_doc.md
+      - OTA Services: 01_introduction/07_ota-services_doc.md
+      - How OTA Happens: 01_introduction/08_how-ota-happens_doc.md
+
+  - OTA Architecture:
+      - Vehicle State: 02_ota-architecture/01_vehicle_state_doc.md
+      - Architecture: 02_ota-architecture/02_architecture_doc.md
+      - Vehicle Architecture: 02_ota-architecture/03_vehicle_architecture_doc.md
+
   - OTA Backend:
-      - OEM Backend: 03_ota-backend.md/01_oem-backend.md
-      - Cloud Providers: 03_ota-backend.md/02_cloud-providers.md
-      - Campaign Management: 03_ota-backend.md/03_campaing-management.md
+      - OEM Backend: 03_ota-backend/01_oem-backend_doc.md
+      - Cloud Providers: 03_ota-backend/02_cloud-providers_doc.md
+      - Campaign Management: 03_ota-backend/03_campaign-management_doc.md
+
   - User Experience:
-      - HMI: 04_user-experience/01_hmi.md
-      - OEM App: 04_user-experience/02_oem-app.md
+      - HMI: 04_user-experience/01_hmi_doc.md
+      - OEM App: 04_user-experience/02_oem-app_doc.md
+
   - OEM Backend & TCU:
-      - MQTT: 05_oem-backend-tcu/01_mqtt.md
-      - MQTT Connectivity: 05_oem-backend-tcu/02_mqtt-connectivity.md
-      - HTTPS: 05_oem-backend-tcu/03_https.md
+      - MQTT General Concepts: 05_oem-backend-tcu/01_mqtt-general-concepts_doc.md
+      - MQTT Connectivity: 05_oem-backend-tcu/02_mqtt-connectivity_doc.md
+      - HTTPS: 05_oem-backend-tcu/03_https_doc.md
+      - C2C Communication: 05_oem-backend-tcu/04_c2c-communication_doc.md
+
   - TCU:
-      - OTA Manager: 06_tcu/01_ota-manager.md
-      - UDS Tester: 06_tcu/02_uds-tester.md
+      - Architecture: 06_tcu/01_tcu-architecture_doc.md
+      - Hardware: 06_tcu/02_tcu-hardware_doc.md
+      - Software: 06_tcu/03_tcu-software_doc.md
+      - OTA Manager: 06_tcu/04_ota-manager_doc.md
+      - UDS Tester: 06_tcu/05_uds-tester_doc.md
+      - Standards: 06_tcu/06_tcu-standards_doc.md
+
   - Target Device:
-      - UDS on CAN/ETH: 07_target-device/01_uds-can-eth.md
-      - AUTOSAR: 07_target-device/02_autosar.md
-      - UDS on CAN: 07_target-device/03_uds-can.md
-      - DoIP: 07_target-device/04_doip.md
-      - DoIP External: 07_target-device/05_doip-external.md
-      - Bootloader: 07_target-device/06_bootloader.md
-      - Memory: 07_target-device/07_target-device-memory.md
-      - Fail-Safe Strategy: 07_target-device/08_fail-safe-strategy.md
+      - UDS over CAN vs ETH: 07_target-device/01_uds-over-can-vs-eth_doc.md
+      - AUTOSAR: 07_target-device/02_autosar_doc.md
+      - UDS over CAN: 07_target-device/03_uds-over-can_doc.md
+      - UDS over ETH: 07_target-device/04_uds-over-eth_doc.md
+      - DoIP: 07_target-device/05_doip_doc.md
+      - Bootloader: 07_target-device/06_bootloader_doc.md
+      - Target Device: 07_target-device/07_target-device_doc.md
+      - Fail Safe Strategy: 07_target-device/08_fail-safe-strategy_doc.md
+
   - OTA Testing:
-      - Intro: 08_ota-testing/01_intro.md
-      - Methods: 08_ota-testing/02_methods.md
-      - Tool Chain: 08_ota-testing/03_tool-chain.md
+      - Intro: 08_ota-testing/01_intro_doc.md
+      - Strategy: 08_ota-testing/02_testing-strategy_doc.md
+      - Tools & Equipment: 08_ota-testing/03_tools-and-equipment_doc.md
+
   - Use Cases:
       - Intro: 09_usecase/01_intro.md
-      - Remote Diagnostics: 09_usecase/02_remote-diagnostics.md
+      - Smart Maintenance: 09_usecase/02_smart-maintenance.md
+      - Feature on Demand: 09_usecase/03_feature-on-demand.md
+      - Remote Diagnostics: 09_usecase/04_remote-diagnostics.md
+
   - Possible Attacks:
-      - Intro: 11_possible-attacks-ota/01_intro.md
-      - Eavesdropping: 11_possible-attacks-ota/02_eavesdrop.md
-      - Denial of Service: 11_possible-attacks-ota/03_denial.md
-      - Rollback: 11_possible-attacks-ota/04_rollback.md
-      - Injection: 11_possible-attacks-ota/05_injection.md
+      - Intro: 10_possible-attacks/01_intro.md
+      - Eavesdropping: 10_possible-attacks/02_eavesdrop.md
+      - Denial of Service: 10_possible-attacks/03_denial.md
+      - Rollback: 10_possible-attacks/04_rollback.md
+      - Injection: 10_possible-attacks/05_injection.md
+
   - Possible Measures:
-      - Protection Eavesdropping: 12_possible-measures/01_protection-eavesdrop.md
-      - Protection DoS: 12_possible-measures/02_protection-dos.md
-      - Protection Rollback: 12_possible-measures/03_protection-rollback.md
+      - Eavesdrop Protection: 11_possible-measures/01_protection-eavesdrop.md
+      - DoS Protection: 11_possible-measures/02_protection-dos.md
+      - Rollback Protection: 11_possible-measures/03_protection-rollback.md
+
   - SDV:
-      - Intro: 13_sdv/01_intro.md
-      - High Level Arch: 13_sdv/02_high-level-architecture.md
-      - Market Players: 13_sdv/03_market-players.md
-      - Level 1: 13_sdv/04_level1.md
-      - Level 2: 13_sdv/06_level2.md
-      - Level 3: 13_sdv/07_level3.md
-      - Level 4: 13_sdv/08_level4.md
-      - Level 5: 13_sdv/09_level5.md
-  - UNECE R156:
-      - SUMS: 14_unece-r156/01_sums.md
-      - Rollback: 14_unece-r156/02_rollback.md
+      - Intro: 12_sdv/01_intro_doc.md
+      - Change in EE: 12_sdv/02_change-in-ee-architecture_doc.md
+      - High Level Architecture: 12_sdv/03_sdv_high_level_architecture_doc.md
+      - Market Players: 12_sdv/04_market-players_doc.md
+      - Level 1: 12_sdv/05_level1_doc.md
+      - Level 2: 12_sdv/06_level2_doc.md
+      - Level 3: 12_sdv/07_level3_doc.md
+      - Level 4: 12_sdv/08_level4_doc.md
+      - Level 5: 12_sdv/09_level5_doc.md
+
   - Questions:
-      - Intro: 15_questions/01_intro.md
+      - Intro: 13_questions/01_intro.md
 
 theme:
   name: material
@@ -139,5 +157,6 @@ markdown_extensions:
 
 plugins:
   - search
+  - kroki
   - with-pdf
 

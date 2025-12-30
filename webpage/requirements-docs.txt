@@ -8,3 +8,5 @@ pymdown-extensions==10.8.1
 # Pin these to avoid the bs4 incompatibility crash
 mkdocs-with-pdf==0.9.3
 beautifulsoup4==4.12.3
+
+mkdocs-kroki-plugin

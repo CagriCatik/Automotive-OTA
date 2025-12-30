@@ -12,7 +12,7 @@ The cloud infrastructure operates as the intermediary layer, handling software d
 
 On the vehicle side, embedded devices, specifically Electronic Control Units (ECUs), receive and process updates from the cloud. The vehicle domain includes specialized components that manage communication with cloud systems and coordinate update activities across multiple vehicle ECUs.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "OEM Backend Domain"
         OEM_Backend["Device Management System"]
@@ -78,7 +78,7 @@ Client access defines how different stakeholders interact with the OTA system. U
 
 Secure communication between the cloud and vehicle is fundamental to OTA system integrity. The architecture implements encryption and decryption mechanisms to protect data during transmission. The backend controls how software is transferred to the cloud and how update packages are delivered to target vehicles. The cloud infrastructure implements multiple cybersecurity mechanisms, including authentication and authorization processes to ensure that only authorized vehicles receive updates and that update packages remain intact and unmodified during transmission.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant OEM_Backend as OEM Backend
     participant Cloud_Infra as Cloud Infrastructure

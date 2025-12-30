@@ -22,7 +22,7 @@ OTA update systems provide a centralized, automated solution for large-scale sof
 
 The OTA update process begins with backend systems identifying target vehicles based on specific criteria such as ECU hardware versions, software configurations, or production batches. The system then packages the appropriate software updates and initiates distribution to the identified vehicles. Each vehicle receives the update package through its communication interfaces, validates the software integrity, and applies the update according to predefined schedules and conditions. This automated approach enables simultaneous updates across thousands of vehicles while maintaining traceability and control throughout the process.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     A["Backend Management System"] -- "Identify Target Vehicles" --> B["Vehicle Selection Engine"]
     B -- "Generate Update Package" --> C["Software Package Repository"]
@@ -39,7 +39,7 @@ The fundamental difference between manual and OTA update methodologies lies in t
 
 OTA systems, conversely, leverage network effects and automated processes to achieve near-constant scaling characteristics. The backend infrastructure can simultaneously manage update distribution to thousands of vehicles, with each vehicle handling its own update installation according to predefined parameters. This architectural approach transforms the update process from a labor-intensive operation to an automated, software-driven workflow.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph LR
     subgraph "Manual Update Process"
         M1["Technician Access"] --> M2["OBD Connection"]

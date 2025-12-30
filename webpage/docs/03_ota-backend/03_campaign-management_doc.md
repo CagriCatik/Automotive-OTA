@@ -8,7 +8,7 @@ The OTA Backend system serves as the central infrastructure for managing over-th
 
 The OTA Backend architecture establishes a clear separation of concerns between data ingestion, package management, device targeting, and campaign orchestration. The system begins with data export from the manufacturing End of Line process, where vehicle and ECU information flows into enterprise database systems. This foundational data supports three distinct management layers that work in concert to deliver updates to target vehicles.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Manufacturing["Manufacturing End of Line"] -- "Electronic Stamp Data" --> BackendDB["Backend Database System"]
     BackendDB -- "Vehicle & ECU Data" --> UpdateMgmt["Update Management"]
@@ -47,7 +47,7 @@ The campaign configuration process references the relevant Update Management ent
 
 The campaign management workflow demonstrates the systematic approach to update deployment, from initial configuration through final status reporting. This process ensures proper validation, targeting, and monitoring throughout the update lifecycle.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Campaign_Start["Campaign Creation"] -- "Select Update Package" --> Config1["Configure Update Reference"]
     Config1 -- "Select Device Targets" --> Config2["Configure Device Mapping"]

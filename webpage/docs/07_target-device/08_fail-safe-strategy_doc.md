@@ -8,7 +8,7 @@ Over-the-air updates inherently introduce risk into vehicle systems due to the p
 
 The fail-safe architecture centers around the Telematics Control Unit (TCU) as the primary coordinator for OTA operations. The TCU orchestrates the entire update process, from initial metadata reception through final status reporting. In a typical multi-ECU update scenario, the TCU communicates with various target ECUs such as an Infotainment system and a Battery Management System (BMS), which may have functional dependencies between them. The OEM backend infrastructure, comprising update management and device management systems, provides the necessary update files and metadata while maintaining campaign status and vehicle-level tracking.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Backend["OEM Backend"] -- "MQTT/HTTPS" --> TCU
     TCU -- "CAN/Ethernet" --> Infotainment
@@ -41,7 +41,7 @@ In an ideal update scenario, all target ECUs complete their update processes suc
 
 When an update failure occurs, the fail-safe mechanism must activate immediately to prevent system inconsistency. Consider a scenario where the infotainment ECU update completes successfully but the BMS update is interrupted due to a power drop or communication error. The BMS reports a failure status back to the TCU, which triggers the fail-safe response protocol. Because these ECUs are functionally dependent, the system cannot allow a mixed software state where one ECU runs version 1.1 while another remains at version 1.0.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     Start_Node["Update Initiated"] --> Validate["Validate Preconditions"]
     Validate --> Download["Download Update Files"]
@@ -85,7 +85,7 @@ The fundamental requirement of a robust fail-safe strategy is the preservation o
 
 Third, all failures must be traceable and diagnosable through comprehensive logging and reporting mechanisms. Fourth, the rollback and recovery process must be automated and immediate, minimizing the window of potential system inconsistency. Finally, the entire fail-safe mechanism must operate transparently to the vehicle user while maintaining full visibility for OEM monitoring and analysis.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant Backend as OEM Backend
     participant TCU as Telematics Control Unit

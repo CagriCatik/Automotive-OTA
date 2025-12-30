@@ -8,7 +8,7 @@ Vehicle state preconditions represent a fundamental component of any robust Over
 
 OTA updates can be systematically categorized into two distinct classifications based on their impact on vehicle operability: drivable updates and non-drivable updates. This classification determines the level of vehicle state validation required and the communication protocols necessary with the driver. The distinction between these categories is essential for establishing appropriate precondition checks and ensuring update safety throughout the process.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 flowchart TD
     A["Update Initiated"] --> B{"Update Type Classification"}
     B --> C["Drivable Update"]
@@ -39,7 +39,7 @@ The execution of non-drivable updates demands rigorous precondition enforcement 
 
 The evaluation of vehicle state preconditions involves multiple critical parameters that must be satisfied before update execution can commence. The primary precondition requires that the vehicle is not in running state. If the vehicle is started during a critical update phase, the update process must be immediately aborted or handled according to predefined severity protocols. In certain circumstances where safety warnings were explicitly acknowledged by the user, rollback functionality may not be available, necessitating alternative recovery procedures.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 stateDiagram-v2
     [*] --> Precondition_Check
     Precondition_Check --> Vehicle_Off: "Vehicle Not Running"
@@ -74,7 +74,7 @@ Clear and effective communication with the driver is essential throughout the OT
 
 The update scheduling, execution status, and failure outcomes must be continuously reported back to the OEM backend systems. This reporting enables comprehensive dashboard functionality that tracks the number of vehicles that have successfully updated, those currently in progress, and any that have encountered failure conditions. The bidirectional communication flow ensures that both the vehicle and OEM maintain awareness of update status throughout the entire process, enabling appropriate response actions when anomalies or failures occur.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 sequenceDiagram
     participant OEM_Backend
     participant Vehicle_System

@@ -24,7 +24,7 @@ The campaign management framework includes sophisticated dashboards that display
 
 The three core components of the OEM backend operate in a tightly integrated manner, with each component depending on and feeding information to the others. The OTA update process begins with update management registering a new software package that has been validated and approved for deployment. Once the software is registered, device management analyzes the package requirements and determines which ECUs, vehicle models, and variants are eligible to receive the update. This mapping process ensures compatibility and prevents deployment of incompatible software to vehicles.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "OEM Backend Components"
         UM["Update Management"]
@@ -59,7 +59,7 @@ The MQTT-based communication system ensures reliable and efficient message deliv
 
 The complete OTA update process follows a structured workflow that leverages all three backend components in sequence. The process begins when development teams complete software validation and upload the package through update management. The system then registers the software, catalogs all associated files and metadata, and makes it available for deployment.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     _1_Start["Software Development Complete"] --> _2_Validation
     _2_Validation["Software Validation"] --> _3_Upload
@@ -79,7 +79,7 @@ Device management then analyzes the software requirements and determines eligibl
 
 Campaign management encompasses a comprehensive set of operations for controlling update deployments. The system supports multiple concurrent campaigns, each operating independently while sharing common backend resources. Campaign operations include creating new campaigns based on available software packages and target devices, configuring deployment parameters such as rollout speed and geographic targeting, and executing the actual delivery of updates to vehicles.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     subgraph "Campaign Lifecycle"
         C1["Campaign Creation"]

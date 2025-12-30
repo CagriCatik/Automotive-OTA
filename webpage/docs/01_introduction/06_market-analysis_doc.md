@@ -10,7 +10,7 @@ The Telematics Control Unit serves as the central component responsible for conn
 
 The market position of TCUs is further reinforced by their integration with fleet management applications, which encompass vehicle financing, maintenance tracking, and asset monitoring. These applications rely heavily on OTA capabilities for efficient operation, contributing to the increasing adoption of TCUs across the automotive industry. Original Equipment Manufacturers (OEMs) implement TCU integration through different architectural approaches: some deploy the TCU as a standalone module, while others embed its functionality within other Electronic Control Units (ECUs). Although this embedded approach introduces additional architectural complexity, the market continues to experience accelerated growth, demonstrating the resilience and adaptability of TCU-based solutions.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 pie
     title "2022 OTA Market Share by Component"
     "TCU Segment" : 38
@@ -27,7 +27,7 @@ The Asia-Pacific region has emerged as the fastest-growing OTA market globally, 
 
 Other regions, including Latin America and various emerging markets, are demonstrating increasing demand for OTA capabilities. These regions, while currently representing smaller market shares, contribute to the overall global market growth through their adoption of connected vehicle technologies and OTA-enabled services.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph TD
     A["Global OTA Market 2022"] --> B["North America<br>37% Revenue Share"]
     A --> C["Europe<br>Substantial Share"]
@@ -51,7 +51,7 @@ Light commercial vehicles demonstrate significant OTA adoption, primarily driven
 
 The overall market trend indicates a clear trajectory toward OTA becoming a standard capability across all vehicle categories. This standardization reflects the growing recognition of OTA as a fundamental requirement for modern vehicle operation, rather than an optional or premium feature.
 
-```mermaid
+```kroki-mermaid {display-width=600px display-align=center}
 graph LR
     A["OTA Adoption by Vehicle Type"] --> B["Passenger Vehicles<br>High Penetration"]
     A --> C["Electric Vehicles<br>Very High Penetration"]

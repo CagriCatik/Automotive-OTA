@@ -138,8 +138,9 @@ simulator/README.md
 * Python 3.10+
 
 ```bash
+cd webpage
 pip install -r requirements-docs.txt
-mkdocs serve
+python -m mkdocs serve
 ```
 
 **Access**
