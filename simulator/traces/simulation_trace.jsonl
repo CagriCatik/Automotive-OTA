@@ -1,0 +1,26 @@
+{"timestamp": "2025-12-27T03:43:52.285355Z", "service": "backend", "event": "CAMPAIGN_STARTED", "metadata": {"campaign_id": "cam-1766807032"}}
+{"timestamp": "2025-12-27T03:43:52.383149Z", "service": "backend", "event": "MANIFEST_REGISTERED", "metadata": {"manifest_ref": "manifest-cam-1766807032", "targets": 2}}
+{"timestamp": "2025-12-27T03:43:54.387708Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "IDLE", "to": "NOTIFIED", "details": null}}
+{"timestamp": "2025-12-27T03:43:54.387246Z", "service": "backend", "event": "NOTIFICATION_PUBLISHED", "metadata": {"topic": "v1/vehicles/VIN_SIM_0001/ota/notify", "campaign_id": "cam-1766807032"}}
+{"timestamp": "2025-12-27T03:43:55.278949Z", "service": "control-plane", "event": "JOB_CREATED", "metadata": {"job_id": "job-9a5dd18f", "vehicle_id": "VIN_SIM_0001", "campaign_id": "cam-1766807032"}}
+{"timestamp": "2025-12-27T03:43:55.280909Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "NOTIFIED", "to": "CONFIRMING", "details": null}}
+{"timestamp": "2025-12-27T03:43:55.283742Z", "service": "control-plane", "event": "JOB_STATUS_UPDATE", "metadata": {"job_id": "job-9a5dd18f", "status": "CONFIRMING", "details": ""}}
+{"timestamp": "2025-12-27T03:43:56.287109Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "CONFIRMING", "to": "WAITING_FOR_APPROVAL", "details": null}}
+{"timestamp": "2025-12-27T03:43:56.289865Z", "service": "control-plane", "event": "JOB_STATUS_UPDATE", "metadata": {"job_id": "job-9a5dd18f", "status": "WAITING_FOR_APPROVAL", "details": ""}}
+{"timestamp": "2025-12-27T03:44:29.298125Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "WAITING_FOR_APPROVAL", "to": "DOWNLOADING", "details": null}}
+{"timestamp": "2025-12-27T03:44:29.302102Z", "service": "control-plane", "event": "JOB_STATUS_UPDATE", "metadata": {"job_id": "job-9a5dd18f", "status": "DOWNLOADING", "details": ""}}
+{"timestamp": "2025-12-27T03:44:30.304662Z", "service": "gateway", "event": "DOWNLOAD_STARTED", "metadata": {"campaign_id": "cam-1766807032"}}
+{"timestamp": "2025-12-27T03:44:30.310656Z", "service": "gateway", "event": "ARTIFACT_VERIFIED", "metadata": {"ecu_id": "engine", "size": 4096}}
+{"timestamp": "2025-12-27T03:44:30.315227Z", "service": "gateway", "event": "ARTIFACT_VERIFIED", "metadata": {"ecu_id": "adas", "size": 4096}}
+{"timestamp": "2025-12-27T03:44:30.316689Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "DOWNLOADING", "to": "STAGED", "details": null}}
+{"timestamp": "2025-12-27T03:44:30.318552Z", "service": "control-plane", "event": "JOB_STATUS_UPDATE", "metadata": {"job_id": "job-9a5dd18f", "status": "STAGED", "details": ""}}
+{"timestamp": "2025-12-27T03:44:31.320112Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "STAGED", "to": "INSTALLING", "details": null}}
+{"timestamp": "2025-12-27T03:44:31.322947Z", "service": "control-plane", "event": "JOB_STATUS_UPDATE", "metadata": {"job_id": "job-9a5dd18f", "status": "INSTALLING", "details": ""}}
+{"timestamp": "2025-12-27T03:44:31.382064Z", "service": "ecu-engine", "event": "FLASH_STARTED", "metadata": {"expected_size": 4096}}
+{"timestamp": "2025-12-27T03:44:33.639395Z", "service": "ecu-engine", "event": "FLASH_COMPLETED", "metadata": {"status": "success"}}
+{"timestamp": "2025-12-27T03:44:33.707409Z", "service": "ecu-adas", "event": "FLASH_STARTED", "metadata": {"expected_size": 4096}}
+{"timestamp": "2025-12-27T03:44:35.962531Z", "service": "ecu-adas", "event": "FLASH_COMPLETED", "metadata": {"status": "success"}}
+{"timestamp": "2025-12-27T03:44:35.974031Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "INSTALLING", "to": "VALIDATING", "details": null}}
+{"timestamp": "2025-12-27T03:44:35.976711Z", "service": "control-plane", "event": "JOB_STATUS_UPDATE", "metadata": {"job_id": "job-9a5dd18f", "status": "VALIDATING", "details": ""}}
+{"timestamp": "2025-12-27T03:44:35.979635Z", "service": "gateway", "event": "STATE_TRANSITION", "metadata": {"from": "VALIDATING", "to": "SUCCEEDED", "details": null}}
+{"timestamp": "2025-12-27T03:44:35.990848Z", "service": "control-plane", "event": "JOB_STATUS_UPDATE", "metadata": {"job_id": "job-9a5dd18f", "status": "SUCCEEDED", "details": ""}}

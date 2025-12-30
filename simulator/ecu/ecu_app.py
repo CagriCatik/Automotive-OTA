@@ -1,9 +1,11 @@
 import os, time, base64, hashlib, sys
 from cryptography.hazmat.primitives.asymmetric import ed25519
 from can_bus import CanRPC
+from trace_logger import TraceLogger
 
 # Configuration
-ECU_ID = os.getenv("ECU_ID") # "engine" or "adas"
+ECU_ID = os.getenv("ECU_ID", "unknown_ecu")
+TRACER = TraceLogger(f"ecu-{ECU_ID}")
 PUB_KEY_B64 = os.getenv("OTA_PUBLIC_KEY")
 
 # CAN IDs
@@ -51,6 +53,7 @@ def handle_rpc(method, params):
     if method == "enter_programming":
         params = params or {}
         state["mode"] = "PROGRAMMING"
+        TRACER.log("FLASH_STARTED", {"expected_size": params.get("expected_size")})
         state["buffer"] = bytearray()
         state["expected_size"] = params.get("expected_size")
         state["expected_sha256"] = params.get("expected_sha256")
@@ -104,6 +107,7 @@ def handle_rpc(method, params):
         # Swap slots
         slots["current"], slots["target"] = slots["target"], slots["current"]
         state["mode"] = "ACTIVATED"
+        TRACER.log("FLASH_COMPLETED", {"status": "success"})
         return success()
         
     elif method == "confirm":

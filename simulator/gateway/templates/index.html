@@ -4,236 +4,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Head Unit</title>
+    <title>SdV OS 2.0</title>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
     <style>
-        body {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .dashboard {
-            background-color: #1e293b;
-            border-radius: 16px;
-            padding: 2rem;
-            width: 600px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-            border: 1px solid #334155;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 1rem;
-        }
-
-        h1 {
-            margin: 0;
-            font-weight: 300;
-            letter-spacing: 1px;
-            color: #f8fafc;
-        }
-
-        .status-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #38bdf8;
-        }
-
-        .panel {
-            background: #0f172a;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #1e293b;
-        }
-
-        .progress-row {
-            margin-bottom: 1rem;
-        }
-
-        .label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        .bar-bg {
-            background: #334155;
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: #38bdf8;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .bar-fill.complete {
-            background: #4ade80;
-        }
-
-        #logs {
-            font-family: 'Consolas', monospace;
-            font-size: 0.85rem;
-            color: #4ade80;
-            height: 150px;
-            overflow-y: auto;
-            padding: 0.5rem;
-            background: #020617;
-            border: 1px solid #334155;
-            border-radius: 4px;
-        }
-
-        .log-entry {
-            margin-bottom: 4px;
-            opacity: 0.8;
-        }
-
-        .log-entry:last-child {
-            opacity: 1;
-            font-weight: bold;
-        }
-
-        button {
-            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-            color: white;
-            border: none;
-            padding: 12px 32px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.2s;
-        }
-
-        button:hover {
-            filter: brightness(1.1);
-        }
-
-        button:disabled {
-            background: #475569;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-        .hidden {
-            display: none;
+        .material-symbols-rounded {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
 </head>
 
 <body>
-    <div class="dashboard">
-        <header>
-            <div class="status-icon">🚗</div>
-            <h1>OTA Manager</h1>
-        </header>
 
-        <!-- Approval Section -->
-        <div id="approval_section">
-            <p style="text-align: center; color: #94a3b8;">
-                Update <strong>v2.0.1_SECURE</strong> is ready.<br>
-                Verifies Ed25519 signatures before installation.
-            </p>
-            <div style="margin-bottom: 1rem; text-align: center;">
-                <label style="color: #ef4444; font-size: 0.9rem; font-weight: bold; cursor: pointer;">
-                    <input type="checkbox" id="fail_check"> Simulate Bad Firmware (Test Rollback)
-                </label>
-            </div>
-            <button onclick="approve()" id="btn">Install Update</button>
+    <!-- Top Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="time" id="clock">12:00</span>
+            <span>|</span>
+            <span class="element"><span class="material-symbols-rounded"
+                    style="font-size: 1.1rem; vertical-align: middle;">thermostat</span> 72°F</span>
+        </div>
+        <div class="status-right">
+            <span class="material-symbols-rounded" style="font-size: 1.2rem;">signal_cellular_alt</span>
+            <span>Profile: Kyle</span>
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="main-stage">
+        <!-- Sidebar -->
+        <div class="dock">
+            <!-- Icons -->
+            <div class="app-icon active"><span class="material-symbols-rounded">map</span></div>
+            <div class="app-icon"><span class="material-symbols-rounded">music_note</span></div>
+            <div class="app-icon" onclick="openSimControls()"><span class="material-symbols-rounded">tune</span></div>
+            <div class="app-icon" onclick="openSimControls()"><span
+                    class="material-symbols-rounded">directions_car</span></div>
         </div>
 
-        <!-- Progress Section (Initially Hidden) -->
-        <div id="progress_section" class="hidden">
-            <div class="panel">
-                <div class="progress-row">
-                    <div class="label"><span>Engine ECU</span> <span id="engine_status">Waiting</span></div>
-                    <div class="bar-bg">
-                        <div class="bar-fill" id="engine_bar"></div>
-                    </div>
-                </div>
-                <div class="progress-row">
-                    <div class="label"><span>ADAS ECU</span> <span id="adas_status">Waiting</span></div>
-                    <div class="bar-bg">
-                        <div class="bar-fill" id="adas_bar"></div>
-                    </div>
-                </div>
-            </div>
+        <!-- Navigation (Mock) -->
+        <div class="nav-view"></div>
 
-            <div id="logs" class="panel">
-                <div class="log-entry">> System Ready.</div>
+        <!-- Widget Area -->
+        <div class="widget-col">
+            <div class="widget music-widget">
+                <div class="album-art"></div>
+                <div style="font-weight: 600;">Midnight City</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">M83</div>
+            </div>
+            <div class="widget">
+                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 10px;">TIRE PRESSURE</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>FL 34</span> <span>FR 34</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                    <span>RL 35</span> <span>RR 35</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        let polling = false;
+    <!-- TOAST NOTIFICATION -->
+    <div id="update_toast" class="toast" onclick="openOTA()">
+        <div class="toast-icon"><span class="material-symbols-rounded"
+                style="font-size: 1.2rem; color: white;">download</span></div>
+        <div>
+            <div style="font-weight: 600;">Software Update Available</div>
+            <div style="font-size: 0.8rem; opacity: 0.8;">Tap to install v2.0.1</div>
+        </div>
+    </div>
 
-        async function approve() {
-            const btn = document.getElementById('btn');
-            const fail = document.getElementById('fail_check').checked;
+    <!-- VEHICLE CONTROLS OVERLAY -->
+    <div id="sim_app" class="ota-overlay">
+        <div class="ota-card">
+            <div class="ota-header">
+                <span class="material-symbols-rounded"
+                    style="font-size: 3rem; margin-bottom: 20px; color: #10b981;">tune</span>
+            </div>
+            <div class="ota-title">Vehicle State Simulator</div>
+            <div class="ota-subtitle">Adjust simulated signals to test safety checks.</div>
 
-            btn.disabled = true;
-            btn.innerText = "Authenticating...";
+            <div class="sim-controls">
+                <div class="control-row">
+                    <span class="control-label">Battery SoC</span>
+                    <input type="range" id="sim_soc" min="0" max="100" value="50"
+                        oninput="updateSimVal('soc', this.value)">
+                    <span class="control-val" id="val_soc">50%</span>
+                </div>
+                <div class="control-row">
+                    <span class="control-label">Gear</span>
+                    <select id="sim_gear" onchange="pushSimState()">
+                        <option value="P">Park (P)</option>
+                        <option value="R">Reverse (R)</option>
+                        <option value="N">Neutral (N)</option>
+                        <option value="D">Drive (D)</option>
+                    </select>
+                </div>
+                <div class="control-row">
+                    <span class="control-label">Parking Brake</span>
+                    <button id="sim_brake" class="toggle-btn active" onclick="toggleSim('brake')">Engaged</button>
+                </div>
+                <div class="control-row">
+                    <span class="control-label">Ignition</span>
+                    <select id="sim_ign" onchange="pushSimState()">
+                        <option value="OFF">OFF</option>
+                        <option value="ACC">ACC</option>
+                        <option value="ON" selected>ON</option>
+                        <option value="RUN">RUN</option>
+                    </select>
+                </div>
+            </div>
 
-            await fetch('/api/approve', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ simulate_failure: fail })
-            });
+            <button class="ota-btn" onclick="closeSimControls()">Close</button>
+        </div>
+    </div>
 
-            document.getElementById('approval_section').classList.add('hidden');
-            document.getElementById('progress_section').classList.remove('hidden');
+    <!-- OTA APP OVERLAY -->
+    <div id="ota_app" class="ota-overlay">
+        <div class="ota-card">
+            <div class="ota-header">
+                <span class="material-symbols-rounded"
+                    style="font-size: 4rem; margin-bottom: 20px; color: #3b82f6;">directions_car</span>
+            </div>
 
-            polling = true;
-            pollProgress();
-        }
+            <div id="view_approval">
+                <div class="ota-title">Software Update v2.0.1</div>
+                <div class="ota-subtitle">Performance improvements & critical security fixes.</div>
 
-        async function pollProgress() {
-            if (!polling) return;
-            try {
-                const res = await fetch('/api/progress');
-                const data = await res.json();
+                <div class="release-notes">
+                    • <strong>Engine ECU:</strong> Optimized fuel injection mapping.<br>
+                    • <strong>ADAS ECU:</strong> Improved lane keeping latency.<br>
+                    • Verifies Ed25519 signatures before installation.<br>
+                    • Requires 5-10 minutes. Vehicle will be immobile.
+                </div>
 
-                updateBar('engine', data.progress.engine);
-                updateBar('adas', data.progress.adas);
-                updateLogs(data.logs);
+                <div style="margin-bottom: 2rem;">
+                    <label style="color: #f87171; cursor: pointer; font-size: 0.9rem;">
+                        <input type="checkbox" id="fail_check"> Simulate Installation Failure (Rollback Test)
+                    </label>
+                </div>
 
-                // Stop polling if both complete? (Simplified: just keep polling)
-            } catch (e) { console.error(e); }
-            setTimeout(pollProgress, 500);
-        }
+                <div style="display: flex; justify-content: center; gap: 16px;">
+                    <button class="ota-btn" style="background: #374151; color: white;"
+                        onclick="closeOTA()">Later</button>
+                    <button class="ota-btn" onclick="approve()">Install Now</button>
+                </div>
+            </div>
 
-        function updateBar(id, state) {
-            const bar = document.getElementById(id + '_bar');
-            const status = document.getElementById(id + '_status');
+            <div id="view_progress" class="hidden">
+                <div class="ota-title">Updating...</div>
+                <div class="ota-subtitle">Do not turn off your vehicle.</div>
 
-            bar.style.width = state.percent + '%';
-            status.innerText = `${state.status} (${state.percent}%)`;
+                <div class="progress-container">
+                    <div class="p-bar-labels"><span>Engine Control Unit</span><span id="label_engine">Pending</span>
+                    </div>
+                    <div class="p-track">
+                        <div id="bar_engine" class="p-fill"></div>
+                    </div>
 
-            if (state.percent === 100) bar.classList.add('complete');
-        }
+                    <div class="p-bar-labels"><span>ADAS Computer</span><span id="label_adas">Pending</span></div>
+                    <div class="p-track">
+                        <div id="bar_adas" class="p-fill"></div>
+                    </div>
+                </div>
 
-        function updateLogs(logs) {
-            const container = document.getElementById('logs');
-            container.innerHTML = logs.map(l => `<div class="log-entry">> ${l}</div>`).join('');
-            container.scrollTop = container.scrollHeight;
-        }
-    </script>
+                <div id="term_log" class="term-log">> Authenticating with Control Plane...</div>
+            </div>
+
+            <div id="view_success" class="hidden">
+                <div class="ota-title" style="color: var(--success);">Update Successful</div>
+                <div class="ota-subtitle">Your vehicle is now running v2.0.1.</div>
+                <div style="margin: 30px 0;"><span class="material-symbols-rounded"
+                        style="font-size: 6rem; color: var(--success);">check_circle</span></div>
+                <button class="ota-btn" onclick="rebootSystem()">Finish</button>
+            </div>
+
+            <div id="view_failed" class="hidden">
+                <div class="ota-title" style="color: var(--error);">Update Failed</div>
+                <div class="ota-subtitle">System safely rolled back to previous version.</div>
+                <div style="margin: 20px 0; color: #9ca3af;" id="fail_reason">Error during installation.</div>
+                <button class="ota-btn" onclick="rebootSystem()">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- External JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 
 </html>

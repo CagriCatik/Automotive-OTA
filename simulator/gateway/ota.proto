@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package ota;
+
+service OtaControl {
+  rpc CheckIn (CheckInRequest) returns (CheckInResponse);
+  rpc RegisterManifest (RegisterManifestRequest) returns (RegisterManifestResponse);
+  rpc UpdateJobStatus (UpdateJobStatusRequest) returns (UpdateJobStatusResponse);
+  rpc GetManifest (GetManifestRequest) returns (GetManifestResponse);
+  rpc ConfirmEmergencyStop (ConfirmEmergencyStopRequest) returns (ConfirmEmergencyStopResponse);
+  rpc CreateJob (CreateJobRequest) returns (CreateJobResponse);
+}
+
+message CheckInRequest {
+  string vehicle_id = 1;
+}
+
+message CheckInResponse {
+  bool ok = 1;
+}
+
+message RegisterManifestRequest {
+  string manifest_json = 1;      // Full JSON content
+  string signature = 2;          // Ed25519 signature
+  string manifest_ref = 3;       // Reference ID
+}
+
+message RegisterManifestResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message UpdateJobStatusRequest {
+  string job_id = 1;
+  string status = 2;
+  string details = 3;
+}
+
+message UpdateJobStatusResponse {
+  bool received = 1;
+}
+
+message GetManifestRequest {
+  string manifest_ref = 1;
+}
+
+message GetManifestResponse {
+  string manifest_json = 1;
+  string signature = 2;
+  bool found = 3;
+}
+
+message ConfirmEmergencyStopRequest {
+  string request_id = 1;
+  string vehicle_id = 2;
+  string status = 3; // e.g. "STOPPED"
+}
+
+message ConfirmEmergencyStopResponse {
+  bool acknowledged = 1;
+}
+
+message CreateJobRequest {
+  string campaign_id = 1;
+  string vehicle_id = 2;
+}
+
+message CreateJobResponse {
+  string job_id = 1;
+  bool created = 2;
+}

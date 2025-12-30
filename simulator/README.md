@@ -1,151 +1,178 @@
-# Automotive OTA RPC Simulation 🚗⚡
+# Automotive OTA Simulation Platform
 
-> **A high-fidelity simulation of a secure, resilient, and efficient automotive Over-The-Air (OTA) software update system.**
+> A high-fidelity, production-grade simulation of an Over-The-Air (OTA) software update system for Software Defined Vehicles (SDV).
 
-This project simulates the complete lifecycle of a firmware update in a Software Defined Vehicle (SDV). It moves beyond simple HTTP requests to implement realistic automotive patterns, including **A/B Dual-Bank Updates**, **Binary Delta Compression**, and **Simulated CAN Bus** communication.
+## Overview
 
-## 🌟 Key Features
+This project simulates a complete end-to-end OTA architecture, mirroring the complexity of real-world automotive systems. It is designed to demonstrate:
 
-### 1. 🛡️ Security & Safety
+* **Separation of Concerns**: Distinct Control Plane, Data Plane, and Event Plane.
+* **Automotive Constraints**: Simulation of low-speed CAN bus networks, binary delta patching, and resource-constrained ECUs.
+* **Safety & Security**: Implementation of The Update Framework (TUF) principles, including manifest signing, artifact verification, and A/B partition rollback.
 
-- **Ed25519 Signatures**: All firmware is digitally signed by the Cloud Backend. ECUs independently verify signatures before flashing.
-- **Driver-in-the-Look**: Updates require explicit approval via the **Head Unit UI**, preventing unexpected downtime.
-- **State Enforcement**: ECUs enforce a strict state machine (`IDLE` -> `PROGRAMMING` -> `VERIFIED` -> `ACTIVATED`).
+## 🏗️ System Architecture
 
-### 2. 🔄 Resilience (A/B Rollback)
-
-- **Dual-Slot Partitioning**: ECUs maintain Active (Slot A) and Inactive (Slot B) partitions.
-- **Automatic Rollback**: If the new firmware causes a boot failure (simulated via Fault Injection), the ECU automatically reverts to the previous working slot.
-
-### 3. 📉 Efficiency (Delta Updates)
-
-- **Binary Diffing**: Uses `bsdiff4` to generate tiny patches between versions (e.g., 4KB patch for a 1MB file).
-- **Gateway Reassembly**: The Vehicle Gateway buffers the patch, reconstructs the full binary using a cached base image, and then streams the full OS to the ECU.
-
-### 4. 🚌 Realistic Transport (CAN Bus)
-
-- **Virtual CAN**: Replaces internal HTTP calls with **UDP Multicast**, simulating a real Controller Area Network.
-- **ISO-TP Lite**: Implements fragmentation and reassembly to transport large firmware blobs over small CAN frames.
-
----
-
-## 🏗️ Architecture Matrix
-
-| Component              | Role                                                 | Tech Stack               | Transport              |
-| :--------------------- | :--------------------------------------------------- | :----------------------- | :--------------------- |
-| **Backend**      | Cloud Orchestrator, Key Management, Delta Generation | Python, Ed25519, bsdiff4 | HTTP (to Gateway)      |
-| **Gateway**      | Head Unit UI, Telemetry, Protocol Bridge (HTTP->CAN) | Flask, Python-CAN        | HTTP (WAN) / CAN (LAN) |
-| **ECU (Engine)** | target Device, A/B Slots, Signature Verification     | Python, Can-Bus Listener | CAN Bus (UDP)          |
-| **ECU (ADAS)**   | Target Device, A/B Slots, Signature Verification     | Python, Can-Bus Listener | CAN Bus (UDP)          |
-
-### System Diagram
+The system is divided into two primary contexts: the **Cloud Infrastructure** and the **Vehicle Edge**.
 
 ```mermaid
 graph TD
-    subgraph Cloud
-        B["Backend<br/>(Orchestrator)"]
-        K[("Ed25519 Keys")]
-        B --- K
+    subgraph "Cloud Infrastructure"
+        BE[Backend Orchestrator]
+        CP["Control Plane (gRPC)"]
+        AS["Artifact Server (HTTP)"]
+        MQ[MQTT Broker]
+  
+        BE -->|Publish Campaign| CP
+        BE -->|Upload Artifacts| AS
+        BE -->|Notify| MQ
     end
 
-    subgraph "Vehicle Network (Simulated CAN)"
-        G[Gateway / Head Unit]
-      
-        subgraph "Driver Interface"
-            UI[("Dashboard<br/>localhost:8080")]
+    subgraph "Vehicle Edge"
+        GW[Gateway / OTA Agent]
+        HMI[Head Unit UI]
+  
+        subgraph "CAN Bus Network"
+            ECU1[ECU: Engine]
+            ECU2[ECU: ADAS]
         end
-      
-        E1["ECU: Engine<br/>(ID: 0x100)"]
-        E2["ECU: ADAS<br/>(ID: 0x200)"]
-      
-        G <==>|"UDP Multicast<br/>(Can Bus)"| E1
-        G <==>|"UDP Multicast<br/>(Can Bus)"| E2
+  
+        GW -->|Poll/Job| CP
+        GW -->|Download| AS
+        MQ -.->|Wake Up| GW
+  
+        GW -->|"Diagnostics (UDS)"| ECU1
+        GW -->|"Diagnostics (UDS)"| ECU2
+        HMI -- User Approval --> GW
     end
 
-    B == "HTTP/JSON<br/>(Signed Patches)" ==> G
-    G --- UI
+    style BE fill:#e1f5fe,stroke:#01579b
+    style CP fill:#e1f5fe,stroke:#01579b
+    style AS fill:#e1f5fe,stroke:#01579b
+    style GW fill:#fff3e0,stroke:#e65100
+    style ECU1 fill:#e8f5e9,stroke:#2e7d32
+    style ECU2 fill:#e8f5e9,stroke:#2e7d32
 
-    style B fill:#f9f,stroke:#333
-    style G fill:#bbf,stroke:#333
-    style E1 fill:#bfb,stroke:#333
-    style E2 fill:#bfb,stroke:#333
 ```
+
+### Component Deep Dive
+
+| Component                 | Tech Stack    | Responsibility                                                                                                                           |
+| :------------------------ | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| **Backend**         | Python        | Orchestrates campaigns, generates `bsdiff4` binary deltas, signs manifests using Ed25519 keys.                                         |
+| **Control Plane**   | gRPC (Python) | The authoritative source of truth. Handles job creation, state tracking, and policy enforcement (e.g., "Is vehicle allowed to update?"). |
+| **Gateway**         | Python, Flask | The Master OTA Agent. It bridges the internet (HTTP/gRPC) and the internal vehicle network (CAN). Manages the update state machine.      |
+| **Artifact Server** | HTTP          | A simple CDN simulation hosting encrypted/signed firmware binaries and delta patches.                                                    |
+| **ECUs**            | Python        | Simulated target devices with Dual-Bank (A/B) storage. They receive binary streams over virtual CAN and simulate flashing/booting.       |
+
+---
+
+## 🔄 OTA Workflow
+
+The following sequence diagram illustrates the "Happy Path" of a successful firmware update.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant BE as Backend
+    participant CP as Control Plane
+    participant MQ as MQTT Broker
+    participant GW as Gateway
+    participant ECU as Target ECU
+
+    Note over BE, CP: 1. Campaign Started
+    BE->>CP: Register Manifest & Campaign
+    BE->>MQ: Publish "Update Available"
+  
+    Note over GW: 2. Notification
+    MQ-->>GW: Wake Up / Notify
+    GW->>CP: Create Job (CheckIn)
+    CP-->>GW: Job Created (ID: job-123)
+  
+    Note over GW: 3. Confirmation
+    GW->>CP: Get Manifest
+    GW->>GW: Verify Ed25519 Signature
+    GW->>CP: Update Status: WAITING_FOR_APPROVAL
+  
+    Note over GW: 4. User Consent
+    GW->>GW: Wait for HMI Approval
+  
+    Note over GW: 5. Download
+    GW->>CP: Update Status: DOWNLOADING
+    GW->>BE: Download Artifact (HTTP)
+    GW->>GW: Verify SHA256 Hash
+  
+    Note over GW, ECU: 6. Installation (CAN Bus)
+    GW->>CP: Update Status: INSTALLING
+    GW->>ECU: UDS Request Download
+    GW->>ECU: Stream Binary Data
+    ECU-->>GW: Transfer Complete
+  
+    Note over ECU: 7. Validation
+    ECU->>ECU: Verify Signature
+    ECU->>ECU: Switch Active Partition (A->B)
+    ECU-->>GW: Reboot Success
+  
+    Note over GW: 8. Completion
+    GW->>CP: Job Succeeded
+```
+
+---
+
+## 🛡️ Security & Resilience
+
+### Trust Chain
+
+1. **Root of Trust**: The Backend holds the private signing keys.
+2. **Manifest Signing**: Every update campaign generates a Manifest containing hashes of all artifacts, signed with the Backend's private key.
+3. **Gateway Verification**: The Gateway has the public key pinned. It validates the Manifest signature before initiating *any* downloads.
+4. **Artifact Integrity**: Downloaded files are hashed and compared against the verified Manifest.
+
+### A/B Partitioning & Rollback
+
+To prevent "bricking" vehicles, ECUs implement an A/B banking strategy:
+
+* **Slot A**: Current Active Firmware.
+* **Slot B**: Update Target.
+* **Rollback**: If the simulated new firmware fails to "boot" (simulated via chaos testing flags), the ECU watchdog automatically swaps back to Slot A and reports failure.
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Launch the Simulation
+### Prerequisites
 
-Everything runs in Docker containers.
+* docker
+* docker compose
 
-```bash
-docker compose up --build
-```
+### Running the Simulation
 
-### 2. Access the Head Unit
+1. **Start Services**:
+   ```bash
+   docker compose up --build
+   ```
+2. **Access Dashboard**:
+   Open [http://localhost:8080](http://localhost:8080) to view the Vehicle HMI.
+   * Observe the "Update Available" notification.
+   * Click "Install Now" to approve.
+3. **Monitor Progress**:
+   The Dashboard will show real-time progress as the Gateway downloads artifacts and streams them to the ECUs.
 
-Open your browser to the **Head Unit Dashboard**:
-👉 **[http://localhost:8080](http://localhost:8080)**
+### Directory Structure
 
-You will see:
+* `backend/`: Cloud services (Orchestrator, Signer).
+* `control-plane/`: gRPC Server definition and implementation.
+* `gateway/`: Vehicle-side logic (OTA Agent, HMI, CAN Bridge).
+* `ecu/`: Simulated hardware targets.
+* `traces/`: Shared volume for simulation logs (jsonl).
+* `ota.proto`: Unified gRPC protocol definition.
 
-- **Vehicle Status**: Current firmware versions.
-- **Update Available**: Notification from the Cloud.
+## 🐛 Troubleshooting
 
-### 3. Trigger the Update
+**"Not in waiting state" Error**
 
-1. (Optional) Check **"Simulate Bad Firmware"** to test the Rollback mechanism.
-2. Click **"Install Now"**.
+* **Cause**: The Gateway failed to create a Job in the Control Plane, often due to a protocol mismatch.
+* **Fix**: Ensure `ota.proto` is synchronized across all services and rebuild using `docker compose up --build`.
 
-### 4. Observe the Flow
+**Logs**
 
-Watch the **Activity Log** in the Dashboard or the terminal:
-
-1. **Approval**: Backend receives authorization.
-2. **Delta Patch**: Cloud sends a small Patch to Gateway.
-3. **Reconstruction**: Gateway logs "Patch Applied!".
-4. **CAN Flash**: Gateway streams frames ("CAN TX -> Engine").
-5. **Completion**: ECUs verify signature and switch slots.
-
----
-
-## 🧪 Testing & Verification
-
-### Run End-to-End Test
-
-We provide a script to automate the driver interaction and verify logs:
-
-```bash
-python test_ui.py
-```
-
-### Fault Injection (Rollback)
-
-To test resilience:
-
-1. Enable **"Simulate Bad Firmware"** in the UI.
-2. Approve the update.
-3. Observe logs:
-   - ECU: `CRITICAL: Firmware integrity check failed!`
-   - ECU: `Boot loop detected. Rolled back.`
-   - Backend: `FAILED: Boot loop detected`.
-
----
-
-## 📂 Project Structure
-
-- `/backend`: Cloud orchestrator logic. Generates keys, creates patches, manages campaigns.
-- `/gateway`: The brain of the vehicle. Bridges HTTP to CAN, handles UI, buffers patches.
-- `/ecu`: The targets. Pure Python scripts running CAN listeners with Ed25519 verification and A/B slots.
-- `docker-compose.yml`: Defines the network and secrets.
-
----
-
-## 🔧 Technical Details
-
-- **CAN Simulation**: Uses `python-can` with `udp_multicast` interface. This allows containers to "broadcast" frames to each other without a physical CAN adapter.
-- **Fragmentation**: Since CAN frames are small (even simulated), we implemented a basic protocol to split large JSON payloads into chunks, similar to ISO-TP.
-- **Delta Algorithm**: `bsdiff4` is used. We simulate a "Version 1" cache on the Gateway so it can apply the patch to known good firmware before flashing "Version 2".
-
-Source course: [Udemy - Automotive Over-the-Air Update (OTA)](https://www.udemy.com/course/automotive-over-the-air-update-ota/learn/lecture/36675604#overview)
+* Streaming structure logs are available in `traces/simulation_trace.jsonl`.

@@ -1,60 +1,177 @@
-# Automotive OTA Update
+<h1 align="center">Automotive OTA</h1>
 
-This repository serves as a comprehensive resource for understanding, simulating, and implementing secure Firmware-Over-The-Air (FOTA) systems for Software Defined Vehicles (SDV).
+<p align="center">
+  <img alt="Status" src="https://img.shields.io/badge/status-active-success" />
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-blue" />
+  <img alt="Python" src="https://img.shields.io/badge/python-3.10%2B-blue" />
+  <img alt="Docker" src="https://img.shields.io/badge/docker-required-2496ED" />
+  <img alt="SDV" src="https://img.shields.io/badge/domain-Software%20Defined%20Vehicle-orange" />
+  <img alt="Security" src="https://img.shields.io/badge/security-Uptane%20%7C%20Ed25519-critical" />
+  <img alt="MkDocs" src="https://img.shields.io/badge/docs-MkDocs-526CFE" />
+  <img alt="PDF" src="https://img.shields.io/badge/output-PDF-informational" />
+  <img alt="GitHub Actions" src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF" />
+  <img alt="GitHub Workflow" src="https://img.shields.io/badge/workflows-enabled-brightgreen" />
+  <img alt="GitHub Pages" src="https://img.shields.io/badge/deploy-GitHub%20Pages-222222" />
+</p>
 
-It combines a **high-fidelity technical simulation** with **extensive educational documentation**.
+<p align="center">
+A high-fidelity Over-The-Air simulation and knowledge base for Software Defined Vehicles.
+</p>
 
-## Project Structure
+This repository combines:
 
-This project is divided into two main components:
+- A **working OTA system prototype** that models real-world automotive update flows.
+- A **deep technical documentation site** covering architecture, security, and regulation.
 
-- **[`simulator/`](simulator/)**: A working prototype of an OTA system.
-    - **Features**: A/B Dual-Bank updates, Delta compression (`bsdiff`), Simulated CAN Bus (UDP Multicast), Ed25519 Security, and a Head Unit UI.
-    - **Tech Stack**: Python, Flask, Docker, Python-CAN.
-- **[`webpage/`](webpage/)**: The source code for the project's documentation website.
-    - **Content**: Covers OTA fundamentals, Vehicle Architecture, Backend/Cloud infrastructure, Security (Uptane/Theupdateframework), and Regulatory compliance (UN R155/R156).
-    - **Tech Stack**: MkDocs, Material for MkDocs.
+The goal is precision over abstraction: this project favors realistic constraints, explicit tradeoffs, and standards-aligned design.
+
+---
+
+## What This Project Is (and Is Not)
+
+**This is**:
+
+- A realistic OTA update simulation inspired by production automotive systems.
+- A reference implementation for A/B updates, delta delivery, and cryptographic verification.
+- A structured learning resource for OTA, SDV architecture, and compliance.
+
+**This is not**:
+
+- A production-ready OTA backend.
+- A vendor-specific implementation.
+- A simplified demo that ignores safety or security edge cases.
+
+---
+
+## Repository Structure
+
+```bash
+.
+├── simulator/        # Executable OTA system simulation
+│   ├── backend       # OTA server and campaign logic
+│   ├── vehicle       # ECU, gateway, and update agent simulation
+│   └── ui            # Head Unit dashboard
+│
+├── webpage/          # Documentation website source
+│   ├── docs          # Markdown-based technical content
+│   └── mkdocs.yml    # Site configuration
+│
+└── README.md
+
+```
+
+### Simulator
+
+A containerized OTA system prototype.
+
+**Core features**
+
+- A/B dual-bank firmware updates
+- Delta compression using `bsdiff`
+- Cryptographic signing and verification (Ed25519)
+- Simulated CAN bus via UDP multicast
+- Campaign-based update orchestration
+- Head Unit dashboard for observability and control
+
+**Technology**
+
+- Python, Flask
+- Docker / Docker Compose
+- python-can
+- Cryptography libraries
+
+## Webpage
+
+A full documentation site explaining the theory behind the simulation.
+
+**Coverage**
+
+- OTA fundamentals (SOTA vs FOTA)
+- Vehicle and ECU architecture
+- OTA backend and cloud design
+- Update protocols (UDS, MQTT, HTTP, CAN)
+- Security models (Uptane, TUF, threat analysis)
+- Regulatory compliance (UN R155, UN R156)
+
+**Technology**
+
+- MkDocs
+- Material for MkDocs
 
 ---
 
 ## Getting Started
 
-### 1. Running the Simulation
-Experience the update process yourself using the Docker-based simulation.
+### Run the OTA Simulation
 
-**Prerequisites**: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+**Requirements**
+
+- Docker Desktop
 
 ```bash
 cd simulator
 docker compose up --build
 ```
 
-- **Dashboard**: Open [http://localhost:8080](http://localhost:8080) to control the vehicle and trigger updates.
-- **Details**: See [`simulator/README.md`](simulator/README.md) for deeper architectural details and testing guides.
+**Access**
 
-### 2. Viewing the Documentation
-To view the full theoretical documentation locally:
+* OTA Dashboard: [http://localhost:8080](http://localhost:8080)
 
-**Prerequisites**: Python 3.x
+From the dashboard you can:
 
-```bash
-# Install dependencies
-pip install -r requirements-docs.txt
+* Inspect vehicle state
+* Trigger firmware campaigns
+* Observe update phases and failures
 
-# Serve the documentation site
-mkdocs serve
+For architecture details, failure modes, and testing scenarios, see:
+
 ```
-
-- **Access**: Open [http://localhost:8000](http://localhost:8000) to browse the documentation.
+simulator/README.md
+```
 
 ---
 
-## Documentation Overview
+### View the Documentation Locally
 
-The documentation (in `webpage/`) is structured to guide you from basics to advanced topics:
+**Requirements**
 
-- **Fundamentals**: SOTA vs FOTA, Market Analysis.
-- **Architecture**: Vehicle State, ECUs, Gateways.
-- **Backend**: Cloud Providers, Campaign Management.
-- **Protocols**: UDS, MQTT, HTTP, CAN.
-- **Security**: Threat Analysis, Defense Layers, Compliance.
+* Python 3.10+
+
+```bash
+pip install -r requirements-docs.txt
+mkdocs serve
+```
+
+**Access**
+
+* Documentation site: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## Design Principles
+
+* **Safety-first updates**: No in-place flashing, always recoverable.
+* **Explicit trust chains**: No implicit security assumptions.
+* **Standards-aligned**: Uptane, TUF, UDS, and ISO concepts where applicable.
+* **Observable systems**: Update state is inspectable at every step.
+* **Educational clarity**: Every abstraction exists for a reason.
+
+---
+
+## Regulatory Context
+
+The system and documentation explicitly reference:
+
+* UN Regulation No. 155 (Cybersecurity)
+* UN Regulation No. 156 (OTA Updates)
+
+These are treated as engineering constraints, not paperwork.
+
+---
+
+## Intended Audience
+
+* Automotive software engineers
+* Embedded and backend developers entering SDV
+* Security engineers studying OTA threat models
+* Technical leads evaluating OTA architecture tradeoffs

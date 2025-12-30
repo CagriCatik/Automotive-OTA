@@ -4,7 +4,13 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY gateway_app.py .
-COPY can_bus.py .
+COPY *.py .
 COPY templates ./templates
+COPY static ./static
+COPY ota.proto .
+COPY trace_logger.py .
+
+# Build protos
+RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. ota.proto
+
 CMD ["python", "gateway_app.py"]

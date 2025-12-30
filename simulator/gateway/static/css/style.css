@@ -1,0 +1,363 @@
+:root {
+    --bg-color: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent: #3b82f6;
+    --success: #10b981;
+    --error: #ef4444;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 20%);
+}
+
+/* --- Status Bar --- */
+.status-bar {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 100;
+}
+
+.status-left,
+.status-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.temp {
+    font-weight: 600;
+}
+
+.time {
+    font-weight: 600;
+}
+
+/* --- Main Content (Simulated Map/Apps) --- */
+.main-stage {
+    flex: 1;
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 1fr 350px;
+    /* Sidebar | Map | Widget */
+    gap: 20px;
+    padding: 20px;
+}
+
+.dock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.app-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.app-icon:hover,
+.app-icon.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.nav-view {
+    background: #1e1e1e url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/OpenStreetMap_Logo_2011.svg/1024px-OpenStreetMap_Logo_2011.svg.png') no-repeat center;
+    background-size: cover;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    opacity: 0.6;
+    /* Simulating dark mode map */
+    filter: grayscale(80%) invert(90%);
+}
+
+.widget-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.widget {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 20px;
+    flex: 1;
+}
+
+.music-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.album-art {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(45deg, #FF512F, #DD2476);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 20px rgba(221, 36, 118, 0.3);
+}
+
+/* --- Notification Toast --- */
+.toast {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid #3b82f6;
+    padding: 16px 24px;
+    border-radius: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 500;
+    cursor: pointer;
+}
+
+.toast.visible {
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon {
+    background: #3b82f6;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- OTA Full Screen Overlay --- */
+.ota-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(25px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.ota-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.ota-card {
+    width: 600px;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.ota-header img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.ota-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.ota-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    font-weight: 300;
+}
+
+.release-notes {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    font-size: 0.9rem;
+    color: #d1d5db;
+}
+
+/* --- Simulator Controls --- */
+.sim-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.control-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.control-label {
+    font-weight: 500;
+}
+
+.control-val {
+    font-family: monospace;
+    color: var(--accent);
+}
+
+input[type=range] {
+    width: 60%;
+    accent-color: var(--accent);
+}
+
+select,
+button.toggle-btn {
+    background: #374151;
+    color: white;
+    border: 1px solid #4b5563;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+button.toggle-btn.active {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.warning-box {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid var(--error);
+    color: #fca5a5;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.warning-box.visible {
+    display: block;
+}
+
+.progress-container {
+    margin: 30px 0;
+}
+
+.p-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+
+.p-track {
+    height: 6px;
+    background: #374151;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.p-fill {
+    height: 100%;
+    width: 0%;
+    background: #3b82f6;
+    transition: width 0.3s;
+    box-shadow: 0 0 10px #3b82f6;
+}
+
+.p-fill.success {
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981;
+}
+
+.ota-btn {
+    background: var(--text-primary);
+    color: black;
+    border: none;
+    padding: 16px 48px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.ota-btn:hover {
+    transform: scale(1.05);
+}
+
+.ota-btn:active {
+    transform: scale(0.95);
+}
+
+.term-log {
+    font-family: monospace;
+    text-align: left;
+    color: #6ee7b7;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 20px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
