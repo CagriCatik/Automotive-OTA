@@ -1,0 +1,1595 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Cagri Catik">
+      
+      
+      
+        <link rel="prev" href="../08_level4_doc/">
+      
+      
+        <link rel="next" href="../../03_ota-backend/01_oem-backend_doc/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.35">
+    
+    
+      
+        <title>Level 5 - Over-the-Air Update</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#software-defined-vehicle-level-5" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Over-the-Air Update" class="md-header__button md-logo" aria-label="Over-the-Air Update" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Over-the-Air Update
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Level 5
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01_introduction/01_what-is-ota_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03_ota-backend/01_oem-backend_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Backend & Communication
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Vehicle Systems
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10_possible-attacks/01_intro_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04_user-experience/01_hmi_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Operations & UX
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../13_questions/01_intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Over-the-Air Update" class="md-nav__button md-logo" aria-label="Over-the-Air Update" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Over-the-Air Update
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01_introduction/01_what-is-ota_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    OTA Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            OTA Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vehicle State
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_ota-architecture/02_architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_ota-architecture/03_vehicle_architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vehicle Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    SDV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            SDV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_intro_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_change-in-ee-architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change in EE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_sdv_high_level_architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High Level Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_market-players_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Market Players
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_level1_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_level2_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_level3_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_level4_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Level 5
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Level 5
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-and-concept-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction and Concept Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Platform Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-application-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Application Ecosystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#over-the-air-update-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Over-the-Air Update Infrastructure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-framework-and-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Framework and Isolation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oem-governance-and-platform-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      OEM Governance and Platform Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-integration-and-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Integration and Connectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-requirements-and-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements and Challenges
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../03_ota-backend/01_oem-backend_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Backend & Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../06_tcu/01_tcu-architecture_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Vehicle Systems
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../10_possible-attacks/01_intro_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations & UX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../13_questions/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-and-concept-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction and Concept Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Platform Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-application-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Application Ecosystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#over-the-air-update-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Over-the-Air Update Infrastructure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-framework-and-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Framework and Isolation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oem-governance-and-platform-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      OEM Governance and Platform Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-integration-and-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Integration and Connectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-requirements-and-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Requirements and Challenges
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="software-defined-vehicle-level-5">Software Defined Vehicle Level 5</h1>
+<h2 id="introduction-and-concept-overview">Introduction and Concept Overview</h2>
+<p>Software Defined Vehicle Level 5 represents the pinnacle of vehicle software maturity, transforming the automobile from a closed, hardware-centric system into a fully programmable, autonomous platform. At this level, the vehicle operates as a sophisticated computing environment where over-the-air updates serve not merely as a maintenance mechanism but as the primary channel for complete functional transformation throughout the vehicle's operational lifetime. The paradigm shift at Level 5 is characterized by the convergence of full autonomous driving capabilities with an open, yet strictly governed, third-party application ecosystem that fundamentally alters the relationship between OEMs, developers, and end-users.</p>
+<h2 id="core-platform-architecture">Core Platform Architecture</h2>
+<p>The architectural foundation of Software Defined Vehicle Level 5 is built upon a centralized high-performance computing platform that serves as the vehicle's digital brain. This platform runs a mature automotive operating system specifically engineered for safety-critical applications and real-time performance requirements. The operating system manages system resources through a sophisticated hypervisor layer that provides strong isolation between different functional domains. The hypervisor enables concurrent execution of safety-critical autonomous driving functions, OEM-controlled services, and third-party applications within separate, secure execution environments.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNpdkUFuwjAQRfc9xcj7XKFSSEihkIIK6sbqwjUTsHA80cROlZ6-jgGpqbfz_Pz_-Myqu8CxfIJ4cikKdJ6VNT94goLaLnjjzrC3yjfErfiELHuGhRR58NSSNwPCrkNWCTuMvccIJdkioYUUqzECg-mJYatG5Pu8SPNSioNq0I9ZwcYbrSxUwWlvyPUzcCnFblnHTIxwmHwa50AlxfFi-JTtFfsR8q6zUfdXVCbu5Rbexfihh5LNkKJ7pa8zbiXFB16MthgfjUshe-_30C0TtpbisR3I9-v58DW2Qx1isxEqVi1-E19nxEaKd-wpsEaolVNnbOMP3JEqIVspavoydpL8a34DainWriGvjJsuT9XnwFvMyHQKca3DZDkS2Yn4BWiemQ4=?" /></p>
+<p>The autonomous driving stack represents the most safety-critical component of the Level 5 architecture. This stack encompasses perception systems that process sensor data from cameras, lidar, radar, and other inputs to create a comprehensive understanding of the vehicle's environment. The planning module utilizes this environmental model to make driving decisions, while the control module translates these decisions into precise vehicle actuation commands. These autonomous driving functions are continuously refined through OTA updates that improve algorithms, add new capabilities, and enhance safety performance without requiring physical vehicle modifications.</p>
+<h2 id="open-application-ecosystem">Open Application Ecosystem</h2>
+<p>A defining characteristic of Software Defined Vehicle Level 5 is the establishment of an open application ecosystem that transforms the vehicle into a programmable platform. Unlike traditional vehicles where functionality is determined solely by the OEM, Level 5 vehicles enable third-party developers to create, deploy, and operate applications directly within the vehicle environment. This ecosystem spans multiple domains including mobility services, insurance applications, fleet optimization tools, infotainment systems, productivity applications, and data-driven services that leverage the vehicle's unique capabilities and data streams.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNpN0EtqwzAQANB9TzFo0Z17hIJ_SVMSEuKQjchikCaxqCKbsWzw7atKKq1WgnnzfTCOPezPLxBeKcWlN6yLE7JfoaGF7DAST-IGRfEOlRTlOFqj0JvB_caf5Ly4xQJVZLUUx_YAV7RGJ_kKNbE395yZdR11k_QBHT5IQ2gAnR-YMmoiaqXoSM1Moak1C_EKi0E4XsrM2sg2UlypN8oSnGfnzZOgdYvhwf0bchPpNuxy2kGpFE0T7HElzvFtjH_8lWrQY1ihI15M0Jnt0ty1HWYNFaovcjrfqUkgTR7_n1JsSBOjDyumlJ8bu3zbtwi_ARy4clc=?" /></p>
+<p>The OEM provides the foundational platform elements including the core operating system, runtime environment, application programming interfaces, security framework, and certification processes. Third-party applications are distributed through OEM-managed platforms that function similarly to mobile application stores, but with significantly more stringent validation requirements. Application delivery occurs primarily through the OEM cloud infrastructure, though tightly controlled federated third-party cloud integrations may be permitted when they maintain interoperability with OEM backend systems.</p>
+<h2 id="over-the-air-update-infrastructure">Over-the-Air Update Infrastructure</h2>
+<p>The OTA mechanism at Level 5 serves as the backbone of continuous vehicle evolution and must be engineered as a security-critical system. The update infrastructure manages the entire lifecycle of software components, from initial development through deployment, installation, verification, and rollback if necessary. The system supports differential updates to minimize bandwidth usage and enables atomic updates that ensure either complete success or no change to maintain system integrity. The OTA process incorporates sophisticated version management, dependency resolution, and compatibility checking to prevent conflicts between different software components.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp1kT1uwzAMhXefglO3XiBDgMLJkKFoEafeWZl2icqSKtEBcvvSSuw0cepFf98jH58T_QzkDG0Yu4h9AfoFjMKGAzqBDR0BE7xtX8ctWR96crLASuuHZgLzYYHU9MXG0ghN23eL0vq47PoSwsjpYtmgsHewH5xwT0Vm1crzep37rOAjWI-NLg2K1kTzjR1lLANXsEbLmXmCijt3g14sXeH9GExSK0dki5_q9twg3VS-yFZwiOhSSzFXpsnNXemZrilye4IynoJ4zT3ofVaiDPFf1c4lQWuBHeyS1-y0z9YdOXo3_5QHMk1uGn0M8qBTpTtWg15pqBrkCcTPWY-QPv0tVnrXcuyhGoyhlNrBXnQPHMxJBh9lcn82UYlOmopfEG3WHQ==?" /></p>
+<p>The OTA system maintains strict performance guarantees to ensure that updates, including those for third-party applications, cannot degrade vehicle behavior or safety-critical functions. This involves sophisticated resource management, quality of service enforcement, and real-time monitoring capabilities. The update process is designed to be transparent to users, occurring seamlessly in the background without disrupting vehicle operation or user experience. The vehicle remains continuously connected to enable timely delivery of security patches, feature updates, and new application deployments.</p>
+<h2 id="security-framework-and-isolation">Security Framework and Isolation</h2>
+<p>Security requirements at Software Defined Vehicle Level 5 are significantly more stringent than in previous levels due to the increased attack surface introduced by the open application ecosystem and the safety-critical nature of autonomous operations. The security framework implements defense-in-depth principles with multiple layers of protection. End-to-end cryptographic protection ensures the integrity and authenticity of all software components and communications. Secure boot mechanisms verify the integrity of the entire software stack from the hardware root of trust through the operating system and applications.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp1kMFugzAMhu97Cit3XmESBVZYV7UqaJeohyiYEokmyDitePuFLIdJ1Xz9vt-y_xupeYSufIMwuRS1ov6pCOHiHIMboCO_sLhClr3DTooWtQ90F6i4xtAuokKKbyQzGOwjnJzqkZJSRKWUIvfs7o7NA-HUwgHJ4pScMjpVuGCdkR5mcQTN4ibFxtnkVNH5CFeoAXnNCjJstJrgrIjNi7iX4lQdod3WaVz-sWoputFQn214hXyeX8RGiou3bO4IR2cNOzL2ljqpovEpRWM5VBVCUCKj_o3_UQ7h_XMDe8X4VGtCdURfYT8uzpNGaPWIvZ-27lL4B-80e4k=?" /></p>
+<p>Strong isolation between different software domains prevents unauthorized access or interference. Safety-critical functions operate in a dedicated execution environment with the highest level of protection, completely isolated from OEM services and third-party applications. The hypervisor enforces strict memory, CPU, and I/O boundaries between partitions, preventing one domain from affecting another. Continuous runtime monitoring and intrusion detection systems actively monitor for anomalous behavior or security violations, enabling rapid response to potential threats.</p>
+<h2 id="oem-governance-and-platform-management">OEM Governance and Platform Management</h2>
+<p>Despite the open nature of the application ecosystem, the OEM retains full responsibility for platform governance at Level 5. This responsibility encompasses multiple critical functions including application validation and certification, resource isolation and scheduling, safety and liability enforcement, lifecycle management of third-party software, and end-to-end system integrity. The OEM establishes and enforces strict policies for application behavior, data access, and system resource utilization.</p>
+<p>Application validation at Level 5 is considerably more rigorous than in mobile computing environments due to the potential impact on legal liability, safety, insurance, and regulatory compliance. The certification process evaluates applications for security vulnerabilities, performance characteristics, resource usage patterns, and potential safety impacts. Execution permissions are granularly controlled, with applications receiving only the minimum privileges necessary for their intended functionality. Data access is tightly regulated, with clear boundaries between what applications can access and how they can use vehicle data.</p>
+<h2 id="cloud-integration-and-connectivity">Cloud Integration and Connectivity</h2>
+<p>Cloud integration at Software Defined Vehicle Level 5 is designed to be seamless and transparent to the user while maintaining the highest levels of security and reliability. The vehicle maintains continuous connectivity to enable real-time data exchange, application updates, and service provisioning. The cloud backend serves multiple functions including update distribution, application store management, telemetry collection, analytics processing, and service orchestration.</p>
+<p>The connectivity architecture supports both OEM-operated cloud infrastructure and, in carefully controlled scenarios, federated third-party cloud services that interoperate with OEM systems. All cloud communications are protected by end-to-end encryption and mutual authentication to prevent unauthorized access or data manipulation. The system is designed to function gracefully during connectivity interruptions, with local caching and offline capabilities ensuring that core vehicle functions remain operational even when cloud connectivity is temporarily unavailable.</p>
+<h2 id="implementation-requirements-and-challenges">Implementation Requirements and Challenges</h2>
+<p>Achieving Software Defined Vehicle Level 5 requires overcoming significant technical and organizational challenges. The implementation demands a mature automotive operating system capable of supporting real-time, safety-critical workloads while providing the flexibility needed for third-party applications. High-performance centralized computing platforms must deliver sufficient processing power, memory, and storage to support autonomous driving algorithms, multiple concurrent applications, and extensive data processing requirements.</p>
+<p>The OTA infrastructure must be engineered for reliability, security, and scalability, capable of serving millions of vehicles with timely updates while maintaining system integrity. Building a scalable developer ecosystem requires comprehensive software development kits, detailed documentation, testing environments, and developer support programs. Industry-grade cybersecurity and compliance frameworks must be established to meet automotive safety standards, data protection regulations, and security requirements.</p>
+<p>OEMs pursuing Level 5 increasingly adopt a platform-first business model where vehicles may be delivered with minimal enabled functionality, with capabilities unlocked, expanded, or monetized over time through software. This approach requires fundamental changes in product development, manufacturing, sales, and service processes. The vehicle evolves continuously, becoming more capable, intelligent, and autonomous as software matures, creating new opportunities for value creation and customer engagement throughout the vehicle's lifecycle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/CagriCatik/Automotive-OTA" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "navigation.sections", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "header.autohide", "toc.follow", "palette.toggle"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../js/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

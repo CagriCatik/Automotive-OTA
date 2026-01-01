@@ -1,0 +1,1694 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Cagri Catik">
+      
+      
+      
+        <link rel="prev" href="../01_tcu-architecture_doc/">
+      
+      
+        <link rel="next" href="../03_tcu-software_doc/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.35">
+    
+    
+      
+        <title>Hardware - Over-the-Air Update</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#telematics-control-unit-hardware-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Over-the-Air Update" class="md-header__button md-logo" aria-label="Over-the-Air Update" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Over-the-Air Update
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hardware
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01_introduction/01_what-is-ota_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03_ota-backend/01_oem-backend_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Backend & Communication
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01_tcu-architecture_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Vehicle Systems
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10_possible-attacks/01_intro_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04_user-experience/01_hmi_doc/" class="md-tabs__link">
+          
+  
+    
+  
+  Operations & UX
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../13_questions/01_intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Over-the-Air Update" class="md-nav__button md-logo" aria-label="Over-the-Air Update" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Over-the-Air Update
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01_introduction/01_what-is-ota_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../02_ota-architecture/01_vehicle_state_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../03_ota-backend/01_oem-backend_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Backend & Communication
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Vehicle Systems
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Vehicle Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    TCU
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            TCU
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_tcu-architecture_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Subsystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Core
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cellular-connectivity-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cellular Connectivity Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireless-and-local-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wireless and Local Connectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Management System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vehicle-network-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vehicle Network Interfaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioning-and-motion-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positioning and Motion Sensing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-and-tamper-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Tamper Protection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-and-service-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development and Service Interfaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peripheral-communication-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peripheral Communication Architecture
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_tcu-software_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_ota-manager_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OTA Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_uds-tester_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS Tester
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_tcu-standards_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Target Device
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Target Device
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/01_uds-over-can-vs-eth_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over CAN vs ETH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/02_autosar_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AUTOSAR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/03_uds-over-can_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over CAN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/04_uds-over-eth_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UDS over ETH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/05_doip_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DoIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/06_bootloader_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bootloader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/07_target-device_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Target Device
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_target-device/08_fail-safe-strategy_doc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fail Safe Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../10_possible-attacks/01_intro_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../04_user-experience/01_hmi_doc/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Operations & UX
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../13_questions/01_intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Subsystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Core
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cellular-connectivity-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cellular Connectivity Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireless-and-local-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wireless and Local Connectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power Management System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vehicle-network-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vehicle Network Interfaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioning-and-motion-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positioning and Motion Sensing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-and-tamper-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Tamper Protection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-and-service-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development and Service Interfaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peripheral-communication-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peripheral Communication Architecture
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="telematics-control-unit-hardware-architecture">Telematics Control Unit Hardware Architecture</h1>
+<p>The Telematics Control Unit represents a critical electronic control unit that serves as the primary interface between vehicle systems and external networks. This document provides an in-depth analysis of a typical TCU hardware architecture, examining the essential components, their interconnections, and operational characteristics that enable modern telematics functionality.</p>
+<h2 id="system-architecture-overview">System Architecture Overview</h2>
+<p>A modern TCU integrates multiple specialized components to provide comprehensive connectivity, security, and vehicle monitoring capabilities. The architecture centers around a System on Chip that orchestrates all operations, supported by a sophisticated memory subsystem and multiple communication interfaces. The design balances performance requirements with power efficiency, particularly important for continuous vehicle operation.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNp1kl_LmzAYxe_3KUKuNoYIg92NF_yT1lC1YrRlyJBUsxpmE4lx7_rt9-hm301oL9KAv-fk5ORcDR86FOfvEPyYDirM7qMVN6QVCjo5fLmYl_eBNlb8cjw3-YC_Icd5QWHuJRWe1wU46Z5b2QuUiJs2d6BWvYUWSQLC84p2PR-7ZSbVyvm5zjGrDb-K7WCWlBXO9KswKOEKgJtQFpVK2g0YeGlNdxWGf0SVFeY7b8SGOcQ0JRU-OLFU4inFMlrTT3MOGXVhg_xpBGRhwM7C-F5wKLPa94qiwj5vfkwD8rkFwftytVw0HTdXwS_940rr7IlENIhJzcosi79W-CQ62cwJTMPQ3xEkaeGe64mrq_h4rrPjmeR1cgwJRB_rV-dPMIHo-6nnkJBuxW05Py4I-oj2KWPbQCO6j8B3Gp5pWESrWCSvneNz1b7K1nZPFN3P-63ame5o7UMGZ-nspOv3k7BagwIMTv022dlPhef17ft_QEj8cr88Yygu0_XticbFQ-nlhQuvsnVRMr8mRVRh2LjEdsIose0HnYtElTBW8h5aysfJPC1T4SUZyStc8NsAAYfCisZKrbZNKbyiZHVMQiiL5XYaEewfZflbpAX1ypAeK-xNrdRuIhujh06rR0D_kIyk7JhDTl7byvlQsMuEGrWZhX8DbKMQyA==?" style="width: 600px; display: block; margin-left: auto; margin-right: auto" /></p>
+<h2 id="memory-subsystem">Memory Subsystem</h2>
+<p>The memory architecture of the TCU employs a dual-tier approach to balance performance, persistence, and security requirements. DRAM provides volatile working memory essential for the operating system, application execution, and runtime operations of the connectivity stack. The amount of DRAM directly impacts the system's ability to handle concurrent networking operations, security service processing, and Over-The-Air update procedures. Non-volatile storage is implemented through eMMC flash memory, which serves as the persistent repository for firmware images, application binaries, system logs, and in higher security configurations, cryptographic materials including digital certificates and encryption keys. The eMMC interface provides sufficient bandwidth and endurance for the continuous read-write operations typical in telematics applications.</p>
+<h2 id="processing-core">Processing Core</h2>
+<p>The System on Chip forms the computational heart of the TCU, typically featuring a heterogeneous multi-core architecture. In the referenced implementation, an NXP processor integrates ARM Cortex-A cores for application processing and general computing tasks, alongside Cortex-M cores dedicated to real-time operations and safety-critical functions. This division of processing resources allows the TCU to maintain deterministic response times for time-sensitive operations while supporting complex application workloads. Alternative vendors such as Renesas, Infineon, Qualcomm, or Texas Instruments offer similar heterogeneous architectures, with selection depending on specific OEM requirements regarding performance, power consumption, and safety certifications. The SoC manages the entire software stack including telematics applications, security frameworks, connectivity services, and communication protocols.</p>
+<h2 id="cellular-connectivity-architecture">Cellular Connectivity Architecture</h2>
+<p>The TCU implements a dual-modem architecture optimized for both power efficiency and bandwidth requirements. A low-power cellular modem provides continuous connectivity for essential telematics services including vehicle tracking, remote diagnostics, and fleet management operations. This modem typically supports LTE connectivity across multiple frequency bands and incorporates GNSS positioning capabilities. Automotive-grade modules from vendors such as Quectel, Sierra Wireless, and Telit are commonly selected for their reliability and optimized power consumption characteristics. The second modem, typically supporting higher bandwidth LTE or 5G connectivity, operates intermittently for data-intensive operations such as Over-The-Air update downloads and large data uploads. This dual-modem approach enables significant power optimization, as high-bandwidth modems consume substantial current during active data transmission, while low-power modems can maintain background communication with minimal energy expenditure.</p>
+<h2 id="wireless-and-local-connectivity">Wireless and Local Connectivity</h2>
+<p>Beyond cellular connectivity, the TCU incorporates Wi-Fi and Bluetooth modules to enable local wireless communication capabilities. These modules support smartphone pairing for vehicle configuration and personalization, local diagnostics access, and service technician connectivity. The selection of Wi-Fi and Bluetooth implementations depends on the required wireless standards support, data throughput requirements, and coexistence considerations with other RF components in the vehicle. The wireless subsystem operates under the management of the main SoC, which handles protocol stacks, security associations, and data routing between wireless interfaces and vehicle networks.</p>
+<h2 id="power-management-system">Power Management System</h2>
+<p>Power management represents a critical design consideration for TCU architecture, given the requirement for continuous operation across varying vehicle power states. The Power Management Unit regulates the vehicle supply voltage, typically ranging from 6V to 18V depending on vehicle electrical architecture, and distributes conditioned power to all internal components. A key feature of the TCU power system is the inclusion of an internal rechargeable backup battery. This battery maintains power to critical subsystems during vehicle power loss, ensuring continued operation of the real-time clock, secure storage elements, and emergency communication capabilities. In scenarios such as vehicle crashes or emergency call activation, the backup battery enables the TCU to transmit critical information even when main vehicle power is unavailable. The backup battery automatically recharges when vehicle power is restored, typically through a dedicated charging circuit within the Power Management Unit.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNqNksFrgzAUxu_7K0JO68HDLmOHUdAstGV1lWi7DSmS2oeGRiMxMvzv9-q6oofR5WZ4vy-f7_sKK5uSrMUdwbPjyxVb8yzavHOR0h2UKtdA4q5pdE92RjtZwPPBzu8fvYen3YzuiecRKqDotHRwJJH5Akvxck6icJvS4ZuEskaugtqRba0c3Q-P4cBAR1ZV0vZjNjYspXHfOqiIqQkrVXMbCjcvPIxTykBrtIPPmiNU7W0w4mIVLbnw10hHYFVTgpWaMFM1pkbXZ42JCCulLVRdENZZiwM_OoHPXrdRFvhJktJA5qeuIYF0Dmw_7ExAfuZAHjTMLrZGzKB8wUbuRIK7ECC1l6gKCNMmP_0bjjnbCp7FyUb4C447hbyzGKgzFhP5Q4ZXgC7rfLIkHnKx4G_sM0s-0tFIYmXdVur8l79bmrRoUFwVGLvCJGOHNbn2YxrMUJXzQNdeW3D3DaVPxok=?" style="width: 900px; display: block; margin-left: auto; margin-right: auto" /></p>
+<h2 id="vehicle-network-interfaces">Vehicle Network Interfaces</h2>
+<p>The TCU interfaces with vehicle networks through multiple standardized communication interfaces. CAN interfaces provide high-speed connectivity to vehicle control networks, enabling access to vehicle status data, diagnostic information, and control commands. The number and type of CAN interfaces vary based on vehicle architecture and OEM requirements, with support for different CAN bus speeds and protocols. For legacy vehicle systems, K-Line communication remains relevant for diagnostic access through the OBD-II interface, requiring the TCU to maintain compatibility with this serial communication protocol. The SoC implements protocol stacks for each interface, handling message translation, filtering, and routing between vehicle networks and external communication channels.</p>
+<h2 id="positioning-and-motion-sensing">Positioning and Motion Sensing</h2>
+<p>Location tracking capabilities are provided through a dedicated GNSS module and antenna system, enabling precise positioning for navigation, tracking, and geofencing applications. The GNSS receiver processes signals from multiple satellite constellations to provide accurate position and velocity data. Complementing the GNSS system, an Inertial Measurement Unit delivers motion sensing through accelerometers and gyroscopes, detecting vehicle acceleration, orientation changes, and impact events. The IMU requires calibration to compensate for sensor biases and temperature effects, but provides valuable data for dead reckoning when GNSS signals are unavailable and for crash detection algorithms. This sensor fusion approach enhances positioning reliability in challenging environments such as urban canyons, tunnels, and parking structures.</p>
+<h2 id="security-and-tamper-protection">Security and Tamper Protection</h2>
+<p>As a critical gateway between vehicle systems and external networks, the TCU incorporates comprehensive security measures to protect against unauthorized access and manipulation. Physical security features include tamper detection sensors that identify enclosure intrusion attempts, triggering security responses such as key zeroization or alert transmission. The secure storage subsystem protects cryptographic keys and certificates in hardware-protected memory regions, often with tamper-resistant characteristics. The SoC implements a complete security framework including secure boot, encrypted storage, and authenticated communication protocols for all external interfaces. These layered security measures maintain the integrity and confidentiality of vehicle data and control commands throughout the TCU's operational lifecycle.</p>
+<h2 id="development-and-service-interfaces">Development and Service Interfaces</h2>
+<p>The TCU provides multiple interfaces for development, manufacturing, and service operations. Debug interfaces including UART and JTAG/SWD connectors enable low-level software development, hardware debugging, and production line testing. USB and Ethernet ports support high-speed data transfer for diagnostics, firmware updates, and external device connectivity. USB-to-serial converters provide convenient access to debug consoles through standard USB connections. Visual status indicators through LEDs communicate operational states, network connectivity status, and error conditions, assisting developers during integration, technicians during service, and providing user feedback for system status.</p>
+<h2 id="peripheral-communication-architecture">Peripheral Communication Architecture</h2>
+<p>The SoC communicates with peripheral components through various serial interfaces optimized for different performance requirements. SPI interfaces provide high-speed data transfer for devices requiring rapid communication such as display controllers and high-speed sensors. I2C interfaces serve lower-speed peripherals including configuration memories, temperature sensors, and control devices. The selection of communication protocols reflects OEM design preferences and the specific requirements of connected peripherals. This flexible interface architecture enables the TCU to support diverse peripheral ecosystems while maintaining efficient resource utilization and optimal PCB layout.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNplkFFrwyAUhd_3Ky6-92U_YJAa2wSSRnLTwghlSGobwWpQM-i_n01WBs4XuXo-z_HcnJhGqNo3iAst7Qk-fJB3sAboqCZyhs0GCPIStrMncfiAXZVh0RNqzVXdZieCiuKdFn4k59c7C1W-0z8K2QGbFnvCzLdy1tylCUIDSuOt8wkZ_VYqL5FX2WdPcuUnLR4QXYOzWkv332xFGONtU0efZQcM1ombTNTHrO1W-Z7HTPsDItT2MutUyGkN2XxRdlXTJmexpOUkZrnIIdHvedms0i6rOWt70on7JB3kMsjhWVUC0Oyw6k-sKGnFvrbHGOgkRzVoCfF2qTBJj9uVKRrs-ucIhfUBShOku4oh_QQLo3RGht-CuuKLF7HT1zHEKRI_e9mPMw==?" style="width: 500px; display: block; margin-left: auto; margin-right: auto" /></p>
+<p>The TCU hardware architecture described represents a comprehensive solution for modern vehicle telematics requirements, balancing performance, security, and power efficiency considerations. The integration of multiple communication interfaces, redundant power systems, and robust security mechanisms ensures reliable operation across diverse vehicle applications and operating conditions. This architecture serves as a foundation for advanced telematics services including remote vehicle management, predictive maintenance, emergency response, and connected vehicle features that continue to evolve with automotive technology advancement.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/CagriCatik/Automotive-OTA" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "navigation.sections", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "header.autohide", "toc.follow", "palette.toggle"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../../js/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
