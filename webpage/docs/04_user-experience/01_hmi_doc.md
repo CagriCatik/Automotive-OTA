@@ -8,7 +8,7 @@ The Human-Machine Interface (HMI) serves as the critical communication bridge be
 
 The HMI operates within a broader OTA update architecture where it interacts with several key vehicle components. The Telematics Control Unit (TCU) or vehicle gateway acts as the central coordinator for OTA operations, while the HMI serves as the user-facing component. The relationship between these components follows a clear hierarchical structure where the TCU manages the technical execution of updates, and the HMI handles all user-facing communications and authorization collection.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=500px display-align=center}
 graph TD
     TCU["TCU/Gateway ECU"] -- "Update Available Notification" --> HMI
     HMI -- "User Authorization" --> TCU
@@ -41,7 +41,7 @@ Once the user provides authorization through the HMI, the update process commenc
 
 This real-time feedback mechanism is crucial for maintaining user trust and transparency during the update process. The HMI reflects the current update status as reported by the TCU, ensuring that users remain informed about the progress and any potential issues that may arise during the update execution. The status information presented through the HMI helps users understand the timeline and current state of the update process.
 
-```kroki-mermaid {display-width=300px display-align=center}
+```kroki-mermaid {display-width=500px display-align=center}
 graph TD
     Update_Authorized["Update Authorized"] --> Download["Download Phase"]
     Download -- "Progress Updates" --> HMI_Display["HMI Status Display"]

@@ -61,11 +61,11 @@ nav:
 
   - Security:
       - Possible Attacks:
-          - Intro: 10_possible-attacks/01_intro.md
-          - Eavesdropping: 10_possible-attacks/02_eavesdrop.md
-          - Denial of Service: 10_possible-attacks/03_denial.md
-          - Rollback: 10_possible-attacks/04_rollback.md
-          - Injection: 10_possible-attacks/05_injection.md
+          - Intro: 10_possible-attacks/01_intro_doc.md
+          - Eavesdropping: 10_possible-attacks/02_eavesdrop_doc.md
+          - Denial of Service: 10_possible-attacks/03_denial_doc.md
+          - Rollback: 10_possible-attacks/04_rollback_doc.md
+          - Injection: 10_possible-attacks/05_injection_doc.md
       - Countermeasures:
           - Eavesdrop Protection: 11_possible-measures/01_protection-eavesdrop.md
           - DoS Protection: 11_possible-measures/02_protection-dos.md

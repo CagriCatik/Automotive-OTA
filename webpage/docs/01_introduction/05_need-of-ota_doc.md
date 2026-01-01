@@ -64,7 +64,7 @@ Section 7.1 of UN Regulation No. 156 specifically addresses the Software Update 
 
 A critical aspect of SUMS involves compatibility verification prior to update initiation. OEMs must implement systematic processes to ensure that software updates are compatible with target vehicle configurations, preventing widespread failures across vehicle fleets. This compatibility assessment must consider hardware variations, existing software versions, and potential interactions between different vehicle systems. The regulation specifically addresses how type-approved components are handled when software functionality is added or removed, requiring that such modifications be properly documented and managed within the SUMS framework.
 
-```kroki-mermaid {display-width=600px display-align=center}
+```kroki-mermaid {display-width=300px display-align=center}
 graph TD
     Start_Node["Update Campaign Initiation"] --> Compatibility["Compatibility Verification"]
     Compatibility --> Check{"Compatible?"}

@@ -39,7 +39,7 @@ Driver control systems represent the safety-critical domain where OTA updates de
 
 
 ```kroki-mermaid {display-width=900px display-align=center}
-graph TD
+graph LR
     A["Traditional Update Methods"] --> B["Physical Media Updates"]
     A --> C["Service Center Required"]
     B --> D["CD/USB Distribution"]
