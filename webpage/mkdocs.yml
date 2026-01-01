@@ -168,7 +168,7 @@ extra:
   copyright: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/CagriCatik/OTA
+      link: https://github.com/CagriCatik/Automotive-OTA
 
 extra_css:
   - styles/extra.css

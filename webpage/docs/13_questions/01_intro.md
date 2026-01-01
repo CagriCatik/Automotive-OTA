@@ -64,11 +64,11 @@ CAN and FlexRay are insufficient for HPC-level data throughput and scalability.
 **Explanation:**
 Zonal architecture is a foundational enabler for software-defined vehicles, not an OTA-only concept. It supports:
 
-*   ECU consolidation
-*   Wiring harness reduction
-*   Centralized diagnostics
-*   Power and energy optimization
-*   Service-oriented communication models
+* ECU consolidation
+* Wiring harness reduction
+* Centralized diagnostics
+* Power and energy optimization
+* Service-oriented communication models
 
 OTA is a major beneficiary, but not the primary or sole purpose.
 

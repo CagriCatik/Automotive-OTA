@@ -1,4 +1,4 @@
-site_name: OTA
+site_name: Automotive Over The Air
 site_author: Cagri Catik
 copyright: Copyright &copy; 2025 OTA Project
 
@@ -15,80 +15,92 @@ nav:
       - OTA Services: 01_introduction/07_ota-services_doc.md
       - How OTA Happens: 01_introduction/08_how-ota-happens_doc.md
 
-  - OTA Architecture:
-      - Vehicle State: 02_ota-architecture/01_vehicle_state_doc.md
-      - Architecture: 02_ota-architecture/02_architecture_doc.md
-      - Vehicle Architecture: 02_ota-architecture/03_vehicle_architecture_doc.md
+  - Architecture:
+      - OTA Architecture:
+          - Vehicle State: 02_ota-architecture/01_vehicle_state_doc.md
+          - Architecture: 02_ota-architecture/02_architecture_doc.md
+          - Vehicle Architecture: 02_ota-architecture/03_vehicle_architecture_doc.md
+      - SDV:
+          - Intro: 12_sdv/01_intro_doc.md
+          - Change in EE: 12_sdv/02_change-in-ee-architecture_doc.md
+          - High Level Architecture: 12_sdv/03_sdv_high_level_architecture_doc.md
+          - Market Players: 12_sdv/04_market-players_doc.md
+          - Level 1: 12_sdv/05_level1_doc.md
+          - Level 2: 12_sdv/06_level2_doc.md
+          - Level 3: 12_sdv/07_level3_doc.md
+          - Level 4: 12_sdv/08_level4_doc.md
+          - Level 5: 12_sdv/09_level5_doc.md
 
-  - OTA Backend:
-      - OEM Backend: 03_ota-backend/01_oem-backend_doc.md
-      - Cloud Providers: 03_ota-backend/02_cloud-providers_doc.md
-      - Campaign Management: 03_ota-backend/03_campaign-management_doc.md
+  - Backend & Communication:
+      - OTA Backend:
+          - OEM Backend: 03_ota-backend/01_oem-backend_doc.md
+          - Cloud Providers: 03_ota-backend/02_cloud-providers_doc.md
+          - Campaign Management: 03_ota-backend/03_campaign-management_doc.md
+      - Protocols:
+          - MQTT General Concepts: 05_oem-backend-tcu/01_mqtt-general-concepts_doc.md
+          - MQTT Connectivity: 05_oem-backend-tcu/02_mqtt-connectivity_doc.md
+          - HTTPS: 05_oem-backend-tcu/03_https_doc.md
+          - C2C Communication: 05_oem-backend-tcu/04_c2c-communication_doc.md
 
-  - User Experience:
-      - HMI: 04_user-experience/01_hmi_doc.md
-      - OEM App: 04_user-experience/02_oem-app_doc.md
+  - Vehicle Systems:
+      - TCU:
+          - Architecture: 06_tcu/01_tcu-architecture_doc.md
+          - Hardware: 06_tcu/02_tcu-hardware_doc.md
+          - Software: 06_tcu/03_tcu-software_doc.md
+          - OTA Manager: 06_tcu/04_ota-manager_doc.md
+          - UDS Tester: 06_tcu/05_uds-tester_doc.md
+          - Standards: 06_tcu/06_tcu-standards_doc.md
+      - Target Device:
+          - UDS over CAN vs ETH: 07_target-device/01_uds-over-can-vs-eth_doc.md
+          - AUTOSAR: 07_target-device/02_autosar_doc.md
+          - UDS over CAN: 07_target-device/03_uds-over-can_doc.md
+          - UDS over ETH: 07_target-device/04_uds-over-eth_doc.md
+          - DoIP: 07_target-device/05_doip_doc.md
+          - Bootloader: 07_target-device/06_bootloader_doc.md
+          - Target Device: 07_target-device/07_target-device_doc.md
+          - Fail Safe Strategy: 07_target-device/08_fail-safe-strategy_doc.md
 
-  - OEM Backend & TCU:
-      - MQTT General Concepts: 05_oem-backend-tcu/01_mqtt-general-concepts_doc.md
-      - MQTT Connectivity: 05_oem-backend-tcu/02_mqtt-connectivity_doc.md
-      - HTTPS: 05_oem-backend-tcu/03_https_doc.md
-      - C2C Communication: 05_oem-backend-tcu/04_c2c-communication_doc.md
+  - Security:
+      - Possible Attacks:
+          - Intro: 10_possible-attacks/01_intro_doc.md
+          - Eavesdropping: 10_possible-attacks/02_eavesdrop_doc.md
+          - Denial of Service: 10_possible-attacks/03_denial_doc.md
+          - Rollback: 10_possible-attacks/04_rollback_doc.md
+          - Injection: 10_possible-attacks/05_injection_doc.md
+      - Countermeasures:
+          - Eavesdrop Protection: 11_possible-measures/01_protection-eavesdrop_doc.md
+          - DoS Protection: 11_possible-measures/02_protection-dos_doc.md
+          - Rollback Protection: 11_possible-measures/03_protection-rollback_doc.md
 
-  - TCU:
-      - Architecture: 06_tcu/01_tcu-architecture_doc.md
-      - Hardware: 06_tcu/02_tcu-hardware_doc.md
-      - Software: 06_tcu/03_tcu-software_doc.md
-      - OTA Manager: 06_tcu/04_ota-manager_doc.md
-      - UDS Tester: 06_tcu/05_uds-tester_doc.md
-      - Standards: 06_tcu/06_tcu-standards_doc.md
+  - Operations & UX:
+      - User Experience:
+          - HMI: 04_user-experience/01_hmi_doc.md
+          - OEM App: 04_user-experience/02_oem-app_doc.md
+      - OTA Testing:
+          - Intro: 08_ota-testing/01_intro_doc.md
+          - Strategy: 08_ota-testing/02_testing-strategy_doc.md
+          - Tools & Equipment: 08_ota-testing/03_tools-and-equipment_doc.md
+      - Use Cases:
+          - Intro: 09_usecase/01_intro_doc.md
+          - Smart Maintenance: 09_usecase/02_smart-maintenance_doc.md
+          - Feature on Demand: 09_usecase/03_feature-on-demand_doc.md
+          - Remote Diagnostics: 09_usecase/04_remote-diagnostics_doc.md
 
-  - Target Device:
-      - UDS over CAN vs ETH: 07_target-device/01_uds-over-can-vs-eth_doc.md
-      - AUTOSAR: 07_target-device/02_autosar_doc.md
-      - UDS over CAN: 07_target-device/03_uds-over-can_doc.md
-      - UDS over ETH: 07_target-device/04_uds-over-eth_doc.md
-      - DoIP: 07_target-device/05_doip_doc.md
-      - Bootloader: 07_target-device/06_bootloader_doc.md
-      - Target Device: 07_target-device/07_target-device_doc.md
-      - Fail Safe Strategy: 07_target-device/08_fail-safe-strategy_doc.md
-
-  - OTA Testing:
-      - Intro: 08_ota-testing/01_intro_doc.md
-      - Strategy: 08_ota-testing/02_testing-strategy_doc.md
-      - Tools & Equipment: 08_ota-testing/03_tools-and-equipment_doc.md
-
-  - Use Cases:
-      - Intro: 09_usecase/01_intro.md
-      - Smart Maintenance: 09_usecase/02_smart-maintenance.md
-      - Feature on Demand: 09_usecase/03_feature-on-demand.md
-      - Remote Diagnostics: 09_usecase/04_remote-diagnostics.md
-
-  - Possible Attacks:
-      - Intro: 10_possible-attacks/01_intro.md
-      - Eavesdropping: 10_possible-attacks/02_eavesdrop.md
-      - Denial of Service: 10_possible-attacks/03_denial.md
-      - Rollback: 10_possible-attacks/04_rollback.md
-      - Injection: 10_possible-attacks/05_injection.md
-
-  - Possible Measures:
-      - Eavesdrop Protection: 11_possible-measures/01_protection-eavesdrop.md
-      - DoS Protection: 11_possible-measures/02_protection-dos.md
-      - Rollback Protection: 11_possible-measures/03_protection-rollback.md
-
-  - SDV:
-      - Intro: 12_sdv/01_intro_doc.md
-      - Change in EE: 12_sdv/02_change-in-ee-architecture_doc.md
-      - High Level Architecture: 12_sdv/03_sdv_high_level_architecture_doc.md
-      - Market Players: 12_sdv/04_market-players_doc.md
-      - Level 1: 12_sdv/05_level1_doc.md
-      - Level 2: 12_sdv/06_level2_doc.md
-      - Level 3: 12_sdv/07_level3_doc.md
-      - Level 4: 12_sdv/08_level4_doc.md
-      - Level 5: 12_sdv/09_level5_doc.md
-
-  - Questions:
-      - Intro: 13_questions/01_intro.md
+  - Reference:
+      - Questions:
+          - Intro: 13_questions/01_intro.md
+          - Architecture: 13_questions/02_architecture.md
+          - Backend: 13_questions/03_backend.md
+          - UX: 13_questions/04_ux.md
+          - Connectivity: 13_questions/05_connectivity.md
+          - Target Device: 13_questions/06_target-device.md
+          - Testing: 13_questions/07_testing.md
+          - Use Case: 13_questions/08_usecase.md
+          - Diagnostics: 13_questions/09_diagnostics.md
+          - Attacks: 13_questions/10_attacks.md
+          - Measures: 13_questions/11_measures.md
+          - SDV: 13_questions/12_sdv.md
+      - Glossary: glossary.md
 
 theme:
   name: material
@@ -129,7 +141,7 @@ extra:
   copyright: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/CagriCatik/OTA
+      link: https://github.com/CagriCatik/Automotive-OTA
 
 extra_css:
   - styles/extra.css

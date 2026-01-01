@@ -36,18 +36,21 @@ graph TD
 **Answer:** Drivable updates can be installed while the vehicle is in operation (often in the background), whereas Non-Drivable updates require the vehicle to be stationary and non-operable.
 
 **Explanation:**
-*   **Drivable updates** typically involve infotainment bug fixes or app updates that do not affect safety-critical systems. They can often be installed in the background or with minimal user intervention.
-*   **Non-Drivable updates** affect safety-critical systems (e.g., powertrain, engine control) and require strict safety conditions, such as the vehicle being parked, engine off, and battery sufficiently charged, as the update process might disable critical functions temporarily.
+
+- **Drivable updates** typically involve infotainment bug fixes or app updates that do not affect safety-critical systems. They can often be installed in the background or with minimal user intervention.
+- **Non-Drivable updates** affect safety-critical systems (e.g., powertrain, engine control) and require strict safety conditions, such as the vehicle being parked, engine off, and battery sufficiently charged, as the update process might disable critical functions temporarily.
 
 ### **2. What are the critical preconditions that must be checked before a Non-Drivable update?**
 
 **Answer:** Vehicle not running, stable power supply/sufficient battery, and healthy ECU status (no active faults).
 
 **Explanation:**
+
 Before initiating a non-drivable update, the system must validate:
-*   **Vehicle State:** The vehicle must be stationary and the engine/motor switched off.
-*   **Power:** The battery must have sufficient charge (SoC) and voltage stability to last through the update process, which can take 15-30 minutes or more.
-*   **ECU Health:** Diagnostic checks ensure the target ECUs are essentially healthy and capable of accepting the update, preventing bricking due to pre-existing hardware faults.
+
+- **Vehicle State:** The vehicle must be stationary and the engine/motor switched off.
+- **Power:** The battery must have sufficient charge (SoC) and voltage stability to last through the update process, which can take 15-30 minutes or more.
+- **ECU Health:** Diagnostic checks ensure the target ECUs are essentially healthy and capable of accepting the update, preventing bricking due to pre-existing hardware faults.
 
 ---
 
@@ -58,9 +61,10 @@ Before initiating a non-drivable update, the system must validate:
 **Answer:** Update Management, Device Management, and Campaign Management.
 
 **Explanation:**
-*   **Update Management:** Handles software version control, package creation, and validation.
-*   **Device Management:** Maintains the inventory of vehicle hardware, ECU configurations, and software compatibility maps.
-*   **Campaign Management:** Orchestrates the deployment of updates to specific groups (fleets) of vehicles, managing scheduling and rollout phases.
+
+- **Update Management:** Handles software version control, package creation, and validation.
+- **Device Management:** Maintains the inventory of vehicle hardware, ECU configurations, and software compatibility maps.
+- **Campaign Management:** Orchestrates the deployment of updates to specific groups (fleets) of vehicles, managing scheduling and rollout phases.
 
 ### **4. How does the TCU (Telematics Control Unit) function in the OTA process?**
 
@@ -78,9 +82,10 @@ The TCU receives update instructions from the OEM backend, downloads the data pa
 **Answer:** Decentralized -> Domain-Based -> Zonal Architecture.
 
 **Explanation:**
-*   **Decentralized:** Unstructured network of independent ECUs added as needed, leading to complex wiring and maintenance issues.
-*   **Domain-Based:** ECUs grouped by function (e.g., Powertrain, Infotainment) under a Domain Controller, improving modularity.
-*   **Zonal Architecture:** ECUs grouped by physical location (Zones) connected to Zonal Gateways and central High Performance Computers (HPCs), significantly reducing wiring harness weight and enabling centralized software management.
+
+- **Decentralized:** Unstructured network of independent ECUs added as needed, leading to complex wiring and maintenance issues.
+- **Domain-Based:** ECUs grouped by function (e.g., Powertrain, Infotainment) under a Domain Controller, improving modularity.
+- **Zonal Architecture:** ECUs grouped by physical location (Zones) connected to Zonal Gateways and central High Performance Computers (HPCs), significantly reducing wiring harness weight and enabling centralized software management.
 
 ### **6. What is the role of High Performance Computers (HPCs) in modern Zonal Architectures?**
 
@@ -105,14 +110,16 @@ While the TCU provides connectivity, the OTA Manager is the logic core that vali
 **Answer:** MQTT is used for lightweight control signaling, while HTTPS is used for secure and efficient transfer of large software packages.
 
 **Explanation:**
-*   **MQTT** is ideal for real-time status reporting and update triggers because it uses minimal bandwidth.
-*   **HTTPS** is better suited for bulk data transfer, providing high reliability and security for large binary files.
+
+- **MQTT** is ideal for real-time status reporting and update triggers because it uses minimal bandwidth.
+- **HTTPS** is better suited for bulk data transfer, providing high reliability and security for large binary files.
 
 ### **9. What is the difference between Single Bank and Dual Bank updates for the TCU?**
 
 **Answer:** Single-bank updates require the system to be offline during flashing, while dual-bank updates allow the system to remain operational while the update is downloaded to an inactive partition.
 
 **Explanation:**
-*   **Single-bank:** Simplier but riskier; if the update fails, the device might become inoperable.
-*   **Dual-bank:** Enables seamless updates and provides a safe rollback path by keeping the previous software version in one bank while updating the other.
+
+- **Single-bank:** Simplier but riskier; if the update fails, the device might become inoperable.
+- **Dual-bank:** Enables seamless updates and provides a safe rollback path by keeping the previous software version in one bank while updating the other.
 

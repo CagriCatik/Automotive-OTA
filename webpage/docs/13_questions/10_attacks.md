@@ -3,7 +3,7 @@
 This section analyzes the different ways an OTA update system can be attacked, targeting its confidentiality, integrity, and availability.
 
 ```kroki-mermaid {display-width=700px display-align=center}
-graph TD
+graph LR
     Attacker["Attacker"] -- "Intercept/Listen" --> Eavesdrop["Eavesdrop: Loss of Privacy/IP"]
     Attacker -- "Block Traffic" --> DoS["DoS: Prevent Safety Patches"]
     Attacker -- "Old Version" --> Rollback["Rollback: Re-enable Vulnerabilities"]

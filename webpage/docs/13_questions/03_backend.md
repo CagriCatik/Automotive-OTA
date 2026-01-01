@@ -28,31 +28,37 @@ graph TD
 **Answer:** Handles software version control, package creation, and validation before distribution.
 
 **Explanation:**
+
 Update Management is responsible for:
-*   Storing and managing software binaries (firmware, apps, configuration data).
-*   Maintaining version history and ensuring only validated software is released.
-*   Generating metadata (e.g., release notes, compatibility requirements) for each package.
+
+- Storing and managing software binaries (firmware, apps, configuration data).
+- Maintaining version history and ensuring only validated software is released.
+- Generating metadata (e.g., release notes, compatibility requirements) for each package.
 
 ### **2. Why is Device Management critical for large-scale OTA updates?**
 
 **Answer:** It maintains a comprehensive inventory of vehicle configurations, ensuring that updates are delivered only to compatible hardware.
 
 **Explanation:**
+
 A vehicle fleet consists of diverse hardware versions and configurations. Device Management tracks:
-*   Which ECUs are installed in which vehicle (VIN mapping).
-*   The current software version on every ECU.
-*   Regional or variant-specific constraints, preventing the installation of incorrect software which could lead to vehicle malfunctions.
+
+- Which ECUs are installed in which vehicle (VIN mapping).
+- The current software version on every ECU.
+- Regional or variant-specific constraints, preventing the installation of incorrect software which could lead to vehicle malfunctions.
 
 ### **3. Explain the purpose of Campaign Management.**
 
 **Answer:** Orchestrates and monitors the rollout of updates to selected groups of vehicles.
 
 **Explanation:**
+
 Campaign Management allows OEMs to:
-*   Define target groups (e.g., all Model X vehicles in Germany).
-*   Schedule updates (e.g., during off-peak hours).
-*   Monitor progress in real-time, tracking success and failure rates.
-*   Pause or abort rollouts if critical issues are detected.
+
+- Define target groups (e.g., all Model X vehicles in Germany).
+- Schedule updates (e.g., during off-peak hours).
+- Monitor progress in real-time, tracking success and failure rates.
+- Pause or abort rollouts if critical issues are detected.
 
 ---
 
@@ -70,9 +76,9 @@ While the management logic resides in application servers (Update Management), t
 **Answer:** Data integrity (checksums), encryption at rest, and digital signatures.
 
 **Explanation:**
-*   **Integrity:** Ensures the file hasn't been corrupted during storage or transfer.
-*   **Encryption:** Protects the intellectual property and prevents unauthorized access to the code.
-*   **Signatures:** Allow the vehicle to verify that the software was indeed created and authorized by the OEM.
+- Integrity: Ensures the file hasn't been corrupted during storage or transfer.
+- Encryption: Protects the intellectual property and prevents unauthorized access to the code.
+- Signatures: Allow the vehicle to verify that the software was indeed created and authorized by the OEM.
 
 ---
 
@@ -106,8 +112,8 @@ When a campaign is created, Device Management filters the vehicle database to fi
 **Explanation:**
 The dashboard provides operational visibility. It helps OEMs identify if an update is failing on specific vehicle types or in certain regions, allowing for rapid response and campaign adjustment.
 
-```kroki-mermaid {display-width=500px display-align=center}
-graph LR
+```kroki-mermaid {display-width=250px display-align=center}
+graph TD
     _C1[Campaign Created] --> _C2[Targeting Defined]
     _C2 --> _C3[Scheduled/Started]
     _C3 --> _C4[Progress Tracking]
