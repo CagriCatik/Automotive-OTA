@@ -1,50 +1,95 @@
-# OTA Measures Questions (Mitigation)
+# Security Countermeasures Questions
 
-## Confidentiality (Eavesdropping Protection)
+This section covers the technical measures used to protect OTA systems, including encryption, digital signatures, and hardware-based security.
 
-### **1. Why is TLS (Transport Layer Security) alone often considered insufficient for protecting firmware confidentiality?**
+```kroki-mermaid {display-width=700px display-align=center}
+graph TD
+    subgraph "Layered Defense (Defense in Depth)"
+        TLS["Transport Layer (mTLS / TLS 1.3)"]
+        Payload["Application Layer (Envelope Encryption)"]
+        HSM["Hardware Layer (HSM / Secure Boot)"]
+    end
 
-Answer: TLS terminates at the CDN or edge server. If the CDN is compromised or untrusted, the firmware would be exposed in plaintext.
+    TLS --- C1[Confidentiality]
+    Payload --- C2[End-to-End Privacy]
+    HSM --- C3[Root of Trust / Secure Keys]
 
-Explanation:
-To achieve **Defense in Depth**, OEMs use **Application Layer Encryption** (Encrypted Payloads). The firmware is encrypted before it leaves the backend, so it remains opaque even to the CDN handling the download.
+    C1 --- Success[Secure Update]
+    C2 --- Success
+    C3 --- Success
+```
 
-### **2. Describe the "Hybrid Encryption" scheme used for OTA updates.**
+---
 
-Answer: It combines Symmetric and Asymmetric encryption to balance speed and security.
+## Cryptography and Integrity
 
-Explanation:
-1.  **Symmetric (e.g., AES-256):** Used to encrypt the large firmware binary because it is fast.
-2.  **Asymmetric (e.g., RSA/ECC):** Used to encrypt the *Symmetric Key* itself, using the target ECU's Public Key. This encrypted key is sent along with the payload.
+### **1. How does "Code Signing" prevent malicious updates?**
 
-### **3. Where must the private decryption keys be stored within the vehicle?**
+**Answer:** It uses a digital signature to prove that the software came from a trusted source (Authenticity) and has not been altered (Integrity).
 
-Answer: In a **Hardware Security Module (HSM)** or Secure Hardware Extension (SHE).
+**Explanation:**
+The OEM signs the update with a private key. The vehicle's ECU uses the corresponding public key to verify the signature. If even one bit of the software is changed by an attacker, the verification will fail, and the ECU will reject the installation.
 
-Explanation:
-Storing keys in standard flash memory is risky. An HSM is tamper-resistant hardware that performs cryptographic operations internally, ensuring the private keys are never exposed to the main operating system.
+### **2. What is the role of a Hardware Security Module (HSM) in OTA?**
 
-## Integrity (Rollback Protection)
+**Answer:** It provides a tamper-resistant "vault" to store cryptographic keys and perform security operations (like decryption and signature verification) in isolation from the main processor.
 
-### **4. How does an ECU technically prevent a Rollback Attack?**
+**Explanation:**
+By keeping the private keys and the decryption process inside the HSM, the system ensures that even if the main operating system is hacked, the attacker cannot steal the vehicle's secret keys.
 
-Answer: By comparing the version number in the **Signed Metadata** against a stored **Monotonic Counter**.
+---
 
-Explanation:
-Before installing, the ECU verifies validity of the signature, then checks if `New_Version > Stored_Version`. If the new version is lower or equal, it rejects the update.
+## Anti-Rollback Mechanisms
 
-### **5. What is a "Monotonic Counter"?**
+### **3. How does a vehicle prevent an old (vulnerable) version from being re-installed?**
 
-Answer: A hardware or secure software counter that can only be incremented (count up) and never decremented or reset.
+**Answer:** By using an "Anti-Rollback" mechanism that checks the version number of the new package against a protected version counter stored in secure memory.
 
-Explanation:
-This ensures that once a vehicle has updated to version 5, it is physically impossible to overwrite the counter back to version 4, thus permanently blocking installation of older firmware.
+**Explanation:**
+The vehicle stores its current version number in a place that cannot be easily reset (like a monotonic counter or eFuses). If the incoming update has a version number equal to or lower than the stored value, the update is rejected.
 
-## Availability (DoS Protection)
+### **4. What is "mTLS" (Mutual TLS) and why is it used?**
 
-### **6. What client-side strategy mitigates the impact of network congestion or DoS attempts?**
+**Answer:** It is a security protocol where *both* the vehicle and the server must present certificates to identify themselves before communication begins.
 
-Answer: **Exponential Backoff.**
+**Explanation:**
+Traditional TLS only has the server identify itself. mTLS ensures that the server also knows it is talking to a legitimate vehicle, preventing unauthorized devices from trying to connect to the OEM's backend.
 
-Explanation:
-If a vehicle fails to connect to the update server, it should not retry immediately (which would worsen congestion). Instead, it waits progressively longer intervals (e.g., 1s, 2s, 4s, 8s) before retrying.
+---
+
+## Privacy and Encryption
+
+### **5. Why is "End-to-End" encryption necessary?**
+
+**Answer:** To protect the software binary even if intermediate network components (like CDNs or proxies) are compromised.
+
+**Explanation:**
+If you only use HTTPS, the data is decrypted at the "edge" of the cloud. With end-to-end (application layer) encryption, the software remains encrypted from the moment it leaves the OEM's vault until the moment it reaches the target ECU.
+
+### **6. What is the benefit of "Secure Boot"?**
+
+**Answer:** It ensures that only trusted, signed software can ever run on the ECU after a reset.
+
+**Explanation:**
+Secure Boot is the "Root of Trust." It checks the signature of the bootloader, which then checks the signature of the OS, which then checks the apps. This chain ensures that no malware can start during the vehicle's power-on sequence.
+
+### **7. What is "Envelope Encryption" and why is it used for OTA updates?**
+
+**Answer:** It's a hybrid scheme where the large firmware is encrypted with a fast symmetric key, and that key is then encrypted with a secure asymmetric public key.
+
+**Explanation:**
+It combines the speed of symmetric encryption (AES) for large files with the secure key distribution of asymmetric encryption (RSA/ECC), making it the "best of both worlds" for high-performance automotive updates.
+
+### **8. Why is a "Monotonic Counter" essential for rollback protection?**
+
+**Answer:** A monotonic counter is a hardware feature that can only increase and never decrease. This provides a mathematical guarantee that the vehicle's version state cannot be "faked" to an earlier time.
+
+**Explanation:**
+It anchors the security in physics/hardware. Even if an attacker manages to modify the file system, they cannot "roll back" the counter on the chip, making it impossible to pass the version check with old software.
+
+### **9. Explain the difference between "Transport Layer" and "Application Layer" security in OTA.**
+
+**Answer:** Transport Layer (TLS) secures the "pipe" between two points, while Application Layer (Encryption) secures the "package" itself regardless of the pipe.
+
+**Explanation:**
+If the "pipe" breaks or has an intermediate node (like a CDN) that decrypts the traffic, the Transport Layer security is gone. Application Layer security ensures the original binary is still protected and unreadable to everyone except the final target ECU.

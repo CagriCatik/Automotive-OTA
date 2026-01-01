@@ -1,44 +1,104 @@
-# OTA Connectivity Questions (MQTT & HTTPS)
+# Connectivity and Protocols Questions
 
-## Protocols
+This section covers the communication protocols used for OTA updates, focusing on MQTT for control signaling and HTTPS for data transfer.
 
-### **1. Why are two different protocols (MQTT and HTTPS) used in the OTA architecture?**
+```kroki-mermaid {display-width=700px display-align=center}
+graph LR
+    subgraph "Control Plane (MQTT)"
+        B[MQTT Broker]
+        TCU_C[TCU Client]
+        BE_C[Backend Client]
+        BE_C -- "Publish Command" --> B
+        B -- "Route to TCU" --> TCU_C
+        TCU_C -- "Publish Status" --> B
+        B -- "Route to Backend" --> BE_C
+    end
 
-Answer: MQTT is used for lightweight control/signaling, while HTTPS is used for heavy payload transmission.
+    subgraph "Data Plane (HTTPS)"
+        S[Cloud Storage / CDN]
+        TCU_D[TCU Downloader]
+        S -- "Binary Payload" --> TCU_D
+    end
+```
 
-Explanation:
-*   **MQTT:** Optimized for low bandwidth, unstable networks, and real-time connectivity (Pub-Sub). It handles command messages, status updates, and telemetry.
-*   **HTTPS:** Optimized for reliable, secure transfer of large files (firmware images). It supports resumable downloads and standard encryption.
+---
 
-### **2. Explain the difference between QoS 0, QoS 1, and QoS 2 in MQTT.**
+## MQTT for Control Signaling
 
-Answer:
-*   **QoS 0 (At most once):** Fire-and-forget. The message is sent, and no distinct acknowledgment is expected. Fastest, but messages can be lost.
-*   **QoS 1 (At least once):** Guarantees delivery. The sender stores the message until it receives a PUBACK. Common for OTA control messages. May result in duplicates.
-*   **QoS 2 (Exactly once):** Guarantee delivery without duplicates. Slower due to 4-step handshake. High overhead.
+### **1. Why is MQTT preferred over HTTPS for update orchestration?**
 
-## Connectivity Architecture
+**Answer:** MQTT is lightweight, event-driven, and maintains a persistent connection, making it ideal for "push" notifications and real-time status reporting.
 
-### **3. What is a "Digital Twin" or "Shadow State" in the context of vehicle connectivity?**
+**Explanation:**
+*   **Persistent Connection:** Allows the backend to instantly trigger a vehicle update without waiting for the vehicle to "poll" the server.
+*   **Low Overhead:** Small packet headers save battery and data costs in mobile environments.
+*   **Pub/Sub Model:** Decouples the backend from the vehicle, allowing for flexible fleet management.
 
-Answer: A cloud-based replica of the vehicle's state that allows applications to interact with the vehicle even when it is offline.
+### **2. Explain the purpose of MQTT Topics in an OTA context.**
 
-Explanation:
-The cloud maintains a "Shadow" of the vehicle. If a command (e.g., "Unlock Door") is sent while the vehicle is offline (e.g., in a tunnel), it updates the Shadow data. When the vehicle comes back online, it synchronizes with the Shadow to execute the pending commands.
+**Answer:** Topics serve as hierarchical addresses used to route messages to specific vehicles or groups of vehicles.
 
-### **4. How does the architecture handle "Intermittent Connectivity" for OTA?**
+**Explanation:**
+Using a topic like `ota/fleet/model_y/vin_12345/command`, the backend can target a single vehicle. Using wildcards like `ota/fleet/model_y/+/command`, it could potentially target all Model Y vehicles.
 
-Answer: Through MQTT Queuing and Resumable HTTPS Downloads.
+---
 
-Explanation:
-*   **MQTT:** If the vehicle disconnects, the Broker (with `CleanSession=False`) queues messages (QoS > 0) and delivers them when the vehicle reconnects.
-*   **HTTPS:** Using HTTP Range requests, the vehicle can resume a file download from the last received byte after a network drop, preventing the need to restart large downloads.
+## HTTPS for Data Transfer
 
-##  Telemetry
+### **3. Why is HTTPS used for transferring the actual software package?**
 
-### **5. What is "Edge Processing" in telemetry streaming, and why is it important?**
+**Answer:** HTTPS is optimized for large, reliable, and secure file transfers.
 
-Answer: Processing and filtering sensor data locally on the TCU before sending it to the cloud.
+**Explanation:**
+*   **Reliability:** Built-in mechanisms for handling large data volumes and resuming interrupted downloads.
+*   **Security:** Provides strong encryption (TLS) to protect the software binary from being intercepted or tampered with during transit.
+*   **Universal Support:** CDNs (Content Delivery Networks) are highly optimized for serving HTTPS traffic at scale.
 
-Explanation:
-Vehicles generate terabytes of data. Streaming raw data is cost-prohibitive over cellular networks. Edge processing filters this data (e.g., "only send data if battery temp > 40°C") to reduce bandwidth usage and cloud storage costs.
+---
+
+## QoS and Reliability
+
+### **4. What does "QoS 1" mean in MQTT, and why is it used for OTA?**
+
+**Answer:** QoS 1 ensures "At Least Once" delivery, meaning the message is guaranteed to arrive, though duplicates are possible.
+
+**Explanation:**
+For OTA updates, it is critical that a "Start Update" command reaches the vehicle. QoS 1 ensures this by requiring an acknowledgment from the receiver. If no acknowledgment is received, the sender retransmits the message.
+
+### **5. Can MQTT be used for the actual binary download?**
+
+**Answer:** Technically yes, but it is not recommended for large files.
+
+**Explanation:**
+MQTT is designed for small messages. Large binary payloads can block the broker and are less efficiently handled by MQTT's overhead compared to the streaming capabilities of HTTPS.
+
+### **6. How does the TCU handle network switching (e.g., 4G to 5G) during a download?**
+
+**Answer:** The TCU and the HTTPS protocol are designed to handle IP address changes and connection drops by using session resumption and range requests.
+
+**Explanation:**
+Modern OTA clients can pause a download when the connection is lost and resume from the exact byte where they left off once the connection is re-established, ensuring efficiency.
+
+### **7. What are the three components of an MQTT message?**
+
+**Answer:** A fixed header, a variable header, and a payload.
+
+**Explanation:**
+*   **Fixed Header:** Contains control info like message type and QoS flags.
+*   **Variable Header:** Contains topic names and packet identifiers.
+*   **Payload:** Carries the actual application data (e.g., JSON command or status).
+
+### **8. Which MQTT QoS level is typically used for OTA control messaging and why?**
+
+**Answer:** QoS 1 (At Least Once).
+
+**Explanation:**
+QoS 1 provides a good balance between reliability and overhead. It ensures that critical commands like "Start Update" or "Rollback" are delivered even in poor network conditions, without the high handshake overhead of QoS 2.
+
+### **9. How are wildcards (+ and #) used in MQTT topic subscriptions?**
+
+**Answer:** `+` is a single-level wildcard, and `#` is a multi-level wildcard.
+
+**Explanation:**
+*   `ota/+/status`: Subscribes to status updates from all vehicles.
+*   `ota/vin123/#`: Subscribes to all topics related to a specific vehicle (commands, status, logs, etc.).

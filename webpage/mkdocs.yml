@@ -67,9 +67,9 @@ nav:
           - Rollback: 10_possible-attacks/04_rollback_doc.md
           - Injection: 10_possible-attacks/05_injection_doc.md
       - Countermeasures:
-          - Eavesdrop Protection: 11_possible-measures/01_protection-eavesdrop.md
-          - DoS Protection: 11_possible-measures/02_protection-dos.md
-          - Rollback Protection: 11_possible-measures/03_protection-rollback.md
+          - Eavesdrop Protection: 11_possible-measures/01_protection-eavesdrop_doc.md
+          - DoS Protection: 11_possible-measures/02_protection-dos_doc.md
+          - Rollback Protection: 11_possible-measures/03_protection-rollback_doc.md
 
   - Operations & UX:
       - User Experience:
@@ -88,6 +88,17 @@ nav:
   - Reference:
       - Questions:
           - Intro: 13_questions/01_intro.md
+          - Architecture: 13_questions/02_architecture.md
+          - Backend: 13_questions/03_backend.md
+          - UX: 13_questions/04_ux.md
+          - Connectivity: 13_questions/05_connectivity.md
+          - Target Device: 13_questions/06_target-device.md
+          - Testing: 13_questions/07_testing.md
+          - Use Case: 13_questions/08_usecase.md
+          - Diagnostics: 13_questions/09_diagnostics.md
+          - Attacks: 13_questions/10_attacks.md
+          - Measures: 13_questions/11_measures.md
+          - SDV: 13_questions/12_sdv.md
       - Glossary: glossary.md
 
 theme:

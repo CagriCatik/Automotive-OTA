@@ -1,43 +1,98 @@
-# OTA Security Questions (Attacks)
+# Security Attacks and Vulnerabilities Questions
 
-## Attack Surface & Definitions
+This section analyzes the different ways an OTA update system can be attacked, targeting its confidentiality, integrity, and availability.
 
-### **1. What are the three main components of the OTA attack surface?**
+```kroki-mermaid {display-width=700px display-align=center}
+graph TD
+    Attacker["Attacker"] -- "Intercept/Listen" --> Eavesdrop["Eavesdrop: Loss of Privacy/IP"]
+    Attacker -- "Block Traffic" --> DoS["DoS: Prevent Safety Patches"]
+    Attacker -- "Old Version" --> Rollback["Rollback: Re-enable Vulnerabilities"]
+    Attacker -- "Malicious Code" --> Injection["Injection: Remote Control/Malware"]
 
-Answer: The **OEM Backend**, the **Communication Channel** (Network), and the **Vehicle** (TCU/ECUs).
+    subgraph "Impact"
+        ConfID["Confidentiality"] --- Eavesdrop
+        Avail["Availability"] --- DoS
+        Integ["Integrity"] --- Rollback
+        Auth["Authenticity"] --- Injection
+    end
+```
 
-### **2. Which element of the CIA Triad does an "Eavesdropping" attack target?**
+---
 
-Answer: **Confidentiality.**
+## Common Attack Vectors
 
-Explanation:
-Eavesdropping is a *passive* attack where the adversary intercepts traffic to steal intellectual property (firmware algorithms) or secrets (keys/passwords), but does not modify the data.
+### **1. What is a Man-in-the-Middle (MITM) attack in OTA?**
 
-## Specific Attack Vectors
+**Answer:** An attack where the adversary inserts themselves between the OEM backend and the vehicle to intercept or modify the communication.
 
-### **3. Why is a Denial of Service (DoS) attack dangerous in the context of OTA, even if it doesn't modify the software?**
+**Explanation:**
+In a MITM scenario, the attacker can:
+*   Read telemetry (Eavesdropping).
+*   Block the update from reaching the car (DoS).
+*   Deliver a modified (malicious) software package (Injection).
 
-Answer: It targets **Availability**, preventing the vehicle from receiving critical security patches.
+### **2. How does a "Rollback Attack" harm a vehicle?**
 
-Explanation:
-By blocking or jamming the update signal, an attacker keeps the vehicle running vulnerable, outdated software, extending the window of opportunity for other exploits.
+**Answer:** It forces an ECU to "downgrade" to an older software version that contains known, previously fixed security vulnerabilities.
 
-### **4. Describe a "Rollback Attack" and why it is a significant threat.**
+**Explanation:**
+Even if the current software is secure, an attacker might force the car back to a version from a year ago that they know how to exploit. This effectively nullifies the progress made by security patches.
 
-Answer: An attack where the vehicle is tricked into installing an older, legitimate (signed) firmware version.
+---
 
-Explanation:
-It is dangerous because it re-introduces known vulnerabilities that were fixed in newer versions. Attackers downgrade the software to a version they know how to exploit.
+## Denial and Eavesdropping
 
-### **5. What is the goal of a "Malicious Injection" attack?**
+### **3. Why is a Denial of Service (DoS) attack against update servers dangerous?**
 
-Answer: To compromise **Authenticity and Integrity** by inserting unauthorized code into the vehicle.
+**Answer:** It prevents the OEM from deploying critical safety or security patches to the fleet during an active threat.
 
-Explanation:
-The attacker intercepts the OTA process and replaces the legitimate firmware with a malicious version. If successful, this can grant full remote control over the vehicle or disable safety systems.
+**Explanation:**
+If an OEM discovers a zero-day exploit and tries to push a fix, a DoS attack on their servers can keep millions of vehicles vulnerable for days, giving hackers time to exploit the vehicles.
 
-## Frameworks
+### **4. Can an attacker "Steal" software via OTA?**
 
-### **6. How does the Uptane framework categorize OTA threats?**
+**Answer:** Yes, via Eavesdropping.
 
-Answer: It categorizes them by attacker goals, such as "Read Updates" (Eavesdropping), "Deny Installation" (DoS), and "Deny Functionality" (Bricking/Malware).
+**Explanation:**
+By intercepting the download stream, an attacker can extract the binary files. They might then reverse-engineer the code to steal intellectual property or find new bugs to exploit later.
+
+---
+
+## Malicious Injection
+
+### **5. What is "Firmware Tampering"?**
+
+**Answer:** Modifying a legitimate firmware binary to include malicious code, like a backdoor or a virus, before it is installed on the vehicle.
+
+**Explanation:**
+The goal of tampering is to maintain a "normal" appearance so the system doesn't detect the change. Secure OTA systems use Digital Signatures to detect if even a single bit of the file has been altered.
+
+### **6. How can an attacker bypass "User Consent"?**
+
+**Answer:** By compromising the HMI or the mobile app, an attacker could simulate a user's "Accept" click or disable the prompt entirely, allowing for "silent" malicious updates.
+
+**Explanation:**
+Because the HMI is often part of the infotainment system (which has a larger attack surface), it is a prime target for bypassing the manual step of update authorization.
+
+### **7. What is an "Eavesdrop" attack in the context of OTA, and why is it dangerous even if no code is modified?**
+
+**Answer:** It is the passive interception of update traffic. It's dangerous because it allows attackers to steal proprietary logic (IP) and discover secrets or "keys" accidentally left in the firmware.
+
+**Explanation:**
+Knowledge is power. By reading the update, an attacker learns the vehicle's architecture and can perform "offline" reverse engineering to find vulnerabilities without alerting the OEM.
+
+### **8. Explain the "Rollback Attack" and why it's a major threat to vehicle safety.**
+
+**Answer:** A rollback attack tricks the ECU into re-installing old software. It's a threat because it re-opens security holes that were already closed, making the vehicle vulnerable to "old" hacks.
+
+**Explanation:**
+Attackers use this to bypass the latest security measures. If they can't break the new version, they just go back to an old version they *can* break.
+
+### **9. How does an "Injection Attack" differ from a "Denial of Service" (DoS) attack?**
+
+**Answer:** Injection is an attack on *Integrity* (changing the code), whereas DoS is an attack on *Availability* (stopping the service).
+
+**Explanation:**
+*   **DoS:** "You can't have the update."
+*   **Injection:** "Here is a 'fake' update that gives me control of your car."
+Injection is generally considered much more severe as it leads to total system compromise.
